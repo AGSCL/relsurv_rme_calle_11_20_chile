@@ -1,0 +1,3062 @@
+---
+title: "Congreso SP"
+description: |
+  Presentación principales resultados
+date: last-modified
+author: "Andrés González Santa Cruz"
+toc: true
+toc-depth: 5
+toc-location: left
+toc-float: true
+format: 
+  html:
+    code-fold: true
+    embed-resources: true
+    theme: 
+      - journal #https://quarto.org/docs/output-formats/html-themes-more.html
+      #- style.scss
+    fig-cap-location: top  
+    toc: true
+    toc-depth: 5
+    toc-location: left
+execute:
+  error: true        # Show errors in the output
+  echo: true         # Show R code in the output
+  warning: true      # Show warnings
+  message: true      # Show messages from the code
+  freeze: auto       # Use cache to speed up rendering if there are no changes
+editor: source
+execute-dir: project
+lightbox: auto
+---
+
+```{=html}
+<style type="text/css">
+
+.showopt {
+
+background-color: #004c93; color: #FFFFFF; width: 100px; height: 20px; text-align: center; vertical-align: middle !important; float: right; font-family: sans-serif; border-radius: 8px;
+
+}
+
+.showopt:hover {
+background-color: #dfe4f2;
+color: #004c93;
+
+}
+
+pre.plot {
+background-color: white !important;
+}
+
+.tablelines table, .tablelines td, .tablelines th {
+border: 1px solid black;
+}
+
+.centrado {
+text-align: center;
+}
+
+.table.center {
+margin-left:auto;
+margin-right:auto;
+}
+
+/* https://vivekjaiskumar.medium.com/css-is-and-not-selector-17c942ec83f :is()*/
+
+/* Applies to outputs that are not code other than R*/
+
+pre {
+overflow-x: auto !important;
+}
+
+pre code {
+word-wrap: normal !important;
+white-space: pre !important;
+}
+
+/*
+pre:not(.sourceCode) {
+white-space: nowrap !important;
+}
+*/
+.sourceCode { /* Important gives precedence */
+font-size: 10px !important;
+line-height: 50% !important;
+}
+body{ /* Normal */
+text-align: justify;
+}
+.superbigimage{
+overflow-y:scroll;
+height:350px;
+white-space: nowrap;
+overflow-x: auto;
+width:100%;
+}
+.superbigimage img{
+overflow-y: scroll;
+overflow-x: hidden;
+}
+.message { color:#446C6E; font-family: monospace;font-size: 10px; line-height: 110%; font-weight: bold;}
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 5px; text-align: justify;}
+div.red { background-color:#e6bab1; border-radius: 5px; padding: 5px; text-align: justify;}
+.pandoc-table { /* Should add !important; but it seems no necessary */
+margin-left:auto; /* To center */
+margin-right:auto;
+border-collapse: collapse;
+table-layout: auto;
+font-size: 11px;
+overflow-y: auto;
+max-height:450px !important;
+white-space: nowrap;
+overflow-x: auto;
+width:450px;
+}
+.pandoc-table th {/* header */
+text-align: center !important;
+font-size: 10px;
+padding: 0px;
+}
+.pandoc-table td {
+text-align: left !important;
+font-size: 9px;
+padding: 0px;
+}
+.pandoc-table caption {
+text-align: left !important;
+font-size: 11px !important;
+}
+
+.center-table {
+text-align: left !important;
+font-size: 9px;
+overflow-y:scroll;
+height:450px;
+overflow-x: scroll;
+}
+
+.controlly{
+overflow-y:scroll;
+height:350px;
+overflow-x: scroll;
+
+}
+/*2025-03-07*/
+.callout-warning,
+.callout-error,
+.callout-message {
+  font-size: 0.7rem !important;  /* Adjust this value as needed */
+}
+
+.alert, .message {
+    font-size: 0.7em !important;
+}
+
+.alert.alert-warning,
+.alert.alert-danger,
+.message {
+    font-size: 0.7em !important;
+}
+</style>
+```
+```{css, echo=F}
+h1 {
+    color: var(--heading-color);
+    font-size: 2rem;
+    margin-bottom: 1vh;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  font-weight: bold;
+  &:hover, &:focus {
+      border-bottom: 3px solid currentColor;
+  }
+}
+
+section {
+  margin: 0 auto;
+}
+
+.post-meta {
+  font-size: 1rem;
+  font-style: italic;
+  display: block;
+  margin-bottom: 4vh;
+  color: var(--secondary-color);
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+}
+
+/*slider switch css */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  
+  em {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+}
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display:none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+```
+
+```{=html}
+
+<script>
+function myFunction1() {
+var x = document.getElementById("myDIV");
+if (x.style.display === "none") {
+x.style.display = "block";
+} else {
+x.style.display = "none";
+}
+}
+</script>
+
+<script>
+function myFunction2() {
+var x = document.getElementById("myDIV2");
+if (x.style.display === "none") {
+x.style.display = "block";
+} else {
+x.style.display = "none";
+}
+}
+</script>
+```
+
+<style>
+.scrollable-content {
+  max-height: 350px;
+  overflow-y: auto;
+}
+pre.scrollable-code {
+  max-height: 350px;
+  overflow-y: auto;
+}
+.superbigimage {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.superbigimage img, 
+.superbigimage svg {
+  max-width: none;
+  height: auto;
+}
+</style>
+
+<br>
+
+# Cargar datos y exploración
+
+## Cargar paquetes estadísticos y gestión de BBDD
+
+<div class="scrollable-content">
+```{r load}
+#| message: false
+#| include: true
+#| warning: false
+#| results: "hold"
+
+# invisible("Only run from Ubuntu")
+# if (!(Sys.getenv("RSTUDIO_SESSION_TYPE") == "server" || file.exists("/.dockerenv"))) {
+#   if(Sys.info()["sysname"]!="Windows"){
+#     Sys.setenv(RETICULATE_PYTHON = "/home/fondecytacc/.pyenv/versions/3.11.5/bin/python")
+#   }
+# }
+
+#clean enviroment
+rm(list = ls()); gc()
+
+time_before_dedup2<-Sys.time()
+
+if(!require(reticulate)){install.packages("reticulate")}
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+
+# Busca .mamba_root/envs/py311/python.exe desde getwd() hacia padres
+find_python_rel <- function(start = getwd(),
+                            rel = file.path(".mamba_root","envs","py311","python.exe")) {
+  cur <- normalizePath(start, winslash = "/", mustWork = FALSE)
+  repeat {
+    cand <- normalizePath(file.path(cur, rel), winslash = "/", mustWork = FALSE)
+    if (file.exists(cand)) return(cand)
+    parent <- dirname(cur)
+    if (identical(parent, cur)) return(NA_character_)  # llegó a la raíz
+    cur <- parent
+  }
+}
+# --- Bootstrap reticulate con ruta relativa a getwd() ---
+if(Sys.info()["sysname"]!="Windows"){
+  #Sys.setenv(RETICULATE_PYTHON = "usr/bin/python3")
+  reticulate::py_config()
+} else {
+  py <- find_python_rel()
+  if (is.na(py)) {
+    stop("No se encontró Python relativo a getwd() (buscando '.mamba_root/envs/py311/python.exe').\n",
+         "Directorio actual: ", getwd())
+  }
+  # Forzar ese intérprete
+  Sys.unsetenv(c("RETICULATE_CONDAENV","RETICULATE_PYTHON_FALLBACK"))
+  Sys.setenv(RETICULATE_PYTHON = py)
+  reticulate::use_python(py, required=T)
+  reticulate::py_config()  # verificación
+}
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+resolve_doc_dir <- function() {
+  # 1) Interactivo en RStudio (mejor para desarrollo)
+  if (interactive() && requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
+    path <- tryCatch(rstudioapi::documentPath(), error = function(e) NULL)
+    if (!is.null(path) && nzchar(path)) return(normalizePath(dirname(path)))
+  }
+
+  # 2) Render / knitr (Quarto)
+  in_knitr <- tryCatch(knitr::current_input(), error = function(e) NULL)
+  if (!is.null(in_knitr) && nzchar(in_knitr)) return(normalizePath(dirname(in_knitr)))
+
+  # 3) Si nada funciona, devolver error claro (no fallback silencioso)
+  stop("No se pudo determinar la carpeta del documento. Asegura que estás renderizando con Quarto o usando RStudio.")
+}
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+# Ultimate fool-proof NDP loader with comprehensive multi-OS location search
+load_ndp <- function(date_tag,
+                     base_name,
+                     load_into = .GlobalEnv,
+                     verbose = TRUE) {
+  
+  # Generate filenames
+  rdata_file <- sprintf("%s_%s.Rdata", base_name, date_tag)
+  seven_z_part <- sprintf("%s_%s.Rdata.7z.001", base_name, date_tag)
+  
+  # Get all possible base directories across different systems
+  get_search_directories <- function() {
+    directories <- c()
+    
+    # 1. Current working directory and parent
+    wd <- getwd()
+    directories <- c(directories, wd, dirname(wd))
+    
+    # 2. Remove "/cons" if present and get parent
+    wd_no_cons <- gsub("/cons$", "", wd)
+    if (wd_no_cons != wd) {
+      directories <- c(directories, wd_no_cons, dirname(wd_no_cons))
+    }
+    
+    # 3. Windows-specific paths
+    if (.Platform$OS.type == "windows") {
+      # Google Drive paths (both "My Drive" and "Mi unidad")
+      windows_paths <- c(
+        "G:/My Drive/Alvacast/SISTRAT 2023",
+        "G:/Mi unidad/Alvacast/SISTRAT 2023", 
+        "E:/My Drive/Alvacast/SISTRAT 2023",
+        "E:/Mi unidad/Alvacast/SISTRAT 2023",
+        "C:/Users/andres/Google Drive/Alvacast/SISTRAT 2023",
+        "C:/Users/Andres/Google Drive/Alvacast/SISTRAT 2023"
+      )
+      directories <- c(directories, windows_paths)
+    }
+    
+    # 4. Linux/Ubuntu paths
+    if (Sys.info()["sysname"] %in% c("Linux", "Darwin")) {
+      linux_paths <- c(
+        "/home/andres/Escritorio/SISTRAT 2023",
+        "/home/andres/Desktop/SISTRAT 2023",
+        "/home/andres/Documents/SISTRAT 2023",
+        "/home/andres/Google Drive/Alvacast/SISTRAT 2023",
+        "/home/andres/Alvacast/SISTRAT 2023"
+      )
+      directories <- c(directories, linux_paths)
+    }
+    
+    # 5. Common subdirectories to check within each base directory
+    subdirs <- c(
+      "data/20241015_out",
+      "data",
+      "_outputs/SER2025/data/20241015_out",
+      "_outputs",
+      "_input",
+      "output",
+      "inputs"
+    )
+    
+    # Combine base directories with subdirectories
+    all_dirs <- c()
+    for (base_dir in unique(directories)) {
+      # Add base directory itself
+      all_dirs <- c(all_dirs, base_dir)
+      # Add base + subdirectories
+      for (subdir in subdirs) {
+        all_dirs <- c(all_dirs, file.path(base_dir, subdir))
+      }
+    }
+    
+    # Return unique directories that actually exist
+    unique(all_dirs)
+  }
+  
+  # Helper function to load RData
+  load_rdata <- function(path, envir) {
+    if (!file.exists(path)) {
+      stop("RData file not found: ", path)
+    }
+    
+    temp_env <- new.env()
+    loaded_objects <- load(path, envir = temp_env)
+    
+    if (length(loaded_objects) == 0) {
+      stop("No objects found in: ", path)
+    }
+    
+    for (obj_name in loaded_objects) {
+      assign(obj_name, get(obj_name, envir = temp_env), envir = envir)
+    }
+    
+    if (verbose) {
+      message("✓ Successfully loaded ", length(loaded_objects), " object(s): ", 
+              paste(loaded_objects, collapse = ", "))
+    }
+    
+    return(loaded_objects)
+  }
+  
+  # Extract 7z archive
+  extract_7z <- function(archive_path, output_dir) {
+    if (verbose) message("Found 7z archive, extracting: ", basename(archive_path))
+    
+    pass <- Sys.getenv("PASS_PPIO", unset = NA_character_)
+    if (is.na(pass) || pass == "") {
+      stop("Missing PASS_PPIO environment variable for 7z decryption.")
+    }
+    
+    # Ensure output directory exists
+    dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+    
+    # 7z command
+    args <- c("x", shQuote(archive_path), 
+              sprintf("-p%s", pass), 
+              paste0("-o", shQuote(output_dir)),
+              "-y")
+    
+    status <- tryCatch({
+      system2("7z", args = args, stdout = if (verbose) TRUE else FALSE, 
+              stderr = if (verbose) TRUE else FALSE)
+    }, error = function(e) {
+      stop("7z command failed. Make sure 7-zip is installed and available in PATH.")
+    })
+    
+    # Find the extracted RData file
+    extracted_files <- list.files(output_dir, pattern = "\\.Rdata$", 
+                                  full.names = TRUE, ignore.case = TRUE)
+    
+    if (length(extracted_files) == 0) {
+      stop("Extraction completed but no RData file found in: ", output_dir)
+    }
+    
+    return(extracted_files[1])
+  }
+  
+  # Search for files in all possible locations
+  search_dirs <- get_search_directories()
+  
+  if (verbose) {
+    message("Searching for files in ", length(search_dirs), " possible locations...")
+  }
+  
+  found_files <- list()
+  
+  for (dir in search_dirs) {
+    if (!is.na(dir) && dir.exists(dir)) {
+      # Check for RData file
+      rdata_path <- file.path(dir, rdata_file)
+      if (file.exists(rdata_path)) {
+        found_files[["RData"]] <- c(found_files[["RData"]], rdata_path)
+      }
+      
+      # Check for 7z file
+      sevenz_path <- file.path(dir, seven_z_part)
+      if (file.exists(sevenz_path)) {
+        found_files[["7z"]] <- c(found_files[["7z"]], sevenz_path)
+      }
+    }
+  }
+  
+  # Report what we found
+  if (verbose) {
+    if (length(found_files$RData) > 0) {
+      message("Found RData files:")
+      for (f in found_files$RData) message("  - ", f)
+    }
+    if (length(found_files$`7z`) > 0) {
+      message("Found 7z archives:")
+      for (f in found_files$`7z`) message("  - ", f)
+    }
+  }
+  
+  # Priority 1: Use existing RData file (first one found)
+  if (length(found_files$RData) > 0) {
+    selected_file <- found_files$RData[1]
+    if (verbose) message("Loading: ", selected_file)
+    return(load_rdata(selected_file, load_into))
+  }
+  
+  # Priority 2: Extract from 7z archive (first one found)
+  if (length(found_files$`7z`) > 0) {
+    archive_path <- found_files$`7z`[1]
+    
+    # Determine extraction directory (use the directory containing the archive)
+    extract_dir <- dirname(archive_path)
+    
+    extracted_file <- extract_7z(archive_path, extract_dir)
+    if (verbose) message("Extraction successful, loading: ", extracted_file)
+    return(load_rdata(extracted_file, load_into))
+  }
+  
+  # If nothing found, provide helpful error message
+  stop("No files found matching:\n",
+       "  RData: ", rdata_file, "\n",
+       "  7z:    ", seven_z_part, "\n\n",
+       "Searched in these locations:\n",
+       paste("  -", search_dirs, collapse = "\n"))
+}
+
+# Diagnostic function to see all possible file locations
+find_ndp_locations <- function(base_name = "26_ndp", date_tag = "2025_10_01") {
+  message("=== NDP File Location Diagnostic ===")
+  message("Looking for: ", base_name, "_", date_tag, ".*")
+  
+  # Reuse the directory search from load_ndp
+  source_code <- deparse(body(load_ndp))
+  get_search_dirs_line <- grep("get_search_directories <- function", source_code)
+  eval(parse(text = source_code[get_search_dirs_line:length(source_code)]))
+  
+  search_dirs <- get_search_directories()
+  
+  rdata_file <- sprintf("%s_%s.Rdata", base_name, date_tag)
+  seven_z_part <- sprintf("%s_%s.Rdata.7z.001", base_name, date_tag)
+  
+  message("\nSearching in ", length(search_dirs), " directories...\n")
+  
+  found_any <- FALSE
+  for (dir in search_dirs) {
+    if (!is.na(dir) && dir.exists(dir)) {
+      rdata_path <- file.path(dir, rdata_file)
+      sevenz_path <- file.path(dir, seven_z_part)
+      
+      if (file.exists(rdata_path) || file.exists(sevenz_path)) {
+        found_any <- TRUE
+        message("DIRECTORY: ", dir)
+        if (file.exists(rdata_path)) message("  ✓ RData: ", rdata_file)
+        if (file.exists(sevenz_path)) message("  ✓ 7z:    ", seven_z_part)
+        message("")
+      }
+    }
+  }
+  
+  if (!found_any) {
+    message("No files found in any search directory.")
+    message("\nSearch directories checked:")
+    for (dir in search_dirs) {
+      if (!is.na(dir)) message("  - ", dir)
+    }
+  }
+}
+
+# Usage examples:
+
+# 1. Basic usage - will search everywhere
+load_ndp("2025_10_01", "26_ndp")
+
+# 2. Quiet mode
+#load_ndp("2025_10_01", "26_ndp", verbose = FALSE)
+
+# 3. Diagnostic to see where files might be
+#find_ndp_locations("26_ndp", "2025_10_01")
+
+# 4. Load into custom environment
+#my_env <- new.env()
+#load_ndp("2025_10_01", "26_ndp", load_into = my_env)
+```
+</div>
+
+<div class="scrollable-content">
+```{r setup}
+#| results: "hold"
+#https://github.com/rstudio/renv/issues/544
+#renv falls back to copying rather than symlinking, which is evidently very slow in this configuration.
+renv::settings$use.cache(FALSE)
+
+#only use explicit dependencies (in DESCRIPTION)
+renv::settings$snapshot.type("implicit")
+
+#check if rstools is installed
+if(Sys.info()["sysname"]=="Windows"){
+try(installr::install.Rtools(check_r_update=F))
+}
+
+check_quarto_version <- function(required = "1.7.29", comparator = c("ge","gt","le","lt","eq")) {
+  comparator <- match.arg(comparator)
+  current <- package_version(paste(unlist(quarto::quarto_version()), collapse = "."))
+  req     <- package_version(required)
+
+  ok <- switch(comparator,
+               ge = current >= req,
+               gt = current >  req,
+               le = current <= req,
+               lt = current <  req,
+               eq = current == req)
+
+  if (!ok) {
+    stop(sprintf("Quarto version check failed: need %s %s (installed: %s).",
+                 comparator, required, current), call. = FALSE)
+  }
+  invisible(TRUE)
+}
+
+check_quarto_version("1.7.29", "ge") 
+
+#change repository to CL
+local({
+  r <- getOption("repos")
+  r["CRAN"] <- "https://cran.dcc.uchile.cl/"
+  options(repos=r)
+})
+
+if(!require(pacman)){install.packages("pacman");require(pacman)}
+if(!require(pak)){install.packages("pak");require(pak)}
+
+pacman::p_unlock(lib.loc = .libPaths()) #para no tener problemas reinstalando paquetes
+
+if(Sys.info()["sysname"]=="Windows"){
+if (getRversion() != "4.4.1") { stop("Requires R version 4.4.1; Actual: ", getRversion()) }
+}
+
+#check docker
+check_docker_running <- function() {
+  # Try running 'docker info' to check if Docker is running
+  system("docker info", intern = TRUE, ignore.stderr = TRUE)
+}
+if(Sys.info()["sysname"]=="Windows"){
+  install_docker <- function() {
+    # Open the Docker Desktop download page in the browser for installation
+    browseURL("https://www.docker.com/products/docker-desktop")
+  }
+  # Main logic
+  if (inherits(try(check_docker_running(), silent = TRUE), "try-error")) {
+    liftr::install_docker()
+  } else {
+    message("Docker is running.")
+  }
+}
+
+if(Sys.info()["sysname"]=="Windows"){
+  system("sudo apt-get update && sudo apt-get install -y libudunits2-dev libgdal-dev libgeos-dev libproj-dev")
+  system("sudo apt-get install -y libudunits2-dev libgdal-dev libgeos-dev libproj-dev")
+}
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#PACKAGES#######################################################################
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+unlink("*_cache", recursive=T)
+
+# Load or install required packages using pacman::p_load
+# This handles installation, loading, and avoids duplicates
+pacman::p_load(
+  mexhaz,      # Flexible parametric hazard regression models for survival analysis
+  tidyverse,   # Collection of packages for data manipulation, visualization, and more
+  janitor,     # Simple tools for examining and cleaning dirty data
+  tableone,    # Create "Table 1" summaries for descriptive statistics
+  cowplot,     # Streamlined plot theme and plot annotations for ggplot2
+  grid,        # Base R package for low-level graphics (used for plot arrangement)
+  rio,         # Simplifies data import/export with a consistent interface
+  coin,        # Conditional inference procedures for hypothesis testing (e.g., permutation tests)
+  kableExtra,  # Enhances 'knitr::kable()' for complex R Markdown tables
+  epitools,    # Epidemiological tools for data analysis (e.g., rate ratios, exact confidence intervals)
+  relsurv,     # Relative survival analysis for population-based studies
+  survminer,   # Survival analysis and visualization based on 'survival' (e.g., Kaplan-Meier plots)
+  biostat3,    # Biostatistics functions and datasets for teaching/research
+  popEpi,      # For standardized mortality ratios (SMRs) and standardized incidence ratios (SIRs)
+  metafor,     # For heterogeneity testing (e.g., Cochran’s Q) and general meta-analysis
+  parallel,    # Parallel computing (used for bootstrap and resampling)
+  sf,          # Simple Features: for handling and analyzing spatial data (often used for maps)
+  geodata,     # Access to global spatial data (e.g., administrative boundaries, climate data)
+  scales,      # Graphical scales for 'ggplot2' (e.g., custom breaks, formatting labels)
+  devtools,
+  installr,
+  DT,
+  ellmer,
+  liftr, 
+  pak, 
+  pander,
+  quarto,
+  install = TRUE
+)
+
+# ----------------------------------------------------------------------
+# 4. BPMN from GitHub (not on CRAN, so install via devtools if missing)
+# ----------------------------------------------------------------------
+if (!requireNamespace("bpmn", quietly = TRUE)) {
+  devtools::install_github("bergant/bpmn")
+}
+
+
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#FUNCTIONS######################################################################
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#
+# NO MORE DEBUGS
+options(error = NULL)        # si antes tenías options(error = recover) o browser)
+options(browserNLdisabled = FALSE)
+
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#
+#NAs are replaced with "" in knitr kable
+options(knitr.kable.NA = '')
+
+pander::panderOptions('big.mark', ',')
+pander::panderOptions('decimal.mark', '.')
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#
+
+#to format rows in bold
+format_cells <- function(df, rows ,cols, value = c("italics", "bold", "strikethrough")){
+  # select the correct markup
+  # one * for italics, two ** for bold
+  map <- setNames(c("*", "**", "~~"), c("italics", "bold", "strikethrough"))
+  markup <- map[value]  
+  for (r in rows){
+    for(c in cols){
+      # Make sure values are not factors
+      df[[c]] <- as.character( df[[c]])
+
+      # Update formatting
+      df[r, c] <- ifelse(nchar(df[r, c])==0,"",paste0(markup, gsub(" ", "", df[r, c]), markup))
+    }
+  }
+  return(df)
+}
+#To produce line breaks in messages and warnings
+knitr::knit_hooks$set(
+   error = function(x, options) {
+     paste('\n\n<div class="alert alert-danger" style="font-size: small !important;">',
+           gsub('##', '\n', gsub('^##\ Error', '**Error**', x)),
+           '</div>', sep = '\n')
+   },
+   warning = function(x, options) {
+     paste('\n\n<div class="alert alert-warning" style="font-size: small !important;">',
+           gsub('##', '\n', gsub('^##\ Warning:', '**Warning**', x)),
+           '</div>', sep = '\n')
+   },
+   message = function(x, options) {
+     paste('<div class="message" style="font-size: small !important;">',
+           gsub('##', '\n', x),
+           '</div>', sep = '\n')
+   }
+)
+
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#CONFIG #######################################################################
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+options(scipen=2) #display numbers rather scientific number
+
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+# Define the function first
+#joins these values with semicolons and optionally truncates the result if it exceeds a specified width.
+toString2 <- function(x, width = NULL, ...) {
+    string <- paste(x, collapse = "; ")
+    if (missing(width) || is.null(width) || width == 0) 
+        return(string)
+    if (width < 0) 
+        stop("'width' must be positive")
+    if (nchar(string, type = "w") > width) {
+        width <- max(6, width)
+        string <- paste0(substr(string, 1, width - 3), "...")
+    }
+    string
+}
+normalize_txt <- function(x) {
+  x|>
+    stringi::stri_trans_general("Latin-ASCII")|>
+    tolower()|>
+    trimws()
+}
+
+# Custom function for sampling with a seed
+sample_n_with_seed <- function(data, size, seed) {
+  set.seed(seed)
+  dplyr::sample_n(data, size)
+}
+
+# Function to get the most frequent value 
+most_frequent <- function(x) { 
+  uniq_vals <- unique(x)
+  freq_vals <- sapply(uniq_vals, function(val) sum(x == val))
+  most_freq <- uniq_vals[which(freq_vals == max(freq_vals))]
+  
+  if (length(most_freq) == 1) {
+    return(most_freq)
+  } else {
+    return(NA)
+  }
+}
+
+sum_dates <- function(x){
+  cbind.data.frame(
+    min= as.Date(min(unclass(as.Date(x)), na.rm=T), origin = "1970-01-01"),
+    p001= as.Date(quantile(unclass(as.Date(x)), .001, na.rm=T), origin = "1970-01-01"),
+    p005= as.Date(quantile(unclass(as.Date(x)), .005, na.rm=T), origin = "1970-01-01"),
+    p025= as.Date(quantile(unclass(as.Date(x)), .025, na.rm=T), origin = "1970-01-01"),
+    p25= as.Date(quantile(unclass(as.Date(x)), .25, na.rm=T), origin = "1970-01-01"),
+    p50= as.Date(quantile(unclass(as.Date(x)), .5, na.rm=T), origin = "1970-01-01"),
+    p75= as.Date(quantile(unclass(as.Date(x)), .75, na.rm=T), origin = "1970-01-01"),
+    p975= as.Date(quantile(unclass(as.Date(x)), .975, na.rm=T), origin = "1970-01-01"),
+    p995= as.Date(quantile(unclass(as.Date(x)), .995, na.rm=T), origin = "1970-01-01"),
+    p999= as.Date(quantile(unclass(as.Date(x)), .999, na.rm=T), origin = "1970-01-01"),
+    max= as.Date(max(unclass(as.Date(x)), na.rm=T), origin = "1970-01-01")
+  )
+}
+
+is_stata_ok <- function(x) {
+  nchar(x) <= 32 & grepl("^[A-Za-z][A-Za-z0-9_]*$", x)
+}
+
+to_ascii_lower <- function(x) stringi::stri_trans_general(x, "Latin-ASCII")
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+# ── Tidy RMS ────────────────────────────────────────────────────────
+
+tidy_cph <- function(model) {
+  if (!inherits(model, "cph")) stop("Model must be an rms::cph object")
+  # run summary
+  s <- summary(model)
+  df_s <- as.data.frame(unclass(s))
+  df_s$rown <- rownames(s)
+  # find rows that are "Hazard Ratio"
+  hr_rows <- trimws(df_s$rown) == "Hazard Ratio"
+  # build tidy tibble
+  tibble::tibble(
+    term     = trimws(rownames(s)[which(hr_rows) - 1L]), # previous row = variable name
+    estimate = df_s$Effect[hr_rows],                     # Hazard Ratio
+    conf.low = df_s$`Lower 0.95`[hr_rows],
+    conf.high= df_s$`Upper 0.95`[hr_rows],
+    p.value  = df_s$P[hr_rows]
+  )
+}
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+# ── SMR Phi ────────────────────────────────────────────────────────
+
+
+sir_ci_phi_improved <- function(sir_obj, phi, conf.level = 0.95) {
+  #Método log-normal, the best, dont overestimate, or subestimate variance
+  # extract totals
+  total_obs <- sir_obj$observed
+  total_exp <- sir_obj$expected
+  
+  # Calculate SEs
+  theta <- total_obs / total_exp
+    # Normal approximation, n>20  
+  # Corrected SEs (McCullagh & Nelder, 1989)
+  # “For ratios of Poisson means (such as SIR or CMR), the appropriate approach is to use multinomial or binomial models conditioned on the total observed.”
+  # Breslow NE, Day NE. Statistical Methods in Cancer Research, Vol. II (IARC, 1987), §2.2. – Derives the same SE formula and recommends inflating by φ in the presence of heterogeneity.
+  z <- qnorm(1 - (1 - conf.level)/2)
+
+  se_log <- sqrt(phi / total_obs)  # Valid formula
+  
+  # ICs
+  lci <- theta * exp(-z * se_log)
+  uci <- theta * exp(z * se_log)
+  
+  data.frame(
+    SIR = theta,
+    CI_low = lci,
+    CI_high = uci,
+    phi_used = phi
+  )
+}
+
+smr_print <- function(sir_out, name = NULL) {
+    # Validate input
+    if (!is.list(sir_out)) stop("sir_out must be a list or list-like object.")
+    required <- c("observed", "pyrs", "expected", "sir")
+    missing_req <- setdiff(required, names(sir_out))
+    if (length(missing_req)) stop("sir_out is missing required elements: ", paste(missing_req, collapse = ", "))
+    
+    # Pull components (allow vectors)
+    obs <- as.numeric(sir_out$observed)
+    pyrs <- as.numeric(sir_out$pyrs)
+    expc <- as.numeric(sir_out$expected)
+    sir   <- as.numeric(sir_out$sir)
+    sir_lo <- if ("sir.lo" %in% names(sir_out)) as.numeric(sir_out$sir.lo) else rep(NA_real_, length(sir))
+    sir_hi <- if ("sir.hi" %in% names(sir_out)) as.numeric(sir_out$sir.hi) else rep(NA_real_, length(sir))
+    ear    <- if ("EAR" %in% names(sir_out)) as.numeric(sir_out$EAR) else rep(NA_real_, length(sir))
+    
+    n <- max(length(obs), length(pyrs), length(expc), length(sir), length(sir_lo), length(sir_hi), length(ear))
+    rep_len <- function(x) if (length(x) == n) x else rep(x, length.out = n)
+    
+    obs   <- rep_len(obs)
+    pyrs  <- rep_len(pyrs)
+    expc  <- rep_len(expc)
+    sir   <- rep_len(sir)
+    sir_lo <- rep_len(sir_lo)
+    sir_hi <- rep_len(sir_hi)
+    ear   <- rep_len(ear)
+    name  <- if (is.null(name)) rep(NA_character_, n) else rep_len(as.character(name))
+    
+    # Format SMR: "x.xx (y.yy–z.zz)" or "x.xx" if bounds missing
+    smr_fmt <- vapply(seq_len(n), function(i) {
+        if (!is.na(sir_lo[i]) && !is.na(sir_hi[i])) {
+            sprintf("%.2f (%.2f–%.2f)", sir[i], sir_lo[i], sir_hi[i])
+        } else {
+            sprintf("%.2f", sir[i])
+        }
+    }, FUN.VALUE = character(1), USE.NAMES = FALSE)
+    
+    # Format EAR
+    ear_fmt <- ifelse(is.na(ear), NA_character_, sprintf("%.2f", ear))
+    
+    # Build result
+    out <- data.frame(
+        total    = name,
+        observed = round(obs, 0),
+        pyrs     = round(pyrs, 0),
+        expected = round(expc, 0),
+        SMR      = smr_fmt,
+        EAR      = ear_fmt,
+        stringsAsFactors = FALSE,
+        row.names = NULL
+    )
+    
+    out
+}
+
+
+# ── Plots ────────────────────────────────────────────────────────
+
+theme_sjPlot_manual <- function() {
+  theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12),
+    panel.background = element_rect(fill = "white"),
+    panel.grid.major = element_line(color = "gray80"),
+    panel.grid.minor = element_line(color = "gray90")
+  )
+}
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+# --- Step 1: Define File Paths ---
+
+# SET THIS to the correct path of your secret text file
+secret_file_path <- "C:/Users/andre/Documents/secret.txt"
+# This locates the user-level .Renviron file automatically
+renviron_path <- file.path(Sys.getenv("HOME"), ".Renviron")
+# --- Step 2: Read the Secret Key from the .txt file ---
+# Read the first line of the file and trim any whitespace
+api_key <- trimws(readLines(secret_file_path, n = 1, warn = FALSE))
+# --- Step 3: Check if the key is already in .Renviron ---
+# Read all existing lines from .Renviron (if it exists)
+if (file.exists(renviron_path)) {
+  existing_lines <- readLines(renviron_path, warn = FALSE)
+} else {
+  existing_lines <- c()
+}
+# Check if a line for OPENAI_API_KEY already exists
+key_exists <- any(grepl("^OPENAI_API_KEY=", existing_lines))
+# --- Step 4: Write to .Renviron if the key isn't already there ---
+if (!key_exists) {
+  # Format the line to be added
+  line_to_add <- sprintf('OPENAI_API_KEY="%s"', api_key)
+  # Append the line to the .Renviron file, adding a newline before it if the file isn't empty
+  cat(line_to_add, "\n", file = renviron_path, append = TRUE)
+  message("✅ Success! OPENAI_API_KEY has been added to your .Renviron file.")
+  message("Please restart your R session for the change to take effect.")
+} else {
+  message("ℹ️ The OPENAI_API_KEY already exists in your .Renviron file. No changes were made.")
+}
+options(.gander_chat = ellmer::chat_openai(model = "o1-mini"))
+```
+</div>
+
+<br>
+
+## Estructurar los datos
+
+```{r correct-subs-onset-age}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+
+CONS_C2_25_df <- CONS_C2_25_df%>% rename(edad_inicio = edad_inicio_consumo)
+CONS_C4_25_df <- CONS_C4_25_df%>% rename(edad_inicio = edad_inicio_consumo)
+CONS_C5_25_df <- CONS_C5_25_df%>% rename(edad_inicio = edad_inicio_sustancia_inicial)
+CONS_C6_25_df <- CONS_C6_25_df%>% rename(edad_inicio = edad_inicio_consumo)
+SISTRAT23_c1_2010_2024_df_prev1y <- SISTRAT23_c1_2010_2024_df_prev1y|> 
+  dplyr::rename(edad_inicio = age_subs_onset_rec2, HASH_KEY=hash_key)
+
+
+bases <- list(
+  CONS_C2_25_df %>% dplyr::select(HASH_KEY, edad_inicio)|> 
+    dplyr::mutate(edad_inicio = as.numeric(edad_inicio)),
+  CONS_C4_25_df %>% dplyr::select(HASH_KEY, edad_inicio)|> 
+    dplyr::mutate(edad_inicio = as.numeric(edad_inicio)),
+  CONS_C5_25_df %>% dplyr::select(HASH_KEY, edad_inicio)|> 
+    dplyr::mutate(edad_inicio = as.numeric(edad_inicio)),
+  CONS_C6_25_df %>% dplyr::select(HASH_KEY, edad_inicio)|> 
+    dplyr::mutate(edad_inicio = as.numeric(edad_inicio)),
+  SISTRAT23_c1_2010_2024_df_prev1y|> 
+    dplyr::select(HASH_KEY, edad_inicio)|> 
+    dplyr::mutate(edad_inicio = as.numeric(edad_inicio))
+)
+
+# Unir todas las bases
+edad_unificada <- bind_rows(bases)
+
+# Calcular el promedio de edad por HASH_KEY
+promedios_edades <- edad_unificada|> 
+  dplyr::group_by(HASH_KEY)|> 
+  dplyr::summarise(promedio_edad = mean(edad_inicio, na.rm = TRUE))
+
+```
+
+
+
+```{r edad-nacimiento}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+table(is.na(CONS_C3_25_df$birth_date_rec))
+
+CONS_C3_25_df_mod0 <- CONS_C3_25_df|> 
+  left_join(promedios_edades, by = "HASH_KEY", multiple="first")|> 
+  left_join(distinct(SISTRAT23_c1_2010_2024_df_prev1y, HASH_KEY, birth_date_rec), by="HASH_KEY")
+
+
+cat("Patients with >1 treatments\n")
+scales::percent(CONS_C3_25_df_mod0|> dplyr::group_by(HASH_KEY)|> dplyr::count()|> dplyr::filter(n>1)|> nrow() / CONS_C3_25_df_mod0|> dplyr::group_by(HASH_KEY)|> dplyr::count()|> nrow())
+```
+
+We clean the environment with the absolutely necessary objects
+
+```{r clean}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+# Nombres de los objetos que deseas conservar
+objetos_a_conservar <- c("CONS_C3_25_df_mod0", "SISTRAT23_c1_2010_2024_df_prev1y", "toString2", "normalize_txt", "pair_str", "sample_n_with_seed", "most_frequent", "sum_dates", "tidy_cph", "mortality_first", "wdpath", "theme_sjPlot_manual", "load_ndp", "find_ndp_locations", "format_cells", "is_stata_ok", "sir_ci_phi_improved", "smr_print", "to_ascii_lower", "resolve_doc_dir", "‘time_before_dedup2")
+ 
+# Eliminar todos los objetos excepto los especificados
+rm(list = setdiff(ls(), objetos_a_conservar))
+
+```
+
+
+Obtenemos las bases de datos de mortalidad externas (tablas de vida).
+
+
+```{r import-ext-dbs}
+#| echo: true
+#| error: true
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+if(grepl("ubuntu",system_r_platform())){
+  if (rstudioapi::isAvailable()) {
+    # Code that needs RStudio
+    wdpath<- dirname(dirname(rstudioapi::documentPath()))
+  } else {
+    # Code for non-RStudio environments (e.g., command line, server)
+    # This part should use a portable method like knitr::current_input() or getwd()
+    wdpath <- dirname(resolve_doc_dir())
+  }
+mltper_1x1<- try(rio::import(paste0(wdpath,"/_data/mltper_1x1.txt")))
+fltper_1x1<- try(rio::import(paste0(wdpath,"/_data/fltper_1x1.txt")))
+mltper_1x10<-try(rio::import(paste0(wdpath,"/_data/mltper_1x10.txt")))
+fltper_1x10<-try(rio::import(paste0(wdpath,"/_data/fltper_1x10.txt")))
+mltper_5x10<-try(rio::import(paste0(wdpath,"/_data/mltper_5x10.txt")))
+fltper_5x10<-try(rio::import(paste0(wdpath,"/_data/fltper_5x10.txt")))
+} else{
+mltper_1x1<- try(rio::import(paste0(wdpath,"/_outputs/SER2025/_data/mltper_1x1.txt")))
+fltper_1x1<- try(rio::import(paste0(wdpath,"/_outputs/SER2025/_data/fltper_1x1.txt")))
+mltper_1x10<-try(rio::import(paste0(wdpath,"/_outputs/SER2025/_data/mltper_1x10.txt")))
+fltper_1x10<-try(rio::import(paste0(wdpath,"/_outputs/SER2025/_data/fltper_1x10.txt")))
+mltper_5x10<-try(rio::import(paste0(wdpath,"/_outputs/SER2025/_data/mltper_5x10.txt")))
+fltper_5x10<-try(rio::import(paste0(wdpath,"/_outputs/SER2025/_data/fltper_5x10.txt")))
+}
+
+#filtro para obtener las tasas de los últimos 10 años
+mltper_1x10_filt<-mltper_1x10[mltper_1x10$Year=="2010-2019",]
+fltper_1x10_filt<-fltper_1x10[fltper_1x10$Year=="2010-2019",]
+
+mltper_5x10_filt<-mltper_5x10[mltper_5x10$Year=="2010-2019",]
+fltper_5x10_filt<-fltper_5x10[fltper_5x10$Year=="2010-2019",]
+
+#cambiar la edad a entero
+mltper_1x10_filt$age_rec <- as.numeric(mltper_1x10_filt$Age)
+fltper_1x10_filt$age_rec <- as.numeric(fltper_1x10_filt$Age)
+
+
+mltper_1x10_filt$sex <- "hombre"
+fltper_1x10_filt$sex <- "mujer"
+mltper_5x10_filt$sex <- "hombre"
+fltper_5x10_filt$sex <- "mujer"
+
+cons_rate_sex_1x10<-
+rbind.data.frame(mltper_1x10_filt, fltper_1x10_filt)[,c("age_rec","sex", "mx")]
+cons_rate_sex_5x10<-
+  rbind.data.frame(mltper_5x10_filt, fltper_5x10_filt)[,c("Age","sex", "lx", "mx")]
+
+proy_ine_com<-
+  rio::import("https://www.ine.gob.cl/docs/default-source/proyecciones-de-poblacion/cuadros-estadisticos/base-2017/ine_estimaciones-y-proyecciones-2002-2035_base-2017_comunas0381d25bc2224f51b9770a705a434b74.csv?sfvrsn=b6e930a7_3&download=true")%>% 
+  tidyr::pivot_longer(cols = dplyr::starts_with("Poblacion"), 
+                      names_to = "anio", 
+                      values_to = "poblacion") %>% 
+  dplyr::mutate(anio= gsub("Poblacion ","",anio), anio=as.numeric(anio))%>% 
+  dplyr::filter(anio>=2010 & anio<=2022) %>% 
+  dplyr::mutate(edad_anos_rec= dplyr::case_when(Edad>=15 & Edad<=29~1,
+                                                Edad>=30 & Edad<=44~2,
+                                                Edad>=45 & Edad<=59~3,
+                                                Edad>=60 & Edad<=65~4,T~NA_real_))|> 
+  dplyr:: mutate(edad_cat = dplyr::case_when(
+    Edad >= 15 & Edad <= 19 ~ "15-19",
+    Edad >= 20 & Edad <= 24 ~ "20-24",
+    Edad >= 25 & Edad <= 29 ~ "25-29",
+    Edad >= 30 & Edad <= 34 ~ "30-34",
+    Edad >= 35 & Edad <= 39 ~ "35-39",
+    Edad >= 40 & Edad <= 44 ~ "40-44",
+    Edad >= 45 & Edad <= 49 ~ "45-49",
+    Edad >= 50 & Edad <= 54 ~ "50-54",  
+    Edad >= 55 & Edad <= 59 ~ "55-59",
+    Edad >= 60 & Edad <= 64 ~ "60-64",
+    Edad >= 65 & Edad <= 69 ~ "65-69",    
+    Edad >= 70 & Edad <= 74 ~ "70-74",
+    Edad >= 75 & Edad <= 79 ~ "75-79",    
+    TRUE ~ NA_character_  # Opcional: manejo de valores fuera de rango
+  )) 
+
+proy_ine_reg_group<-
+  proy_ine_com|> 
+  #2025 le agrego eso para que sepamos que es igual que antes ser2024
+  dplyr::filter(Edad>=15, Edad<=65)|> 
+  #fomateamos para calzarla con la anterior
+  dplyr::mutate(reg_res= sprintf("%02d", Region))|> 
+  dplyr::group_by(reg_res, `Sexo (1=Hombre 2=Mujer)`,edad_anos_rec, anio)|> 
+  dplyr::mutate(edad_anos_rec= factor(edad_anos_rec, levels=1:4, labels= c("15-29","30-44","45-59","60-65")))|> 
+  dplyr::summarise(poblacion= sum(poblacion, na.rm=T))
+
+invisible("Ene 2025, lo hice recién")
+proy_ine_group_2015<-
+  proy_ine_com|> 
+  #fomateamos para calzarla con la anterio
+  dplyr::group_by(`Sexo (1=Hombre 2=Mujer)`,edad_cat, anio)|> 
+  dplyr::summarise(poblacion= sum(poblacion, na.rm=T))|> 
+  dplyr::filter(anio==2015)|> 
+  dplyr::mutate(sexo= ifelse(`Sexo (1=Hombre 2=Mujer)`==1,"hombre","mujer"))
+
+proy_ine_cont_2015<-
+  proy_ine_com %>% 
+  #fomateamos para calzarla con la anterio
+  dplyr::group_by(`Sexo (1=Hombre 2=Mujer)`,Edad, anio)|> 
+  dplyr::summarise(poblacion= sum(poblacion, na.rm=T))|> 
+  dplyr::filter(anio==2015)|> 
+  dplyr::mutate(sexo= ifelse(`Sexo (1=Hombre 2=Mujer)`==1,"hombre","mujer"))
+
+
+mort_2015<-
+mortality_first|> 
+  dplyr::filter(ano_def==2015)|> 
+  dplyr:: mutate(edad_cant_cat = dplyr::case_when(
+    edad_cant >= 15 & edad_cant <= 19 ~ "15-19",
+    edad_cant >= 20 & edad_cant <= 24 ~ "20-24",
+    edad_cant >= 25 & edad_cant <= 29 ~ "25-29",
+    edad_cant >= 30 & edad_cant <= 34 ~ "30-34",
+    edad_cant >= 35 & edad_cant <= 39 ~ "35-39",
+    edad_cant >= 40 & edad_cant <= 44 ~ "40-44",
+    edad_cant >= 45 & edad_cant <= 49 ~ "45-49",
+    edad_cant >= 50 & edad_cant <= 54 ~ "50-54",  
+    edad_cant >= 55 & edad_cant <= 59 ~ "55-59",
+    edad_cant >= 60 & edad_cant <= 64 ~ "60-64",
+    edad_cant >= 65 & edad_cant <= 69 ~ "65-69",    
+    edad_cant >= 70 & edad_cant <= 74 ~ "70-74",
+    edad_cant >= 75 & edad_cant <= 79 ~ "75-79",    
+    TRUE ~ NA_character_  # Opcional: manejo de valores fuera de rango
+  ))|>
+  dplyr::group_by(sexo, edad_cant_cat)|> 
+  summarise(n=n())|> 
+  dplyr::mutate(sexo=ifelse(sexo==1,"hombre","mujer"))
+
+mort_cont_2015<-
+  mortality_first|> 
+  dplyr::filter(ano_def==2015)|> 
+  dplyr::group_by(sexo, edad_cant)|> 
+  summarise(n=n())|> 
+  dplyr::mutate(sexo=ifelse(sexo==1,"hombre","mujer"))
+
+# HMD. Human Mortality Database. Max Planck Institute for Demographic Research (Germany), University of California, Berkeley (USA), and French Institute for Demographic Studies (France). Available at www.mortality.org (data downloaded on [date]).
+
+#:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:#
+#:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:#
+#:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:##:#:#:#
+
+if(grepl("ubuntu",system_r_platform())){
+  rt<-
+  relsurv::transrate.hmd(paste0(wdpath, "/_data/mltper_1x1.txt"), 
+                         paste0(wdpath, "/_data/fltper_1x1.txt"))
+} else {
+  rt<-
+  relsurv::transrate.hmd(paste0(wdpath, "_outputs/SER2025/_data/mltper_1x1.txt"), 
+                         paste0(wdpath, "_outputs/SER2025/_data/fltper_1x1.txt"))
+}
+# Convertir las dimensiones en vectores
+ages <- attr(rt, "dimnames")$age  # Edad
+years <- attr(rt, "dimnames")$year  # Año
+sexes <- attr(rt, "dimnames")$sex  # Sexo
+# Extraer los valores del ratetable
+values <- as.vector(rt)  # Convierte el array en un vector plano
+# Crear un dataframe con todas las combinaciones de las dimensiones
+popmort1x1 <- expand.grid(age = ages,year = years,sex = sexes)
+# Añadir los valores al dataframe
+popmort1x1 <- popmort1x1 %>%
+  mutate(rate = values*365.241) #introduje esto el 10-01-2025
+```
+
+
+```{r structure}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+start_fup <- as.Date("2011-01-01")
+end_fup   <- as.Date("2020-12-31")
+
+
+CONS_C3_mod_c_pre1<-
+  CONS_C3_25_df_mod0|> 
+  dplyr::mutate_at(c("fecha_ingreso_a_tratamiento", "fecha_egreso_de_tratamiento"),~readr::parse_date(.,"%d/%m/%Y"))|> 
+  dplyr::mutate(adm_date_num= as.numeric(fecha_ingreso_a_tratamiento))|> 
+  dplyr::group_by(HASH_KEY)|> 
+  dplyr::arrange(HASH_KEY, desc(adm_date_num))|> 
+  #saco las personas que se repiten en la base de datos
+  dplyr::ungroup()|> 
+  dplyr::slice_min(adm_date_num,by=HASH_KEY,with_ties = F)|> 
+  #corregimos las fechas malas por las correctas aquí
+  dplyr::mutate(birth_date_rec_joined= as.Date(ifelse(!is.na(birth_date_rec),birth_date_rec, birth_date)))|> 
+  dplyr::mutate(edad_inicio_consumo_joined= as.integer(ifelse(!is.na(promedio_edad),promedio_edad, edad_inicio_consumo)))|> 
+  dplyr::mutate(starting_use_date= as.Date(format(birth_date_rec_joined, "%Y-%m-%d"), origin = "1970-01-01") +
+  (edad_inicio_consumo_joined * 365.241))
+
+
+# Calcular los cuartiles
+q1 <- quantile(as.numeric(CONS_C3_mod_c_pre1$edad_inicio_consumo_joined), 0.25) # Primer cuartil
+q3 <- quantile(as.numeric(CONS_C3_mod_c_pre1$edad_inicio_consumo_joined), 0.75) # Tercer cuartil
+iqr <- q3 - q1             # Rango intercuartílico
+
+# Limites para identificar valores extremos
+liminf <- q1 - 1.5 * iqr
+limsup <- q3 + 1.5 * iqr
+
+cat("Cuartiles y rango intercuartílico edad de inicio consumo (aunque todavía no, necesito identificar un solo tratamiento por sujeto)")
+
+CONS_C3_mod_c_a<-
+CONS_C3_mod_c_pre1|> 
+  dplyr::mutate(across(c("numero_de_hijos",
+                         "numero_de_tratamientos_anteriores",
+                         "edad_inicio_sustancia_principal"),~as.numeric(.)))|> 
+  dplyr::mutate(sex= ifelse(sexo=="hombre", "male", "female"))|> 
+  dplyr::left_join(mortality_first[,c("hashkey","def_date")], by=c("HASH_KEY"="hashkey"))|> 
+  dplyr::mutate(status=ifelse(is.na(def_date), 0, 1))|> 
+  dplyr::mutate(age_admdate_num= lubridate::time_length(lubridate::interval(birth_date_rec_joined, fecha_ingreso_a_tratamiento), unit="year"))|>
+  dplyr::mutate(age_admdate_int= as.integer(age_admdate_num))|> 
+  data.frame()|> 
+  dplyr::mutate(sus_prin_rec = dplyr::case_when(
+    sustancia_principal == "hipnoticos" ~ "otros",
+    grepl("sedantes", sustancia_principal) ~ "otros",
+    sustancia_principal == "anfetaminas" ~ "cocaina y est tipo anfetaminas",
+    sustancia_principal == "extasis" ~ "cocaina y est tipo anfetaminas",
+    sustancia_principal == "fenilciclidina" ~ "cocaina y est tipo anfetaminas",
+    grepl("metanfetaminas", sustancia_principal) ~ "cocaina y est tipo anfetaminas",
+    sustancia_principal == "otros estimulantes" ~ "cocaina y est tipo anfetaminas",
+    sustancia_principal == "LSD" ~ "alucinogenos",
+    grepl("otros alucinogenos", sustancia_principal) ~ "otros",
+    sustancia_principal == "Crack" ~ "pasta base",
+    sustancia_principal == "heroina" ~ "opioides",
+    sustancia_principal == "metadona" ~ "opioides",
+    grepl("otros opioides",sustancia_principal)  ~ "otros",
+    grepl("inhalables", sustancia_principal) ~ "otros",
+    grepl("alcohol", sustancia_principal)~"alcohol",
+    grepl("cocaina", sustancia_principal)~"cocaina y est tipo anfetaminas",
+    grepl("crack", sustancia_principal)~"pasta base",
+    grepl("marihuana", sustancia_principal)~"marihuana",
+    grepl("lsd", sustancia_principal)~"otros",
+    grepl("^otros$", sustancia_principal)~"otros",
+    grepl("pasta base", sustancia_principal)~"pasta base",
+    TRUE ~ NA_character_ # Mantiene las categorías no recodificadas
+  ))|> 
+  dplyr::mutate(sus_prin_rec2 = dplyr::case_when(
+    sus_prin_rec=="alcohol"~"alcohol",
+    sus_prin_rec=="pasta base"~"base paste",
+    T~"otros"))|> 
+  dplyr::mutate(esc_cat=
+    dplyr::case_when(grepl("basica completa",escolaridad_ultimo_ano_cursado)~"1.primaria o menos",
+                     grepl("basica incompleta",escolaridad_ultimo_ano_cursado)~"1.primaria o menos",
+                     grepl("sin estudios",escolaridad_ultimo_ano_cursado)~"1.primaria o menos",
+                     grepl("sala cuna",escolaridad_ultimo_ano_cursado)~"1.primaria o menos",
+                     grepl("media completa",escolaridad_ultimo_ano_cursado)~"2.secundaria o menos",
+                     grepl("media incompleta",escolaridad_ultimo_ano_cursado)~"2.secundaria o menos",
+                     grepl("tecnica completa",escolaridad_ultimo_ano_cursado)~"2.secundaria o menos",
+                     grepl("tecnica incompleta",escolaridad_ultimo_ano_cursado)~"2.secundaria o menos",
+                     grepl("universitaria",escolaridad_ultimo_ano_cursado)~"3.superior o más",
+                     T~NA_character_))|>
+  dplyr::mutate(age_admdate_int_cat = dplyr::case_when(
+    age_admdate_int >= 15 & age_admdate_int <= 19 ~ "15-19",
+    age_admdate_int >= 20 & age_admdate_int <= 24 ~ "20-24",
+    age_admdate_int >= 25 & age_admdate_int <= 29 ~ "25-29",
+    age_admdate_int >= 30 & age_admdate_int <= 34 ~ "30-34",
+    age_admdate_int >= 35 & age_admdate_int <= 39 ~ "35-39",
+    age_admdate_int >= 40 & age_admdate_int <= 44 ~ "40-44",
+    age_admdate_int >= 45 & age_admdate_int <= 49 ~ "45-49",
+    age_admdate_int >= 50 & age_admdate_int <= 54 ~ "50-54",  
+    age_admdate_int >= 55 & age_admdate_int <= 59 ~ "55-59",
+    age_admdate_int >= 60 & age_admdate_int <= 64 ~ "60-64",
+    age_admdate_int >= 65 & age_admdate_int <= 69 ~ "65-69",    
+    age_admdate_int >= 70 & age_admdate_int <= 74 ~ "70-74",
+    age_admdate_int >= 75 & age_admdate_int <= 79 ~ "75-79",    
+    TRUE ~ NA_character_  # Opcional: manejo de valores fuera de rango
+  ))|> 
+  dplyr::mutate(edad_inicio_consumo_joined_cat = dplyr::case_when(
+    edad_inicio_consumo_joined >= 1 & edad_inicio_consumo_joined <= 4 ~ "1-4",
+    edad_inicio_consumo_joined >= 10 & edad_inicio_consumo_joined <= 14 ~ "5-9",
+    edad_inicio_consumo_joined >= 10 & edad_inicio_consumo_joined <= 14 ~ "10-14",    
+    edad_inicio_consumo_joined >= 15 & edad_inicio_consumo_joined <= 19 ~ "15-19",
+    edad_inicio_consumo_joined >= 20 & edad_inicio_consumo_joined <= 24 ~ "20-24",
+    edad_inicio_consumo_joined >= 25 & edad_inicio_consumo_joined <= 29 ~ "25-29",
+    edad_inicio_consumo_joined >= 30 & edad_inicio_consumo_joined <= 34 ~ "30-34",
+    edad_inicio_consumo_joined >= 35 & edad_inicio_consumo_joined <= 39 ~ "35-39",
+    edad_inicio_consumo_joined >= 40 & edad_inicio_consumo_joined <= 44 ~ "40-44",
+    edad_inicio_consumo_joined >= 45 & edad_inicio_consumo_joined <= 49 ~ "45-49",
+    edad_inicio_consumo_joined >= 50 & edad_inicio_consumo_joined <= 54 ~ "50-54",  
+    edad_inicio_consumo_joined >= 55 & edad_inicio_consumo_joined <= 59 ~ "55-59",
+    edad_inicio_consumo_joined >= 60 & edad_inicio_consumo_joined <= 64 ~ "60-64",
+    edad_inicio_consumo_joined >= 65 & edad_inicio_consumo_joined <= 69 ~ "65-69",    
+    edad_inicio_consumo_joined >= 70 & edad_inicio_consumo_joined <= 74 ~ "70-74",
+    edad_inicio_consumo_joined >= 75 & edad_inicio_consumo_joined <= 79 ~ "75-79",    
+    TRUE ~ NA_character_  # Opcional: manejo de valores fuera de rango
+  ))|> 
+  #2025-01-10: tuve que meter la
+  dplyr::mutate(yr_adm=floor(lubridate::year(fecha_ingreso_a_tratamiento)))|> 
+  dplyr::filter(yr_adm<=2020)|>   
+  dplyr::left_join(cons_rate_sex_5x10, by=c("age_admdate_int_cat"="Age", "sexo"="sex"))|> 
+  dplyr::left_join(mutate(cons_rate_sex_1x10, age_rec=as.numeric(age_rec)), by=c("age_admdate_int"="age_rec", "sexo"="sex"), suffix= c("_5x10","_1x10"))|>
+    (\(df) {
+    message(paste0("Fallecidos antes de ser admitidos a tto.: ", dplyr::filter(df, def_date<fecha_ingreso_a_tratamiento)|> nrow()))
+    df
+  })()|>
+  dplyr::mutate(def_date_na= dplyr::case_when(
+    status==1~ def_date,
+    status==0~ as.Date(end_fup)))|>
+  dplyr::mutate(timesurv_consumo= dplyr::case_when(
+    status==1~ lubridate::time_length(lubridate::interval(starting_use_date, def_date), unit="year"),
+    status==0~ lubridate::time_length(lubridate::interval(starting_use_date, as.Date(end_fup)), unit="year")))|>
+  dplyr::mutate(dayssurv_consumo= dplyr::case_when(
+    status==1~ lubridate::time_length(lubridate::interval(starting_use_date, def_date), unit="days"),
+    status==0~ lubridate::time_length(lubridate::interval(starting_use_date, as.Date(end_fup)), unit="days")))|>
+  dplyr::mutate(timesurv_consumo= dplyr::case_when(
+    status==1~ lubridate::time_length(lubridate::interval(starting_use_date, def_date), unit="year"),
+    status==0~ lubridate::time_length(lubridate::interval(starting_use_date, as.Date(end_fup)), unit="year")))|>
+  dplyr::mutate(timesurv_adm= dplyr::case_when(
+    status==1~ lubridate::time_length(lubridate::interval(fecha_ingreso_a_tratamiento, def_date), unit="year"),
+    status==0~ lubridate::time_length(lubridate::interval(fecha_ingreso_a_tratamiento, as.Date(end_fup)), unit="year")))|>
+  dplyr::mutate(dayssurv_adm= dplyr::case_when(
+    status==1~ lubridate::time_length(lubridate::interval(fecha_ingreso_a_tratamiento, def_date), unit="days"),
+    status==0~ lubridate::time_length(lubridate::interval(fecha_ingreso_a_tratamiento, as.Date(end_fup)), unit="days")))|>  
+  dplyr::mutate(tiempoen_calle_ano= as.numeric(tiempoen_calle_ano), 
+                tiempoen_calle_mes= as.numeric(tiempoen_calle_mes)/12,
+                tiempoen_calle= tiempoen_calle_ano+tiempoen_calle_mes)|> 
+  (\(df) {
+    message(paste0("Registros (admitidos <2021): ", nrow(df)))
+    message(paste0("Pacientes (admitidos <2021): ", distinct(df, HASH_KEY)|> nrow()))
+    message(paste0("Eventos: ", dplyr::slice_head(df, n=1, by=HASH_KEY)|> dplyr::filter(!is.na(def_date))|> nrow() ))
+    df
+  })() 
+```
+
+
+#### Formatear para supervivencia
+
+
+
+```{r un-mort-format}
+#| class-output: center-table
+#| message: true
+#| include: true
+#| warning: true
+#| error: false
+#| results: "hold"
+mx_1x1<-
+  rbind.data.frame(cbind.data.frame(sex="male", mltper_1x1), 
+                   cbind.data.frame(sex="female", fltper_1x1))[,c("Year", "sex", "Age", "mx", "qx")]
+mx_1x1$Age<- as.numeric(mx_1x1$Age)
+
+mx_10x1<-
+  rbind.data.frame(cbind.data.frame(sex="male", mltper_1x10_filt), 
+                   cbind.data.frame(sex="female", fltper_1x10_filt))[,c("Year", "sex", "Age", "mx", "qx")]
+mx_10x1$Age<- as.numeric(mx_10x1$Age)
+
+years_followup<-
+  range(CONS_C3_mod_c_a$yr_adm)[1]:range(CONS_C3_mod_c_a$yr_adm)[2]
+
+mx_1x1_filt<-mx_1x1[as.numeric(as.character(mx_1x1$Year)) %in% years_followup,]
+mx_1x1_filt2<-mx_1x1_filt[as.numeric(as.character(mx_1x1_filt$Age)) %in% min(CONS_C3_mod_c_a$age_admdate_int):max(CONS_C3_mod_c_a$age_admdate_int),]
+
+mx_1x1_filt2$lambda_p <- -log( 1 - mx_1x1_filt2$qx ) / 365.241
+
+mx_10x1_filt2<-mx_10x1[as.numeric(as.character(mx_10x1$Age)) %in% min(CONS_C3_mod_c_a$age_admdate_int):max(CONS_C3_mod_c_a$age_admdate_int),]
+
+mx_10x1_filt2$lambda_p <-  -log( 1 - mx_10x1_filt2$qx ) / 365.241
+
+warning(paste0("El mx es rate de HMS pero multiplicado por 365.241"))
+mx_1x1_filt2$lambda_p_yrs <- -log( 1 - mx_1x1_filt2$qx )
+
+mx_10x1_filt2$lambda_p_yrs <-  -log( 1 - mx_10x1_filt2$qx )
+```
+
+
+```{r format-for-surv}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+CONS_C3_mod_c_a2<-
+  CONS_C3_mod_c_a |> 
+  #para sortear el hecho de que no tengo datos después
+  dplyr::mutate(yr_adm=ifelse(yr_adm>2020,2020, yr_adm))|> 
+  dplyr::left_join(mx_1x1_filt2, by= c("yr_adm"="Year", "age_admdate_int"="Age", "sex"="sex"))|> 
+  dplyr::left_join(dplyr::mutate(popmort1x1, across(c("age", "year"), ~ as.numeric(as.character(.)))), by= c("yr_adm"="year", "age_admdate_int"="age", "sex"="sex"))
+
+table(is.na(CONS_C3_mod_c_a2$lambda_p))
+invisible("Ahora pude traducirlo bien!!!, eso significa que tengo todo lo otro malO!!!!")
+
+CONS_C3_mod_c_a2$tiempoen_calle_q5<-
+  Hmisc::cut2(CONS_C3_mod_c_a2$tiempoen_calle, g = 5)
+CONS_C3_mod_c_a2$tiempoen_calle_q4<-
+  Hmisc::cut2(CONS_C3_mod_c_a2$tiempoen_calle, g = 4)
+CONS_C3_mod_c_a2$tiempoen_calle_q3<-
+  Hmisc::cut2(CONS_C3_mod_c_a2$tiempoen_calle, g = 3)
+CONS_C3_mod_c_a2$tiempoen_calle_otr<-
+  Hmisc::cut2(CONS_C3_mod_c_a2$tiempoen_calle, cuts = c(0, 1, 2, 4, 6, 10,11))
+
+```
+
+
+
+```{r lexis}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+c_SISTRAT_c3 <- lexpand(CONS_C3_mod_c_a2, 
+              status = status, 
+              birth = birth_date_rec_joined, 
+              exit = def_date_na, entry = fecha_ingreso_a_tratamiento,
+              breaks = list(#per = seq(2010, 2020, by = 1), 
+                            age = c(18, 30, 45, 60, Inf)), #, fot = c(0, 1, 3, 5, Inf)
+              aggre = list(agegroup = age, sex= sex))#year = per, 
+
+c_SISTRAT_c3_yr <- lexpand(CONS_C3_mod_c_a2, 
+              status = status, 
+              birth = birth_date_rec_joined, 
+              exit = def_date_na, entry = fecha_ingreso_a_tratamiento,
+              breaks = list(per = seq(2010, 2020, by = 1), 
+                            age = c(18, 30, 45, 60, Inf)), #, fot = c(0, 1, 3, 5, Inf)
+              aggre = list(year = per, agegroup = age, sex= sex))#
+
+c_SISTRAT_c3_fot <- lexpand(CONS_C3_mod_c_a2, 
+              status = status, 
+              birth = birth_date_rec_joined, 
+              exit = def_date_na, entry = fecha_ingreso_a_tratamiento,
+              breaks = list(#per = seq(2010, 2020, by = 1), 
+                            age = c(18, 30, 45, 60, Inf), #, 
+              fot = c(0, .0386,.2465, .5, 1, 3, 5, 7, 9, Inf)),
+              aggre = list(agegroup = age, sex= sex, fot=fot))#year = per, 
+
+c_SISTRAT_c3_yr_fot <- lexpand(CONS_C3_mod_c_a2, 
+              status = status, 
+              birth = birth_date_rec_joined, 
+              exit = def_date_na, entry = fecha_ingreso_a_tratamiento,
+              breaks = list(per = seq(2010, 2020, by = 1), 
+                            age = c(18, 30, 45, 60, Inf), #, 
+              fot = c(0, .0386,.2465, .5, 1, 3, 5, 7, 9, Inf)),
+              aggre = list(year = per, agegroup = age, sex= sex, fot=fot))# 
+
+# 1) Cohort Lexis in single-year age and year
+lex <- popEpi::lexpand(
+  data = CONS_C3_mod_c_a2,
+  birth = birth_date_rec_joined,
+  entry = fecha_ingreso_a_tratamiento,
+  exit  = def_date_na,
+  status = status,
+  breaks = list(age = 18:79, per = 2011:2020),
+  aggre = list(age = age, year = per, sex = sex)
+)
+```
+
+### Datos poblacionales por edad y sexo
+
+```{r unir-con-pop-data}
+#| class-output: center-table
+#| message: true
+#| include: true
+#| warning: true
+#| error: false
+#| results: "hold"
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+
+proy_ine_com_18_78<-
+  rio::import("https://www.ine.gob.cl/docs/default-source/proyecciones-de-poblacion/cuadros-estadisticos/base-2017/ine_estimaciones-y-proyecciones-2002-2035_base-2017_comunas0381d25bc2224f51b9770a705a434b74.csv?sfvrsn=b6e930a7_3&download=true")|> 
+  tidyr::pivot_longer(cols = dplyr::starts_with("Poblacion"), 
+                      names_to = "anio", 
+                      values_to = "poblacion")|> 
+  dplyr::mutate(anio= gsub("Poblacion ","",anio), anio=as.numeric(anio))|> 
+  dplyr::filter(anio>=2011 & anio<=2020, Edad>=18 & Edad<79)|> 
+  dplyr::mutate(sex_rec= ifelse(`Sexo (1=Hombre 2=Mujer)`==2,"female","male"))|> 
+  group_by(anio,Edad, sex_rec)|># 
+  summarise(pop=sum(poblacion, na.rm=T))|>
+  ungroup()|>
+  rename("age"="Edad", "year"="anio")#
+
+proy_ine_com_18_78_10_19<-
+  proy_ine_com_18_78|>
+  dplyr::filter(year==2016)|> 
+  dplyr::group_by(age, sex_rec)|>
+  dplyr::summarise(pop= sum(pop, na.rm=T))
+
+
+mx_1x1_banded <- mx_1x1_filt2|>
+  dplyr::mutate(
+    #year = Year,              # renombramos para que coincida con popmort
+    # agegroup = 
+      # case_when(         
+      # Age >= 18 & Age <= 29~ "18-29",
+      # Age >= 30 & Age <= 44~ "30-44",
+      # Age >= 45 & Age <= 59~ "45-59",
+      # Age >= 60 & Age <= 76~ "60+",
+      # T~ NA_character_
+      agegroup = case_when(         
+      Age >= 18 & Age <= 29~ 18,
+      Age >= 30 & Age <= 44~ 30,
+      Age >= 45 & Age <= 59~ 45,
+      Age >= 60 & Age <= 78~ 60,
+      T~ NA_real_
+    )
+  )|> 
+  dplyr::filter(!is.na(agegroup))|>    # descarta edades fuera de 18-65
+  #dplyr::select(-Year)|> 
+  dplyr::left_join(proy_ine_com_18_78, by= c("sex"="sex_rec", "Age"="age", "Year"="year"))|>
+  dplyr::summarise(
+    haz = weighted.mean(lambda_p_yrs, w = pop, na.rm = TRUE),   # tasa media del grupo
+    haz_nw= mean(lambda_p_yrs, na.rm = TRUE),
+    mx = weighted.mean(mx, w = pop, na.rm = TRUE),
+    .by = c(Year, sex, agegroup),
+    #.groups = "drop"
+  )|>
+  dplyr::arrange(Year, sex, agegroup)|> 
+  dplyr::ungroup()|> 
+  dplyr::mutate(sex= ifelse(sex=="female","female","male"))
+colnames(mx_1x1_banded)[1] <- "year"
+
+mx_10x1_banded <- mx_10x1_filt2|>
+  dplyr::mutate(
+    #year = Year,              # renombramos para que coincida con popmort
+    # agegroup = 
+      # case_when(         
+      # Age >= 18 & Age <= 29~ "18-29",
+      # Age >= 30 & Age <= 44~ "30-44",
+      # Age >= 45 & Age <= 59~ "45-59",
+      # Age >= 60 & Age <= 76~ "60+",
+      # T~ NA_character_
+      agegroup = case_when(
+      Age >= 18 & Age <= 29~ 18,
+      Age >= 30 & Age <= 44~ 30,
+      Age >= 45 & Age <= 59~ 45,
+      Age >= 60 & Age <= 78~ 60,
+      T~ NA_real_
+    )
+  )|> 
+  dplyr::filter(!is.na(agegroup))|>    # descarta edades fuera de 18-65
+  dplyr::select(-Year)|> 
+  dplyr::left_join(proy_ine_com_18_78_10_19, by= c("sex"="sex_rec", "Age"="age"))|>
+  dplyr::summarise(
+    haz = weighted.mean(lambda_p_yrs, w = pop, na.rm = TRUE),   # tasa media del grupo
+    haz_nw= mean(lambda_p_yrs, na.rm = TRUE),
+    mx = weighted.mean(mx, w = pop, na.rm = TRUE),
+    .by = c(sex, agegroup),
+    #.groups = "drop"
+  )|>
+  dplyr::arrange(sex, agegroup)|> 
+  dplyr::ungroup()|> 
+  dplyr::mutate(sex= ifelse(sex=="female","female","male"))
+
+
+
+proy_ine_reg_group_25_oct<-
+  proy_ine_com|> 
+  #2025 to resemble SER 2024, BUT NOW 18+ INSTEAD OF 15
+  #2025-06-11: I need to expand so people older that stayed in treatment could fit
+  dplyr::filter(Edad>=18, Edad<79)|> 
+  dplyr::filter(anio<2021)|> 
+  #format to match previous
+  dplyr::mutate(reg_res= sprintf("%02d", Region))|> 
+  dplyr::ungroup()|> 
+  dplyr::mutate(edad_anos_rec= dplyr::case_when(Edad>=18 & Edad<30~18,
+                                                Edad>=30 & Edad<45~30,
+                                                Edad>=45 & Edad<60~45,
+                                                Edad>=60 & Edad<79~60,
+                                                T~NA_real_))|>  
+  dplyr::group_by(anio, `Sexo (1=Hombre 2=Mujer)`,edad_anos_rec)|>
+  dplyr::summarise(poblacion= sum(poblacion, na.rm=T))|> 
+  dplyr::rename("sex"="Sexo (1=Hombre 2=Mujer)", "agegroup"="edad_anos_rec", "year"="anio")|> 
+  dplyr::mutate(sex= ifelse(sex==2, "Female", "Male")) |>
+  ungroup()
+
+proy_ine_reg_group_25_oct_reg_al2015<-
+  proy_ine_com|> 
+  #2025 to resemble SER 2024, BUT NOW 18+ INSTEAD OF 15
+  #2025-06-11: I need to expand so people older that stayed in treatment could fit
+  dplyr::filter(Edad>=18, Edad<79)|> 
+  dplyr::filter(anio==2015)|> 
+  #format to match previous
+  dplyr::mutate(reg_res= sprintf("%02d", Region))|> 
+  dplyr::ungroup()|> 
+  dplyr::mutate(edad_anos_rec= dplyr::case_when(Edad>=18 & Edad<30~18,
+                                                Edad>=30 & Edad<45~30,
+                                                Edad>=45 & Edad<60~45,
+                                                Edad>=60 & Edad<79~60,
+                                                T~NA_real_))|>  
+  dplyr::group_by(reg_res, anio, `Sexo (1=Hombre 2=Mujer)`,edad_anos_rec)|>
+  dplyr::summarise(poblacion= sum(poblacion, na.rm=T))|> 
+  dplyr::rename("sex"="Sexo (1=Hombre 2=Mujer)", "agegroup"="edad_anos_rec", "year"="anio")|> 
+  dplyr::mutate(sex= ifelse(sex==2, "Female", "Male")) |>
+  dplyr::ungroup()
+
+
+# 2) Reference: single-age, year, sex with mx (per-year)
+ref <- expand.grid(
+  age = 18:78, year = 2011:2020, sex = c("male","female")
+) |>
+  dplyr::left_join(mx_1x1, by = c("age" = "Age", "year"="Year", "sex"="sex")) |>
+  dplyr::transmute(age, year, sex, haz = mx)
+
+
+
+
+# Minimal converter from HMD 1x1 to popEpi pophaz format (national-level)
+# Expects columns: Year, Age, mx in the HMD files. Adjust column names if needed.
+read_hmd_mx <- function(path, sex_label) {
+    dt <- data.table::fread(path, skip = 2) # HMD files have headers; skip lines if needed
+    # Standard HMD columns often: Year, Age, mx, qx, ax, lx, dx, Lx, Tx, ex.
+    stopifnot(all(c("Year","Age","mx") %in% names(dt)))
+    dt <- dt[, .(year = as.integer(Year),
+                 age  = as.integer(gsub("\\+", "", Age)),
+                 haz  = as.numeric(mx))]
+    dt[, sex := sex_label]
+    # HMD uses 110+ terminal ages as "110+"; above gsub handles "+"
+    dt
+}
+
+if(grepl("ubuntu",system_r_platform())){
+  mx_male   <- read_hmd_mx(paste0(wdpath, "/_data/mltper_1x1.txt"),  "male")
+  mx_female <- read_hmd_mx(paste0(wdpath, "/_data/fltper_1x1.txt"),  "female")
+} else {
+  mx_male   <- read_hmd_mx(paste0(wdpath, "_outputs/SER2025/_data/mltper_1x1.txt"),  "male")
+  mx_female <- read_hmd_mx(paste0(wdpath, "_outputs/SER2025/_data/fltper_1x1.txt"),  "female")
+}
+
+
+CHL_pophaz <- rbind(mx_male, mx_female) %>%
+    as.data.frame()
+
+```
+
+
+### Pirámide poblacional
+
+```{r pyramid}
+#| class-output: center-table
+#| message: true
+#| include: true
+#| warning: true
+#| error: false
+#| results: "hold"
+
+#18-29, 30-44, 45-59, 60-64
+senda_c3_2011_2020<- 
+CONS_C3_mod_c_a2 |> 
+  dplyr::mutate(adm_age_rec_cat = dplyr::case_when(
+    age_admdate_num >= 18 & age_admdate_num < 30 ~ "18-29",
+    age_admdate_num >= 30 & age_admdate_num < 45 ~ "30-44",
+    age_admdate_num >= 45 & age_admdate_num < 60 ~ "45-59",
+    age_admdate_num >= 60 & age_admdate_num < 79 ~ "60-78",
+    TRUE ~ NA_character_  # Opcional: manejo de valores fuera de rango
+))|>
+  dplyr::group_by(sex, adm_age_rec_cat)|> 
+  dplyr::summarise(n=n())|> 
+  dplyr::ungroup() |> 
+  dplyr::filter(!is.na(adm_age_rec_cat))|>
+  dplyr::mutate(sex= ifelse(sex=="female", "mujer", "hombre"))
+
+mort_2015<-
+  mortality_first|> 
+  filter(ano_def==2015)|> 
+  mutate(adm_age_cat = dplyr::case_when(
+    edad_cant >= 18 & edad_cant < 30 ~ "18-29",
+    edad_cant >= 30 & edad_cant < 45 ~ "30-44",
+    edad_cant >= 45 & edad_cant < 60 ~ "45-59",
+    edad_cant >= 60 & edad_cant < 79 ~ "60-78",     #2025-06-13: MODIFIED TO AMPLIFY AGES
+    TRUE ~ NA_character_  # Opcional: manejo de valores fuera de rango
+  ))|>
+  group_by(sexo, adm_age_cat)|> 
+  summarise(n=n())|> 
+  ungroup()|> 
+  mutate(sex_rec=if_else(sexo==1,"hombre","mujer"))
+
+mort_2015_reg<-
+  mortality_first|> 
+  filter(ano_def==2015)|> 
+  mutate(adm_age_cat = dplyr::case_when(
+    edad_cant >= 18 & edad_cant < 30 ~ "18-29",
+    edad_cant >= 30 & edad_cant < 45 ~ "30-44",
+    edad_cant >= 45 & edad_cant < 60 ~ "45-59",
+    edad_cant >= 60 & edad_cant < 79 ~ "60-78",     #2025-06-13: MODIFIED TO AMPLIFY AGES
+    TRUE ~ NA_character_  # Opcional: manejo de valores fuera de rango
+  ))|>
+  group_by(sexo, adm_age_cat)|> 
+  summarise(n=n())|> 
+  ungroup()|> 
+  mutate(sex_rec=if_else(sexo==1,"hombre","mujer"))
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+# Create a basic bar chart for one gender
+basic_plot <-  ggplot(
+  senda_c3_2011_2020, 
+  aes(
+    x = adm_age_rec_cat, 
+    fill = sex, 
+    y = ifelse(
+      test = sex == "hombre", 
+      yes = -n, 
+      no = n
+    )
+  )
+) + 
+  geom_bar(stat = "identity") 
+
+population_pyramid <- basic_plot +
+  scale_y_continuous(
+    labels = abs,
+    limits = max(subset(senda_c3_2011_2020, !is.na(sex)& !is.na(adm_age_rec_cat))$n) * c(-1,1)
+  ) +
+  coord_flip() +
+   theme_minimal(base_size=14) +
+  # Change scale_color_manual to scale_fill_manual
+  scale_fill_manual(
+    name = "Sexo", # Change "Group" to "Sex" to match your labs()
+    values = c(
+      "mujer" = "#DEDEE4",
+      "hombre" = "#A17C6C"
+    ),
+    na.translate = FALSE # Prevents NA from showing in legend if applicable
+  ) +
+  labs(
+    x = "Edad",
+    y = "Población",
+    fill = "Sexo", # This matches the aesthetic and your new scale_fill_manual
+    title = "SENDA"
+  )
+
+url <- "https://www.ine.gob.cl/docs/default-source/proyecciones-de-poblacion/cuadros-estadisticos/base-2017/tablas-de-mortalidad-de-chile-1992-2050.xlsx"
+temp_file <- tempfile(fileext = ".xlsx")
+download.file(url, temp_file, mode = "wb")
+tablas_de_mortalidad_de_chile_1992_2050_agrupada <- 
+  readxl::read_excel(temp_file, 
+                     sheet = "BD Tablas de Mortalidad", skip = 1)|> 
+  janitor::clean_names()|> 
+  dplyr::filter(ano>=2011, ano<=2020)|> 
+  dplyr::mutate(edad= readr::parse_number(edad))|> 
+  dplyr::filter(edad>=18, edad<79, region=="País")|>  
+  dplyr::mutate(edad_anos_rec= dplyr::case_when(edad>=18 & edad<30~1,
+                                                edad>=30 & edad<45~2,
+                                                edad>=45 & edad<60~3,
+                                                edad>=60 & edad<79~4,T~NA_real_))|>  
+  dplyr::mutate(adm_age_cat= factor(edad_anos_rec, levels=1:4, labels= c("18-29","30-44","45-59","60-78")))|> 
+  mutate(sex_rec=if_else(sexo=="Hombre","hombre","mujer"))|> 
+  dplyr::group_by(sex_rec, adm_age_cat)|> 
+  dplyr::summarise(
+    total_d_x = sum(d_x, na.rm = TRUE),      # Suma de muertes en el grupo
+    total_l_x = sum(l_x, na.rm = TRUE),      # Suma de la población al inicio del grupo
+    mean_m_x = mean(m_x),
+    mortality_rate_grouped = total_d_x / total_l_x
+  )
+
+basic_plot2 <-  ggplot(
+  tablas_de_mortalidad_de_chile_1992_2050_agrupada, 
+  aes(
+    x = adm_age_cat, 
+    fill = sex_rec, 
+    y = ifelse(
+      test = sex_rec == "hombre", 
+      yes = -total_l_x, 
+      no = total_l_x
+    )
+  )
+) + 
+  geom_bar(stat = "identity") 
+
+population_pyramid2 <- basic_plot2 +
+  scale_y_continuous(
+    labels = abs,
+    limits = max(subset(tablas_de_mortalidad_de_chile_1992_2050_agrupada, !is.na(sex_rec))$total_l_x) * c(-1,1)
+  ) +
+  coord_flip() +
+  theme_minimal(base_size=14) +
+  # Change scale_color_manual to scale_fill_manual
+  scale_fill_manual(
+    name = "Sexo", # Change "Group" to "Sex" to match your labs()
+    values = c(
+      "mujer" = "#DEDEE4",
+      "hombre" = "#A17C6C"
+      # "female" = "#A6CEE3",
+      # "male" = "#1F78B4"
+    ),
+    na.translate = FALSE # Prevents NA from showing in legend if applicable
+  ) +
+  labs(
+    x = "Edad",
+    y = "Población",
+    fill = "Sexo", # This matches the aesthetic and your new scale_fill_manual
+    title = "Población Chilena"
+  )
+
+
+plot_grid(population_pyramid+ theme(legend.position="none"), population_pyramid2+ labs(x=NULL)+ theme(axis.text.y = element_blank())+ scale_y_continuous(
+  labels = function(x) {
+    scales::number_format(scale = 1e-6, suffix = "M")(abs(x))
+  }), ncol = 2)
+
+if(grepl("ubuntu",system_r_platform())){
+  ggsave(paste0(wdpath,"/cons/_figs/pyramid_congresosp.png"), dpi = 600, width = 9*.9, height=4)
+} else {
+  ggsave(paste0(wdpath,"/_figs/pyramid_congresosp.png"), dpi = 600, width = 9*.9, height=4)
+}
+```
+
+
+## Descriptivos
+
+
+### RME
+
+```{r rme1}
+#| class-output: center-table
+#| message: true
+#| include: true
+#| warning: true
+#| error: false
+#| results: "hold"
+
+sir_tot<- popEpi::sir( coh.data = c_SISTRAT_c3, coh.obs = 'from0to1', coh.pyrs = 'pyrs',
+                           ref.data = mx_10x1_banded, 
+                           ref.rate = 'mx', 
+                           #print="fot",
+                           adjust = c('agegroup','sex'), 
+                           EAR=T)#Excess Absolute Risks
+sir_tot
+# SIR (adjusted by agegroup, sex) with 95% confidence intervals (profile) 
+# 
+#  Total sir: 7.45 (6.38-8.65)
+#  Total observed: 172
+#  Total expected: 23.09
+#  Total person-years: 5187 
+# 
+#    observed expected   pyrs   sir sir.lo sir.hi p_value   EAR
+#       <num>    <num>  <num> <num>  <num>  <num>   <num> <num>
+
+
+sir_tot_fot<- popEpi::sir( coh.data = c_SISTRAT_c3_fot, coh.obs = 'from0to1', coh.pyrs = 'pyrs',
+                           ref.data = mx_10x1_banded, 
+                           ref.rate = 'mx', 
+                           print="fot",
+                           adjust = c('agegroup','sex'), 
+                           EAR=T)#Excess Absolute Risks
+sir_tot_fot
+
+
+sir_tot_yr<- popEpi::sir( coh.data = c_SISTRAT_c3_yr, coh.obs = 'from0to1', coh.pyrs = 'pyrs',
+                           ref.data = mx_1x1_banded, 
+                           ref.rate = 'haz', 
+                           #print="fot",
+                           adjust = c('year','agegroup','sex'), 
+                           EAR=T)#Excess Absolute Risks
+sir_tot_yr
+# SIR (adjusted by year, agegroup, sex) with 95% confidence intervals (profile) 
+# 
+#  Total sir: 8.01 (6.7-9.49)
+#  Total observed: 133
+#  Total expected: 16.61
+#  Total person-years: 4017 
+# 
+#    observed expected    pyrs   sir sir.lo sir.hi p_value    EAR
+#       <num>    <num>   <num> <num>  <num>  <num>   <num>  <num>
+# 1:      133    16.61 4016.98  8.01   6.72   9.45       0 28.975
+
+#Chat GPT
+# 3) SMR adjusting for age, sex, year
+sir_adj <- popEpi::sir(
+  coh.data = lex,
+  coh.obs  = "from0to1",
+  coh.pyrs = "pyrs",
+  ref.data = ref,
+  ref.rate = "haz",
+  adjust   = c("age","sex","year"),
+  EAR      = TRUE
+)
+sir_adj
+# SIR (adjusted by age, sex, year) with 95% confidence intervals (profile) 
+# 
+#  Total sir: 9.01 (7.54-10.69)
+#  Total observed: 132
+#  Total expected: 14.65
+#  Total person-years: 4013 
+# 
+#    observed expected    pyrs   sir sir.lo sir.hi p_value    EAR
+#       <num>    <num>   <num> <num>  <num>  <num>   <num>  <num>
+# 1:      132    14.65 4012.87  9.01   7.56  10.64       0 29.244
+
+sir_tot_sex<- popEpi::sir( coh.data = c_SISTRAT_c3, coh.obs = 'from0to1', coh.pyrs = 'pyrs',
+                           ref.data = mx_10x1_banded, 
+                           ref.rate = 'mx', 
+                           print="sex",
+                           adjust = c('agegroup','sex'), 
+                           EAR=T)#Excess Absolute Risks
+sir_tot_sex
+# SIR (adjusted by agegroup, sex) with 95% confidence intervals (profile) 
+# Test for homogeneity: p = 0.018 
+# 
+#  Total sir: 7.45 (6.38-8.65)
+#  Total observed: 172
+#  Total expected: 23.09
+#  Total person-years: 5187 
+# 
+# Clave <sex>
+#       sex observed expected    pyrs   sir sir.lo sir.hi p_value    EAR
+#    <char>    <num>    <num>   <num> <num>  <num>  <num>   <num>  <num>
+# 1: female       16     1.14  647.15 14.00   8.21  22.03       0 22.958
+# 2:   male      156    21.95 4539.55  7.11   6.05   8.28       0 29.530
+
+sir_tot_age<- popEpi::sir( coh.data = c_SISTRAT_c3, coh.obs = 'from0to1', coh.pyrs = 'pyrs',
+                           ref.data = mx_10x1_banded, 
+                           ref.rate = 'mx', 
+                           print="agegroup",
+                           adjust = c('agegroup','sex'), 
+                           EAR=T)#Excess Absolute Risks
+sir_tot_age
+# SIR (adjusted by agegroup, sex) with 95% confidence intervals (profile) 
+# Test for homogeneity: p < 0.001 
+# 
+#  Total sir: 7.45 (6.38-8.65)
+#  Total observed: 172
+#  Total expected: 23.09
+#  Total person-years: 5187 
+# 
+# Clave <agegroup>
+#    agegroup observed expected    pyrs   sir sir.lo sir.hi p_value    EAR
+#       <num>    <num>    <num>   <num> <num>  <num>  <num>   <num>  <num>
+# 1:       18        6     0.56  621.42 10.78   4.28  21.84       0  8.759
+# 2:       30       38     3.51 2160.84 10.81   7.73  14.63       0 15.960
+# 3:       45       83     9.59 1953.04  8.65   6.92  10.65       0 37.587
+# 4:       60       45     9.43  451.40  4.77   3.51   6.31       0 78.809
+
+sir_tot_yr_sex<- popEpi::sir( coh.data = c_SISTRAT_c3_yr, coh.obs = 'from0to1', coh.pyrs = 'pyrs',
+                           ref.data = mx_1x1_banded, 
+                           ref.rate = 'haz', 
+                           print="sex",
+                           adjust = c('year','agegroup','sex'), 
+                           EAR=T)#Excess Absolute Risks
+sir_tot_yr_sex
+# SIR (adjusted by year, agegroup, sex) with 95% confidence intervals (profile) 
+# Test for homogeneity: p = 0.047 
+# 
+#  Total sir: 8.01 (6.7-9.49)
+#  Total observed: 133
+#  Total expected: 16.61
+#  Total person-years: 4017 
+# 
+# Clave <sex>
+#       sex observed expected    pyrs   sir sir.lo sir.hi p_value    EAR
+#    <char>    <num>    <num>   <num> <num>  <num>  <num>   <num>  <num>
+# 1: female       12     0.81  497.64 14.76   7.91  24.76       0 22.480
+# 2:   male      121    15.80 3519.33  7.66   6.37   9.11       0 29.893
+
+sir_tot_yr_age<- popEpi::sir( coh.data = c_SISTRAT_c3_yr, coh.obs = 'from0to1', coh.pyrs = 'pyrs',
+                           ref.data = mx_1x1_banded, 
+                           ref.rate = 'haz', 
+                           print="agegroup",
+                           adjust = c('year','agegroup','sex'), 
+                           EAR=T)#Excess Absolute Risks
+sir_tot_yr_age
+# SIR (adjusted by year, agegroup, sex) with 95% confidence intervals (profile) 
+# Test for homogeneity: p < 0.001 
+# 
+#  Total sir: 8.01 (6.7-9.49)
+#  Total observed: 133
+#  Total expected: 16.61
+#  Total person-years: 4017 
+# 
+# Clave <agegroup>
+#    agegroup observed expected    pyrs   sir sir.lo sir.hi p_value    EAR
+#       <num>    <num>    <num>   <num> <num>  <num>  <num>   <num>  <num>
+# 1:       18        5     0.45  512.36 11.17   4.00  24.00       0  8.885
+# 2:       30       36     2.66 1684.86 13.55   9.60  18.48       0 19.790
+# 3:       45       63     6.98 1486.32  9.03   6.98  11.44       0 37.690
+# 4:       60       29     6.53  333.44  4.44   3.02   6.26       0 67.399
+
+sir_adj_sex <- popEpi::sir(
+  coh.data = lex,
+  coh.obs  = "from0to1",
+  coh.pyrs = "pyrs",
+  ref.data = ref,
+  ref.rate = "haz",
+  print= "sex",
+  adjust   = c("age","sex","year"),
+  EAR      = TRUE
+)
+sir_adj_sex
+```
+
+#### Por causas
+
+```{r rme-causas}
+#| class-output: center-table
+#| message: true
+#| include: true
+#| warning: true
+#| error: false
+#| results: "hold"
+
+# ---------- 0) Helpers ----------
+# Robust external-cause detector for DIAG2:
+# Accepts V/W/X/Y + two digits, optionally with dot (e.g., X59, X59.9), and up to Y98
+is_external_diag2 <- function(code) {
+  # Normalize to uppercase text
+  code <- as.character(code)
+  code <- stringr::str_to_upper(code)
+  code <- stringr::str_trim(code)
+  # Drop any leading non-letter junk (quotes, punctuation)
+  code <- stringr::str_replace(code, "^[^A-Z]+", "")
+  # Grab the ICD-10 "category" stem: Letter + 2 digits at the very start
+  stem <- stringr::str_match(code, "^([A-Z][0-9]{2})")[, 2]
+  # Derive letter and two-digit number
+  letter <- substr(stem, 1, 1)
+  digits <- suppressWarnings(as.integer(substr(stem, 2, 3)))
+  # External if V/W/X OR Y00–Y98 (exclude Y99)
+  is_ext <- !is.na(letter) & (
+    letter %in% c("V", "W", "X") |
+    (letter == "Y" & !is.na(digits) & digits <= 98)
+  )
+  is_ext[is.na(is_ext)] <- FALSE
+  is_ext
+}
+
+`%||%` <- function(a, b) if (is.null(a) || length(a)==0 || (length(a)==1 && is.na(a))) b else a
+
+# ---------- 1) National external shares from mortality_first ----------
+# Assumes mortality_first has: ano_def (year), sexo (1=Male,2=Female), edad_cant (age, integer), diag2
+pop_shares <- mortality_first|>
+  dplyr::mutate(
+    sex_rec = dplyr::case_when(
+      sexo == 1 ~ "male",
+      sexo == 2 ~ "female",
+      TRUE ~ NA_character_
+    ),
+    external = dplyr::if_else(is_external_diag2(diag2), 1L, 0L, missing = 0L)
+  )|>
+  dplyr::filter(!is.na(sex_rec), !is.na(edad_cant), ano_def >= 2011)|>
+  dplyr::group_by(sex = sex_rec, age = edad_cant)|>#year = ano_def, 
+  dplyr::summarise(
+    D_ext = sum(external),
+    D_all = dplyr::n(),
+    .groups = "drop"
+  )|>
+  dplyr::mutate(
+    share_ext    = dplyr::if_else(D_all > 0, D_ext / D_all, 0),
+    share_nonext = 1 - share_ext
+  )
+
+# ---------- 3) Build reference hazards for EXTERNAL and NON-EXTERNAL ----------
+ref_rates_bin <- mx_10x1_filt2|> 
+    dplyr::left_join(proy_ine_com_18_78_10_19, by= c("sex"="sex_rec", "Age"="age"))|>
+  dplyr::left_join(pop_shares, by = c("sex","Age"="age"))|>#"year",
+  dplyr::mutate(
+    # Age groups: [18,30), [30,45), [45,60), [60, Inf)
+    agegroup = cut(Age, breaks = c(18, 30, 45, 60, Inf), right = FALSE),
+    # Handle any missing shares just in case
+    share_ext = tidyr::replace_na(share_ext, 0),
+    # Single-age external / non-external hazards
+    haz_ext_age    = mx * share_ext,
+    haz_nonext_age = mx * (1 - share_ext)
+  )|>
+  dplyr::group_by(sex, agegroup)|>
+  dplyr::summarise(
+    pop_sum = sum(pop, na.rm = TRUE),
+    # Population-weighted hazards (this is what you need)
+    haz_ext_weighted    = stats::weighted.mean(haz_ext_age,    w = pop, na.rm = TRUE),
+    haz_nonext_weighted = stats::weighted.mean(haz_nonext_age, w = pop, na.rm = TRUE),
+    # Unweighted means (optional, for reference)
+    haz_ext_unweighted    = mean(haz_ext_age,    na.rm = TRUE),
+    haz_nonext_unweighted = mean(haz_nonext_age, na.rm = TRUE),
+    .groups = "drop")|>
+  dplyr::mutate(
+    # Order output like the example
+    sex = factor(sex, levels = c("male", "female")))|>
+  dplyr::arrange(sex, agegroup)|>
+  # Round to 8 decimals to match the display you saw
+  dplyr::mutate(dplyr::across(dplyr::starts_with("haz_"), ~ round(.x, 8)))
+
+# Two ref tables in long form (one row per stratum per cause-bin)
+ref_ext <- dplyr::select(ref_rates_bin, sex, agegroup, haz = haz_ext_weighted)#year, 
+ref_nonext <- dplyr::select(ref_rates_bin, sex, agegroup, haz = haz_nonext_weighted)#year, 
+
+pop_w_icd10_cause_hazards <- tribble(
+  ~sex,    ~age_group, ~haz_ext,     ~haz_nonext,
+  "male",   "[18,30)",  0.00064637,   0.00033186,
+  "male",   "[30,45)",  0.00077019,   0.00099592,
+  "male",   "[45,60)",  0.00086709,   0.00430851,
+  "male",   "[60,Inf)", 0.00114167,   0.02007774,
+  "female", "[18,30)",  0.00012966,   0.00021807,
+  "female", "[30,45)",  0.00013432,   0.00063576,
+  "female", "[45,60)",  0.00015961,   0.00261771,
+  "female", "[60,Inf)", 0.00029236,   0.01275161
+)
+
+# ---------- 4) Cohort Lexis (EXTERNAL / NON-EXTERNAL) ----------
+# Assumes:
+# - clean_df has: hash_key, birth_date_rec, disch_date_rec6, death_date_rec, sexo (1/2)
+# - mortality_deduplicated has: hashkey (joining key), diag2 (ICD-10), etc.
+# We join death causes to the cohort and define external vs non-external deaths.
+
+cohort_base <- CONS_C3_mod_c_a2|>
+  dplyr::mutate(
+    sex = dplyr::case_when(
+      sexo == "hombre" ~ "male",
+      sexo == "mujer" ~ "female",
+      TRUE ~ NA_character_))|>
+  dplyr::left_join(
+    mortality_first|>
+      dplyr::transmute(
+        hashkey,
+        diag2,
+        external = dplyr::if_else(is_external_diag2(diag2), 1L, 0L, missing = 0L)
+      ),
+    by = c("HASH_KEY" = "hashkey")
+  )|>
+  dplyr::mutate(
+    died = !is.na(def_date)                      # 1 si murió, 0 si no
+  )
+
+# External deaths as events
+cohort_ext_ag <- popEpi::lexpand(
+  data   = cohort_base,
+  birth  = birth_date,
+  entry  = fecha_ingreso_a_tratamiento,
+  exit   = def_date_na,
+  status = died & external == 1L,  # event if external death
+  breaks = list(
+    #per = seq(2011, 2021, by = 1),
+    age = c(18, 30, 45, 60, Inf)
+  ),
+  aggre  = list(agegroup = age, sex = sex)#year = per, 
+)|>
+  dplyr::mutate(
+    sex      = factor(sex, levels = c("male","female")),
+    agegroup = cut(agegroup, breaks = c(18, 30, 45, 60, Inf), right = FALSE)
+  )|>
+  dplyr::group_by(agegroup, sex)|> #year, 
+  dplyr::summarise(
+    pyrs     = sum(pyrs),
+    from0to1 = sum(from0to1),
+    .groups  = "drop"
+  )
+
+# Non-external deaths as events (death occurred AND not external)
+cohort_nonext_ag <- popEpi::lexpand(
+  data   = cohort_base,
+  birth  = birth_date,
+  entry  = fecha_ingreso_a_tratamiento,
+  exit   = def_date_na,
+  status = died & external == 0L,  # event if external death
+  breaks = list(
+    #per = seq(2011, 2021, by = 1),
+    age = c(18, 30, 45, 60, Inf)
+  ),
+  aggre  = list(agegroup = age, sex = sex) #year = per, 
+)|>
+  dplyr::mutate(
+    sex      = factor(sex, levels = c("male","female")),
+    agegroup = cut(agegroup, breaks = c(18, 30, 45, 60, Inf), right = FALSE)
+  )|>
+  dplyr::group_by(agegroup, sex)|>#year, 
+  dplyr::summarise(
+    pyrs     = sum(pyrs),
+    from0to1 = sum(from0to1),
+    .groups  = "drop"
+  )
+
+# ---------- 5) SIR (RME) for external and non-external ----------
+sir_external <- popEpi::sir(
+  coh.data = cohort_ext_ag,
+  coh.obs  = "from0to1",
+  coh.pyrs = "pyrs",
+  ref.data = ref_ext,
+  ref.rate = "haz",
+  adjust   = c("agegroup","sex"),
+  EAR      = TRUE
+)
+
+sir_nonexternal <- popEpi::sir(
+  coh.data = cohort_nonext_ag,
+  coh.obs  = "from0to1",
+  coh.pyrs = "pyrs",
+  ref.data = ref_nonext,
+  ref.rate = "haz",
+  adjust   = c("agegroup","sex"),
+  EAR      = TRUE
+)
+
+# Inspect results
+sir_external
+# SIR (adjusted by agegroup, sex) with 95% confidence intervals (profile) 
+# 
+#  Total sir: 7.11 (5.97-8.41)
+#  Total observed: 137
+#  Total expected: 19.26
+#  Total person-years: 5187 
+# 
+#    observed expected   pyrs   sir sir.lo sir.hi p_value    EAR
+#       <num>    <num>  <num> <num>  <num>  <num>   <num>  <num>
+# 1:      137    19.26 5186.7  7.11   5.99   8.37       0 22.699
+sir_nonexternal
+# SIR (adjusted by agegroup, sex) with 95% confidence intervals (profile) 
+# 
+#  Total sir: 7.45 (6.38-8.65)
+#  Total observed: 172
+#  Total expected: 23.09
+#  Total person-years: 5187 
+# 
+#    observed expected   pyrs   sir sir.lo sir.hi p_value   EAR
+#       <num>    <num>  <num> <num>  <num>  <num>   <num> <num>
+# 1:      172    23.09 5186.7  7.45   6.39   8.62       0 28.71
+```
+
+#### Resumen
+
+
+```{r resumen-tabla-rme}
+#| class-output: center-table
+#| message: true
+#| include: true
+#| warning: true
+#| error: false
+#| results: "hold"
+
+cbind.data.frame(res= c("Total ajustado por grupos de edad y sexo", "Total ajustado por grupos de edad, sexo y año calendario", "Total ajustado por edad, sexo y año calendario", "Total ajustado por grupos de edad y sexo, por causas", "", "Desagregado por edad, ajustando por sexo", rep("",3), "Desagregado por edad, ajustando por sexo y año calendario", rep("",3), "Desagregado por sexo, ajustando por grupo de edad", "", "Desagregado por sexo, ajustando por grupo de edad y año calendario", "", "Desagregado por sexo, ajustando por edad y año calendario", ""),
+rbind.data.frame(
+smr_print(sir_tot),
+smr_print(sir_tot_yr),
+smr_print(sir_adj),
+smr_print(sir_external, "externas"),
+smr_print(sir_nonexternal, "no-externas"),
+#"Desagregado por edad, ajustado por sexo"
+smr_print(sir_tot_age, c("18-29", "30-44", "45-59", "60-78")),
+smr_print(sir_tot_yr_age, c("18-29", "30-44", "45-59", "60-78")),
+smr_print(sir_tot_sex, c("Mujeres", "Hombres")),
+smr_print(sir_tot_yr_sex, c("Mujeres", "Hombres")),
+smr_print(sir_adj_sex, c("Mujeres", "Hombres"))
+))|> 
+   (\(df) {
+    df ->> smr_resumen
+    df
+  })()|>
+  dplyr::select(-EAR)|> 
+  knitr::kable(caption= "Exceso de mortalidad, por edad y sexo", col.names= c("Criterio","Categoría", "Observado", "Esperado", "Años-persona", "SMR"))
+#Excess Absolute Risks
+# \frac{observed - expected}{person years} \times 1000
+```
+
+
+```{r forestplot}
+#| class-output: center-table
+#| message: true
+#| include: true
+#| warning: true
+#| error: false
+#| results: "hold"
+# Parse SMR to get rme, lo, hi
+smr_resumen <- smr_resumen %>%
+  mutate(
+    rme = as.numeric(sub("\\s*\\(.*", "", SMR)),
+    lo = as.numeric(sub(".*\\((.*)–.*\\)", "\\1", SMR)),
+    hi = as.numeric(sub(".*–(.*)\\)", "\\1", SMR))
+  )
+
+# Assign sections
+sections_order <- c(
+  "Totales",
+  "Por causas (aj. por sexo y edad)",
+  "Edad (aj. por sexo)",
+  "Edad (aj. por sexo y año cal.)",
+  "Sexo (aj. por grupo de edad)",
+  "Sexo (aj. por grupo de edad y año cal.)",
+  "Sexo (aj. por edad y año cal.)"
+)
+
+# Invert order so Totales are at top
+sections_order <- rev(sections_order)
+
+# Manually assign sections (adjust based on data)
+smr_resumen$section <- c(
+  "Totales", "Totales", "Totales",
+  "Por causas (aj. por sexo y edad)", "Por causas (aj. por sexo y edad)",
+  "Edad (aj. por sexo)", "Edad (aj. por sexo)", "Edad (aj. por sexo)", "Edad (aj. por sexo)",
+  "Edad (aj. por sexo y año cal.)", "Edad (aj. por sexo y año cal.)", "Edad (aj. por sexo y año cal.)", "Edad (aj. por sexo y año cal.)",
+  "Sexo (aj. por grupo de edad)", "Sexo (aj. por grupo de edad)",
+  "Sexo (aj. por grupo de edad y año cal.)", "Sexo (aj. por grupo de edad y año cal.)",
+  "Sexo (aj. por edad y año cal.)", "Sexo (aj. por edad y año cal.)"
+)
+
+# Create label
+smr_resumen <- smr_resumen %>%
+  mutate(label = ifelse(!is.na(total), total, res))
+
+# Create display
+display_list <- list()
+y <- 0
+for (sec in sections_order) {
+  header <- tibble(section = sec, label = NA_character_, obs = NA_real_, py = NA_real_, exp = NA_real_,
+                   rme = NA_real_, lo = NA_real_, hi = NA_real_, is_header = TRUE, y = y)
+  display_list <- append(display_list, list(header))
+  y <- y + 1
+
+  items <- smr_resumen %>% filter(section == sec)
+  if (nrow(items) > 0) {
+    items <- items %>% mutate(is_header = FALSE, y = seq(y, by = 1, length.out = n()))
+    display_list <- append(display_list, list(items))
+    y <- y + nrow(items)
+  }
+  y <- y + 0.2
+}
+display <- bind_rows(display_list)
+df_plot  <- display %>% dplyr::filter(!is_header)
+headers  <- display %>% dplyr::filter(is_header) %>% dplyr::arrange(y)
+
+# Colors
+section_cols <- c(
+  "Totales" = "#0F4C5C70",
+  "Por causas" = "#0F4C5C80",
+  "Edad (aj. por sexo)" = "#5FA9B380",
+  "Edad (aj. por sexo y año cal.)" = "#A17C6C80",
+  "Sexo (aj. por grupo de edad)" = "#D2A899",
+  "Sexo (aj. por grupo de edad y año cal.)" = "#906F0080",
+  "Sexo (aj. por edad y año cal.)" = "#52770080"
+)
+
+# Calculate limits, start from 0.5
+min_lo <- min(df_plot$lo, na.rm = TRUE)
+max_hi <- max(df_plot$hi, na.rm = TRUE)
+xmin <- 0.5  # Force start at 0.5
+xmax <- exp(log(max_hi) + 0.0 * (log(max_hi) - log(min_lo)))
+
+# Rects
+rects <- headers %>%
+  transmute(
+    section,
+    ymin = y + 0.4,
+    ymax = lead(y) - 0.4
+  )
+rects$ymax[is.na(rects$ymax)] <- max(display$y, na.rm = TRUE) + 0.6
+rects <- rects %>%
+  mutate(xmin = xmin * 1.005,
+         xmax = xmax / 1.005)
+
+# Labels position (moved left)
+x_left_lab <- xmin * 0.5  # Moved further left
+
+cap_h <- 0.25
+
+p <- ggplot() +
+  geom_rect(data = rects,
+            aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
+            inherit.aes = FALSE, fill = "#f7f7f7", color = NA, alpha = 0.6) +
+  geom_vline(xintercept = 1, linetype = "dashed", color = "#444444", linewidth = 0.5) +
+
+  geom_segment(data = df_plot,
+               aes(x = lo, xend = hi, y = y, yend = y, color = section),
+               linewidth = 0.9) +
+  geom_segment(data = df_plot,
+               aes(x = lo, xend = lo, y = y - cap_h, yend = y + cap_h, color = section),
+               linewidth = 0.9) +
+  geom_segment(data = df_plot,
+               aes(x = hi, xend = hi, y = y - cap_h, yend = y + cap_h, color = section),
+               linewidth = 0.9) +
+
+  geom_point(data = df_plot,
+             aes(x = rme, y = y, fill = section, color = section),
+             shape = 22, size=3,stroke = 0.6) +
+
+  # Label over point with RME to 1 decimal, larger size
+  geom_text(data = df_plot,
+            aes(x = rme, y = y + 0.3, label = sprintf("%.1f", rme)),
+            size = 4, color = "black", hjust = 0.5, vjust = 0) +
+
+  geom_text(data = df_plot,
+            aes(x = x_left_lab-.25, y = y, label = paste0("  ", label)),
+            hjust = 0, vjust = 0.5, size = 3.6, color = "#222222", inherit.aes = FALSE) +
+
+  geom_text(data = left_join(headers, rects[, c("section", "ymax")], by = "section") %>% mutate(y = ymax + .4),
+            aes(x = x_left_lab-.25, y = y, label = section),
+            hjust = 0, vjust = 0.5, fontface = "bold", size = 4.0, inherit.aes = FALSE) +
+
+  scale_color_manual(values = section_cols, name = "Sección") +
+  scale_fill_manual(values = section_cols, guide = "none") +
+  #scale_size(range = c(2.6, 6.2), guide = "none") +
+
+  scale_x_continuous(
+    trans = scales::log_trans(base = exp(1)),
+    breaks = c(0.5, 1, 2, 5, 10, 20, 50),
+    labels = function(x) format(x, big.mark = ".", decimal.mark = ",", trim = TRUE),
+    expand = ggplot2::expansion(mult = c(0.3, 0.0))  # No expansion
+  ) +
+  coord_cartesian(xlim = c(0.5, xmax)) +  # Force xlim from 0.5
+  labs(
+    title = NULL,
+    subtitle = NULL,
+    x = "RME (IC 95%), escala logarítmica",
+    y = NULL
+  ) +
+  theme_minimal(base_size = 15) +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    plot.title.position = "plot",
+    legend.position = "none"
+  )
+
+print(p)
+# Exportar si quieres:
+ggsave("forestplot_RME_log.png", p, dpi = 600)
+ggsave("forestplot_RME_log.svg", p, dpi = 600)
+```
+
+
+### Mapa
+
+```{r map}
+#| class-output: center-table
+#| message: true
+#| include: true
+#| warning: true
+#| error: false
+#| results: "hold"
+# install.packages(c("dplyr","sf","geodata","ggplot2","stringi","tidyr")) # if needed
+
+normalize_region <- function(x) {
+  x |>
+    stringr::str_to_lower() |>
+    stringr::str_replace_all("á", "a") |>
+    stringr::str_replace_all("é", "e") |>
+    stringr::str_replace_all("í", "i") |>
+    stringr::str_replace_all("ó", "o") |>
+    stringr::str_replace_all("ú", "u") |>
+    stringr::str_replace_all("’|'", "") |>
+    stringr::str_replace_all("libertador general bernardo o.?hi.*", "libertador general bernardo ohiggins") |>
+    stringr::str_replace_all("santiago metropolitan.*", "metropolitana de santiago") |>
+    stringr::str_replace_all("araucania", "la araucania") |>
+    stringr::str_replace_all("magallanes y antartica chilena", "magallanes y de la antartica chilena") |>
+    stringr::str_replace_all("bio-?bio", "biobio") |>
+    stringr::str_trim()
+}
+# 1) Region-level counts from your data
+#    Choose which event definition to use:
+#    - def_date-based (non-missing death date)
+#    - status-based (status == 1)
+reg_counts <- CONS_C3_mod_c_a |> 
+  mutate(
+    region_clean = to_ascii_lower(region_del_centro),
+    # remove leading "de"/"del"
+    region_clean = gsub("^del\\s+", "", region_clean),
+    region_clean = gsub("^de\\s+", "", region_clean),
+    # specific recodes to align with shapefile names
+    region_clean = dplyr::recode(
+      region_clean,
+      "bio-bio" = "biobio",
+      "metropolitana" = "metropolitana de santiago",
+      "magallanes y la antartica chilena" = "magallanes y de la antartica chilena",
+      .default = region_clean
+    ),
+    death_defdate = !is.na(def_date),
+    death_status  = (!is.na(status) & status == 1)
+  ) %>%
+  group_by(region_clean) %>%
+  summarise(
+    n               = n(),
+    deaths_defdate  = sum(death_defdate, na.rm = TRUE),
+    py   = sum(timesurv_adm,  na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  mutate(
+    region_clean = stringr::str_to_lower(region_clean) |>
+      stringr::str_replace_all("la ", "") |>
+      stringr::str_replace_all("de la ", "") |>
+      stringr::str_replace_all(" del ", " ") |>
+      stringr::str_replace_all("libertador general bernardo o.?hi.*", "libertador general bernardo ohiggins")|>
+      stringr::str_replace_all("antartica", "antartica chilena") |>
+      stringr::str_replace_all("bio ?bio", "bio-bio") |>
+      stringr::str_trim()
+  )
+
+# 2) Get region shapefile (GADM level 1) and normalize names
+reg_terra <- geodata::gadm(country = "CHL", level = 1, path = tempdir())
+reg_sf <- sf::st_as_sf(reg_terra) %>%
+  mutate(
+    region_clean = to_ascii_lower(NAME_1),
+    # strip "region", "region de", "region del" prefixes if present
+    region_clean = gsub("^region\\s+de\\s+", "", region_clean),
+    region_clean = gsub("^region\\s+del\\s+", "", region_clean),
+    region_clean = gsub("^region\\s+", "", region_clean)
+  )
+
+reg_counts$region_clean<- 
+gsub("la araucania", "araucania", reg_counts$region_clean)
+reg_counts$region_clean<- 
+gsub("magallanes y de antartica chilena chilena","magallanes y de la antartica chilena", reg_counts$region_clean)
+reg_counts$region_clean<- 
+gsub("bio-bio","biobio", reg_counts$region_clean)
+reg_counts$region_clean<- 
+gsub("araucania","la araucania", reg_counts$region_clean)
+
+# 3) Join your counts to the regions, compute rates
+reg_sf <- mutate(reg_sf,region_clean = normalize_region(region_clean)) %>%
+  dplyr::left_join(reg_counts, by = "region_clean") %>%
+  dplyr::mutate(
+    n              = tidyr::replace_na(n, 0L),
+    deaths_defdate = tidyr::replace_na(deaths_defdate, 0L),
+    rate_defdate   = if_else(n > 0, deaths_defdate / n, NA_real_),
+    rate_status    = if_else(py > 0, deaths_defdate  / py, NA_real_)
+  )#
+
+# Optional: check for unmatched region names from your data
+unmatched <- reg_counts %>%
+  dplyr::anti_join(reg_sf %>% sf::st_drop_geometry() %>% dplyr::select(region_clean), by = "region_clean")
+print(unmatched)
+
+dark_teal <- "#0F4C5C"  # dark teal (editable)
+blanco    <- "#FFFFFF"
+a17c6c    <- "#A17C6C"  # warm brown-rose
+g052709   <- "#052709"  # verde bosque muy oscuro
+c5fa9b3   <- "#5FA9B3"  # teal claro
+d2a899    <- "#D2A899"  # durazno/arena
+o906f00   <- "#906F00"  # ocre/mostaza
+d_edee4   <- "#DEDEE4"  # gris lavanda claro
+sequential_cool = grDevices::colorRampPalette(
+    c(g052709, dark_teal, c5fa9b3, d_edee4, blanco)
+)
+andal_teal_warm <- c(
+  dark_teal = "#052709",
+  teal_accent = "#5FA9B3",
+  warm_mid = "#A17C6C",
+  warm_light = "#D2A899",
+  earth_gold = "#906F00",
+  olive = "#527700",
+  neutral = "#DEDEE4",
+  white = "#FFFFFF"
+)
+cont_palette <- c(
+  "#052709", # dark teal
+  "#5FA9B3", # teal accent
+  "#A17C6C", # warm mid
+  "#D2A899", # warm light
+  "#906F00", # earth gold
+  "#527700"  # olive
+)
+
+# 4) Plot: deaths by region (based on def_date)
+
+# make sure your sf is in long/lat (WGS84)
+reg_sf <- st_transform(reg_sf, crs = 4326)
+
+# continental Chile bbox (adjust if needed)
+xlim_cont <- c(-76, -66.4)   # longitudes: west = negative
+ylim_cont <- c(-56, -17)     # latitudes: south = negative
+
+p_tratados <- ggplot(reg_sf) +
+  geom_sf(aes(fill = n), color = "gray40",  size = 0.1) +
+  coord_sf(xlim = xlim_cont, ylim = ylim_cont, expand = FALSE) +
+  #scale_fill_viridis_c(option = "plasma", direction = -1, na.value = "grey90",  name = "Fallecimientos") +
+  scale_fill_gradientn(colors = rev(c(g052709, dark_teal, c5fa9b3, d_edee4, blanco)), na.value = "#DEDEE4", name = "Tratados") +
+  theme_void() +
+  labs(
+    #title = "Fallecimientos en la cohorte por región",
+    #subtitle = "Based on non-missing def_date",
+  ) +
+  theme_void(base_size = 15) +
+  xlim(c(80,66.4))+
+  theme(legend.position = "left")
+
+p_deaths <- ggplot(reg_sf) +
+  geom_sf(aes(fill = deaths_defdate), color = "gray40",  size = 0.1) +
+  coord_sf(xlim = xlim_cont, ylim = ylim_cont, expand = FALSE) +
+  #scale_fill_viridis_c(option = "plasma", direction = -1, na.value = "grey90",  name = "Fallecimientos") +
+  scale_fill_gradientn(colors = rev(c(g052709, dark_teal, c5fa9b3, d_edee4, blanco)), na.value = "#DEDEE4", name = "Fallecimientos") +
+  theme_void() +
+  # labs(
+  #   #title = "Fallecimientos en la cohorte por región",
+  #   #subtitle = "Based on non-missing def_date",
+  #   caption = "Recuentos reflejan la cohorte,\nno la mortalidad poblacional"
+  # ) +
+  theme_void(base_size = 15) +
+  xlim(c(80,66.4))+
+  theme(legend.position = "left")
+
+# Print plots
+cowplot::plot_grid(
+  p_tratados +
+  coord_sf(expand = FALSE) +
+  theme(
+    plot.margin = margin(0, 0, 0, 0),
+    legend.spacing = unit(0.1, "lines"),
+    legend.key.size = unit(0.6, "lines")
+  ), p_deaths +
+  coord_sf(expand = FALSE) +
+  theme(
+    plot.margin = margin(0, 0, 0, 0),
+    legend.spacing = unit(0.1, "lines"),
+    legend.key.size = unit(0.6, "lines")
+  ),
+  nrow = 1,                # o nrow = 1 según tu disposición
+  align = "v",             # o "h" para horizontal
+  rel_heights = c(1, 1),# ajusta proporciones si necesario
+  axis = "tblr",           # alinea ejes si aplica
+  labels = NULL,           # evita espacio extra por etiquetas
+  label_size = 0,          # si usas labels, reduce tamaño
+  label_x = 0, label_y = 1,# controla posición de etiquetas
+  vjust = 1, hjust = 0,    # controla alineación vertical/horizontal
+  scale = 0.99             # reduce tamaño relativo de cada plot
+)
+
+
+if(grepl("ubuntu",system_r_platform())){
+  ggsave(paste0(wdpath,"/_figs/map.png"), dpi = 600, scale=1)
+} else{
+  ggsave(paste0("_figs/map.png"), dpi = 600, scale=1)
+}
+
+# If you prefer status==1 instead of def_date, replace 'deaths_defdate' and 'rate_defdate'
+# with 'deaths_status' and 'rate_status' in the fill aesthetics/titles.
+
+reg_counts |> mutate(rate=deaths_defdate/py) |> arrange(desc(rate)) |> mutate(rate_p_mil= rate*1000, prop=(deaths_defdate/n)*100) |>  knitr::kable("markdown", digits=1)
+```
+
+
+### Resumen
+
+```{r desc}
+#| echo: false
+#| error: false
+#| warning: false
+#| message: false
+#| results: "hide"
+#| eval: true
+
+summarize_numerical <- function(data, var) {
+  data %>%
+    dplyr::group_by(status) %>%
+    dplyr::summarize(
+      Total = n(),
+      Mean = mean(.data[[var]], na.rm = TRUE),
+      SD = sd(.data[[var]], na.rm = TRUE),
+      Median = median(.data[[var]], na.rm = TRUE),
+      IQR = IQR(.data[[var]], na.rm = TRUE),
+      Min = min(.data[[var]], na.rm = TRUE),
+      Max = max(.data[[var]], na.rm = TRUE)
+    )
+}
+summarize_categorical <- function(data, var) {
+  data %>%
+    dplyr::group_by(status, .data[[var]]) %>%
+    dplyr::summarize(Count = n(), .groups = 'drop') %>%
+    tidyr::pivot_wider(names_from = status, values_from = Count, values_fill = list(Count = 0)) %>%
+    dplyr::mutate(Total = rowSums(across(where(is.numeric))))
+}
+
+# List of categorical variables
+categorical_vars <- c("region_del_centro", "sexo", 
+                      "nacionalidad", "etnia", "estado_conyugal", 
+                      "condicion_ocupacional", "categoria_ocupacional", 
+                      "lugardondeduerme", "tiposdelugar", "otras_sustancias_no1", 
+                      "frecuencia_de_consumo_sustancia_principal", "diagnostico_trs_consumo_sustancia",
+                       "edad_inicio_consumo_joined_cat",
+                      "diagnostico_trs_psiquiatrico_ci", "diagnostico_trs_fisico",
+                      "diagnostico_trs_fisico2", "diagnostico_trs_fisico3", 
+                    "sus_prin_rec2", "age_admdate_int_cat",
+                      "esc_cat")
+
+# List of numerical variables
+numerical_vars <- c("age_admdate_int", 
+                    "edad_inicio_consumo_joined", 
+                    "tiempoen_calle",
+                    "yr_adm")
+
+
+# Create summaries for categorical variables
+categorical_summaries <- lapply(categorical_vars, function(var) {
+  summarize_categorical(CONS_C3_mod_c_a2, var)
+})
+
+# Create summaries for numerical variables
+numerical_summaries <- lapply(numerical_vars, function(var) {
+  summarize_numerical(CONS_C3_mod_c_a2, var)
+})
+names(categorical_summaries) <- categorical_vars
+names(numerical_summaries) <- numerical_vars
+
+## Desc-  resumen --------------------------------------------------------------------
+table_one <- CreateTableOne(
+  vars = c(categorical_vars, numerical_vars),
+  data = CONS_C3_mod_c_a2,
+  factorVars = categorical_vars,
+  strata = "status",
+  addOverall = TRUE,  # Incluir totales
+  test = TRUE,        # Realizar pruebas de diferencias
+  smd = TRUE          # Incluir SMDs
+)
+
+# Mostrar la tabla con perdidos
+table_one_print <- print(table_one, 
+                         nonnormal = c("numerode_hijos"), 
+                         formatOptions = list(big.mark = ","),
+                         quote = TRUE, 
+                         noSpaces = TRUE,
+                         showAllLevels = TRUE,  # Mostrar todos los niveles de variables categóricas
+                         missing = TRUE,        # Incluir valores perdidos
+                         explain = TRUE)        # Añadir explicación de las variables
+```
+
+
+```{r desc-out}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+table_one_print |> 
+    DT::datatable(filter = 'top',
+        caption = htmltools::tags$caption(
+            style = 'caption-side: top; text-align: left;',
+            htmltools::tags$b('Descriptivos')),#colnames = c('Term', 'Estimate', 'CI Low', 'CI High', 'VIF', 'Df', 'GVIF Adj.')
+        rownames = FALSE,
+        options = list(
+            pageLength = 25,
+            autoWidth = TRUE,
+            scrollX = TRUE,
+            dom = 'tip',
+            initComplete = htmlwidgets::JS(
+                "function(settings, json) {
+           $(this.api().tables().body()).css({
+             'font-family': 'Helvetica Neue',
+             'font-size': '70%',
+             'white-space': 'nowrap',
+             'line-height': '.9em'
+           });
+         }"
+            )))
+```
+
+# Supervivencia relativa
+
+```{r relsurv}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+dat_rs <- CONS_C3_mod_c_a2 %>%
+    filter(dayssurv_adm >= 0) %>%
+    mutate(
+        # Edad en días (entero)
+        age_days = as.integer(floor(age_admdate_num * 365.2425)),
+        # Sexo como 1/2 (1=male, 2=female) según el ratetable
+        sex_rs = case_when(
+            sex %in% c("male", 1, "1", "hombre", "Hombre")  ~ 1L,
+            sex %in% c("female", 2, "2", "mujer", "Mujer")  ~ 2L,
+            TRUE ~ NA_integer_
+        ),
+        # Año como FECHA:
+        year_date =fecha_ingreso_a_tratamiento
+    )
+# 3) Relative survival (Hakulinen)
+dSR1_SC <- relsurv::rs.surv(
+    Surv(dayssurv_adm, status) ~ 1,
+    data      = dat_rs,
+    ratetable = rt,
+    method    = "hakulinen",
+    rmap      = list(age = age_days, sex = sex_rs, year = year_date)
+)
+#This article shows that if the follow-up of the cohort is less than 10 years, 
+#any of these methods should give similar results. However, the Hakulinen method is preferred, 
+#since it accounts for heterogeneity due to potential withdrawals.
+#https://scielo.isciii.es/scielo.php?script=sci_arttext&pid=S0213-91112006000400012
+
+surv_data_sc <- data.frame(
+  time = dSR1_SC$time,                # Tiempo
+  surv = dSR1_SC$surv,                # Supervivencia
+  lower = dSR1_SC$lower,              # Límite inferior del IC
+  upper = dSR1_SC$upper               # Límite superior del IC
+) %>% 
+  mutate(group = "Total")     
+
+summary(dSR1_SC, times = c(1, 3, 5, 7)*365.241, scale = 365.241, area = TRUE)
+
+ggplot(surv_data_sc, aes(x = time/365.25, y = surv)) +
+  geom_step(linewidth = 1) +  # Curva de supervivencia
+  geom_ribbon(aes(ymin = lower, ymax = upper), fill= "black", alpha = 0.2) +  # Intervalos de confianza
+  labs(
+    x = "Tiempo desde la admisión (en años)",
+    y = "Supervivencia relativa",
+  ) +
+  coord_cartesian(xlim = c(0, 10), ylim= c(0, 1.10)) +
+  geom_hline(yintercept = 1, linewidth = 2, linetype = "dashed", color = "gray") +
+  #theme_minimal()  + 
+  theme_sjPlot_manual()+
+  theme(
+    plot.title = element_text(size = 20),       # Tamaño del título del gráfico
+    axis.title.x = element_text(size = 16),    # Tamaño del título del eje x
+    axis.title.y = element_text(size = 16),    # Tamaño del título del eje y
+    axis.text.x = element_text(size = 14),     # Tamaño de las etiquetas del eje x
+    axis.text.y = element_text(size = 14)      # Tamaño de las etiquetas del eje y
+  )
+
+if(grepl("ubuntu",system_r_platform())){
+  ggsave(paste0(wdpath,"/_figs/relsurv_gral.png"), dpi = 600, scale=1)
+} else{
+  ggsave(paste0("_figs/relsurv_gral.png"), dpi = 600, scale=1)
+}
+
+```
+
+
+# Session info
+
+```{r session-info}
+#|echo: true
+#|error: true
+#|message: true
+#|paged.print: true
+message(paste0("R library: ", Sys.getenv("R_LIBS_USER")))
+message(paste0("Date: ",withr::with_locale(new = c('LC_TIME' = 'C'), code =Sys.time())))
+message(paste0("Editor context: ", path))
+
+cat("quarto version: "); quarto::quarto_version()
+
+sesion_info <- devtools::session_info()
+dplyr::select(
+  tibble::as_tibble(sesion_info$packages),
+  c(package, loadedversion, source)
+)|> 
+  DT::datatable(filter = 'top', colnames = c('Row number' =1,'Package' = 2, 'Version'= 3),
+              caption = htmltools::tags$caption(
+        style = 'caption-side: top; text-align: left;',
+        '', htmltools::em('R packages')),
+      options=list(
+initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        "$(this.api().tables().body()).css({
+            'font-family': 'Helvetica Neue',
+            'font-size': '70%', 
+            'code-inline-font-size': '15%', 
+            'white-space': 'nowrap',
+            'line-height': '0.75em',
+            'min-height': '0.5em'
+            });",
+        "}")))
+```
+
+
+```{r session-info-python}
+#|echo: true
+#|error: true
+#|message: true
+#|paged.print: true
+#|class-output: center-table
+
+reticulate::py_list_packages()|> 
+  DT::datatable(filter = 'top', colnames = c('Row number' =1,'Package' = 2, 'Version'= 3),
+              caption = htmltools::tags$caption(
+        style = 'caption-side: top; text-align: left;',
+        '', htmltools::em('Python packages')),
+      options=list(
+initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        "$(this.api().tables().body()).css({
+            'font-family': 'Helvetica Neue',
+            'font-size': '70%', 
+            'code-inline-font-size': '15%', 
+            'white-space': 'nowrap',
+            'line-height': '0.75em',
+            'min-height': '0.5em'
+            });",
+        "}"))) 
+```
+
+Save
+
+
+```{r save}
+#| echo: true
+#| error: true
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+save.image("congresosp.RData")
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+cat("Copy renv lock into cons folder\n")
+
+if (Sys.getenv("RSTUDIO_SESSION_TYPE") == "server" || file.exists("/.dockerenv")) {
+  message("Running on RStudio Server or inside Docker. Folder copy skipped.")
+} else {
+  source_folder <- 
+  destination_folder <- paste0(wdpath,"cons/renv")
+  # Copy the folder recursively
+    file.copy(paste0(wdpath,"renv.lock"), paste0(wdpath,"cons/renv.lock"), overwrite = TRUE)
+  message("Renv lock copy performed.")
+}
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+time_after_dedup2<-Sys.time()
+
+paste0("Time in markdown: ");time_after_dedup2-time_before_dedup2
+```

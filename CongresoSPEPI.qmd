@@ -2900,31 +2900,34 @@ table_one_print |>
 #| eval: true
 
 dat_rs <- CONS_C3_mod_c_a2 %>%
-    filter(dayssurv_adm >= 0) %>%
-    mutate(
-        # Edad en días (entero)
-        age_days = as.integer(floor(age_admdate_num * 365.2425)),
-        # Sexo como 1/2 (1=male, 2=female) según el ratetable
-        sex_rs = case_when(
-            sex %in% c("male", 1, "1", "hombre", "Hombre")  ~ 1L,
-            sex %in% c("female", 2, "2", "mujer", "Mujer")  ~ 2L,
-            TRUE ~ NA_integer_
-        ),
-        # Año como FECHA:
-        year_date =fecha_ingreso_a_tratamiento
-    )
+  filter(dayssurv_adm >= 0) %>%
+  mutate(
+    # Edad en días (entero)
+    age_days = as.integer(floor(age_admdate_num * 365.2425)),
+    # Sexo como 1/2 (1=male, 2=female) según el ratetable
+    sex_rs = case_when(
+      sex %in% c("male", 1, "1", "hombre", "Hombre")  ~ 1L,
+      sex %in% c("female", 2, "2", "mujer", "Mujer")  ~ 2L,
+      TRUE ~ NA_integer_
+    ),
+    # Año como FECHA:
+    year_date =fecha_ingreso_a_tratamiento
+  )
 # 3) Relative survival (Hakulinen)
 dSR1_SC <- relsurv::rs.surv(
-    Surv(dayssurv_adm, status) ~ 1,
-    data      = dat_rs,
-    ratetable = rt,
-    method    = "hakulinen",
-    rmap      = list(age = age_days, sex = sex_rs, year = year_date)
+  Surv(dayssurv_adm, status) ~ 1,
+  data      = dat_rs,
+  ratetable = rt,
+  method    = "hakulinen",
+  rmap      = list(age = age_days, sex = sex_rs, year = year_date)
 )
+
 #This article shows that if the follow-up of the cohort is less than 10 years, 
 #any of these methods should give similar results. However, the Hakulinen method is preferred, 
 #since it accounts for heterogeneity due to potential withdrawals.
 #https://scielo.isciii.es/scielo.php?script=sci_arttext&pid=S0213-91112006000400012
+
+
 
 surv_data_sc <- data.frame(
   time = dSR1_SC$time,                # Tiempo
@@ -2961,6 +2964,39 @@ if(grepl("ubuntu",system_r_platform())){
   ggsave(paste0("_figs/relsurv_gral.png"), dpi = 600, scale=1)
 }
 
+
+# Crear análisis separado por grupos temporales
+results <- list()
+
+time_intervals <- list(
+  "0-90" = c(0, 90),
+  "90-365" = c(90, 1*365.241),
+  "365-730" = c(1, 3)*365.241,
+  "730-1825" = c(3, 5)*365.241,
+  "1825-2557" = c(5, 7)*365.241
+)
+
+for (interval_name in names(time_intervals)) {
+  interval <- time_intervals[[interval_name]]
+  
+  # Filtrar datos para este intervalo
+  temp_data <- dat_rs[dat_rs$dayssurv_adm >= interval[1] & 
+                       dat_rs$dayssurv_adm < interval[2], ]
+  
+  if (nrow(temp_data) > 0 && sum(temp_data$status) > 0) {
+    model <- relsurv::rsadd(
+      Surv(dayssurv_adm, status) ~ 1,
+      data = temp_data,
+      ratetable = rt,
+      method = "max.lik",
+      rmap = list(age = age_days, sex = sex_rs, year = year_date)
+    )
+    results[[interval_name]] <- model
+  }
+}
+
+# Ver resultados
+results
 ```
 
 

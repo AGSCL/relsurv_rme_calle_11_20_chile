@@ -1,0 +1,32 @@
+---
+title: "SUPERVIVENCIA RELATIVA DE PERSONAS EN PROGRAMA DE POBLACIÓN EN SITUACIÓN DE CALLE, SENDA, 2011-2020, CHILE"
+subtitle: "Repositorio"
+author:
+  - name: Álvaro Castillo-Carniglia
+    affiliation: "PhD in Public Health. Department of Public Health, Facultad de Medicina y Ciencia, Universidad San Sebastián, Chile"
+    email: alvacasti@gmail.com
+    orcid: 0000-0002-3016-890X
+
+  - name: Andrés González-Santa Cruz
+    affiliation: Ph.D. student, Public Health, UCH, Chile
+    email: gonzalez.santacruz.andres@gmail.com
+    orcid: 0000-0002-5166-9121
+
+description: | 
+  Análisis de supervivencia relativa a una población altamente vulnerable en Chile para estimar con precisión la mortalidad en comparación con la población general (medida por la tasa de mortalidad, exceso de mortalidad, variabilidad regional, etc.)
+title-block-banner: "#00000"
+lang: es
+format: 
+  html:
+    embed-resources: true
+editor: source
+---
+
+# Principal
+
+Esta página se compone de las siguientes fases:
+
+
+1.  [**Preparación de datos, cálculo de tasas y razón de mortalidad esperada**](CongresoSPEPI.html)
+
+2.  [**Modelo de suavizamiento de RME por región**](CongresoSPEPI2.html)

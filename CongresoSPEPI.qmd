@@ -1017,39 +1017,6 @@ theme_sjPlot_manual <- function() {
   )
 }
 
-#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
-#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
-#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
-# --- Step 1: Define File Paths ---
-
-# SET THIS to the correct path of your secret text file
-secret_file_path <- "C:/Users/andre/Documents/secret.txt"
-# This locates the user-level .Renviron file automatically
-renviron_path <- file.path(Sys.getenv("HOME"), ".Renviron")
-# --- Step 2: Read the Secret Key from the .txt file ---
-# Read the first line of the file and trim any whitespace
-api_key <- trimws(readLines(secret_file_path, n = 1, warn = FALSE))
-# --- Step 3: Check if the key is already in .Renviron ---
-# Read all existing lines from .Renviron (if it exists)
-if (file.exists(renviron_path)) {
-  existing_lines <- readLines(renviron_path, warn = FALSE)
-} else {
-  existing_lines <- c()
-}
-# Check if a line for OPENAI_API_KEY already exists
-key_exists <- any(grepl("^OPENAI_API_KEY=", existing_lines))
-# --- Step 4: Write to .Renviron if the key isn't already there ---
-if (!key_exists) {
-  # Format the line to be added
-  line_to_add <- sprintf('OPENAI_API_KEY="%s"', api_key)
-  # Append the line to the .Renviron file, adding a newline before it if the file isn't empty
-  cat(line_to_add, "\n", file = renviron_path, append = TRUE)
-  message("✅ Success! OPENAI_API_KEY has been added to your .Renviron file.")
-  message("Please restart your R session for the change to take effect.")
-} else {
-  message("ℹ️ The OPENAI_API_KEY already exists in your .Renviron file. No changes were made.")
-}
-options(.gander_chat = ellmer::chat_openai(model = "o1-mini"))
 ```
 </div>
 
@@ -1949,9 +1916,9 @@ plot_grid(population_pyramid+ theme(legend.position="none"), population_pyramid2
   }), ncol = 2)
 
 if(grepl("ubuntu",system_r_platform())){
-  ggsave(paste0(wdpath,"/cons/_figs/pyramid_congresosp.png"), dpi = 600, width = 9*.9, height=4)
-} else {
   ggsave(paste0(wdpath,"/_figs/pyramid_congresosp.png"), dpi = 600, width = 9*.9, height=4)
+} else {
+  ggsave(paste0(wdpath,"/cons/_figs/pyramid_congresosp.png"), dpi = 600, width = 9*.9, height=4)
 }
 ```
 
@@ -2958,7 +2925,7 @@ ggplot(surv_data_sc, aes(x = time/365.25, y = surv)) +
     axis.text.y = element_text(size = 14)      # Tamaño de las etiquetas del eje y
   )
 
-if(grepl("ubuntu",system_r_platform())){
+if(grepl("ubuntu",pak::system_r_platform())){
   ggsave(paste0(wdpath,"/_figs/relsurv_gral.png"), dpi = 600, scale=1)
 } else{
   ggsave(paste0("_figs/relsurv_gral.png"), dpi = 600, scale=1)
@@ -3075,19 +3042,48 @@ Save
 #| results: "hold"
 #| eval: true
 
-save.image("congresosp.RData")
+if(grepl("ubuntu",pak::system_r_platform())){
+  if (rstudioapi::isAvailable()) {
+    # Code that needs RStudio
+    wdpath<- dirname(dirname(rstudioapi::documentPath()))
+  } else {
+    # Code for non-RStudio environments (e.g., command line, server)
+    # This part should use a portable method like knitr::current_input() or getwd()
+    wdpath <- dirname(resolve_doc_dir())
+  }
+}
+save.image(paste0(wdpath,"/congresosp.RData"))
+cat(paste0("Espacio de trabajo guardado en ",wdpath,"/congresosp.RData\n"))
+
 #:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
 #:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
-cat("Copy renv lock into cons folder\n")
+cat("Copiar renv en la carpeta a publicar\n")
 
 if (Sys.getenv("RSTUDIO_SESSION_TYPE") == "server" || file.exists("/.dockerenv")) {
   message("Running on RStudio Server or inside Docker. Folder copy skipped.")
 } else {
-  source_folder <- 
-  destination_folder <- paste0(wdpath,"cons/renv")
-  # Copy the folder recursively
-    file.copy(paste0(wdpath,"renv.lock"), paste0(wdpath,"cons/renv.lock"), overwrite = TRUE)
-  message("Renv lock copy performed.")
+  # This 'else' block executes ONLY if NOT running on RStudio Server or Docker
+  
+  if (grepl("ubuntu", system_r_platform())) {
+    source_folder <- paste0(wdpath, "renv")
+    destination_folder <- paste0(wdpath, "relsurv_rme_calle_11_20_chile/renv")
+    # Copy the folder recursively
+    # file.copy(source_folder, destination_folder, overwrite = TRUE, recursive = TRUE) # Assumed folder copy function/intent
+    file.copy(paste0(wdpath, "renv.lock"), paste0(wdpath, "relsurv_rme_calle_11_20_chile/renv.lock"), overwrite = TRUE)
+    message("Renv lock copy performed for 'ubuntu' platform.")
+  } else {
+    # This 'else' block executes ONLY if NOT running on RStudio Server/Docker AND NOT 'ubuntu'
+    
+    # Check if 'source_folder <- ' was meant to have a value, currently it's empty in your original last 'else'
+    # Assuming 'source_folder' should be defined as well, or the first file.copy logic is intended.
+    source_folder <- paste0(wdpath, "renv") # Re-defining based on common structure
+    destination_folder <- paste0(wdpath, "cons/renv")
+    
+    # Copy the folder recursively
+    # file.copy(source_folder, destination_folder, overwrite = TRUE, recursive = TRUE) # Assumed folder copy function/intent
+    file.copy(paste0(wdpath, "renv.lock"), paste0(wdpath, "cons/renv.lock"), overwrite = TRUE)
+    message("Renv lock copy performed for non-ubuntu platform.")
+  }
 }
 #:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
 time_after_dedup2<-Sys.time()

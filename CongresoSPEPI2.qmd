@@ -1,0 +1,1563 @@
+---
+title: "Congreso SP(2)"
+description: |
+  Presentación principales resultados. Parte 2.
+date: last-modified
+author: "Andrés González Santa Cruz"
+toc: true
+toc-depth: 5
+toc-location: left
+toc-float: true
+format: 
+  html:
+    code-fold: true
+    embed-resources: true
+    theme: 
+      - journal #https://quarto.org/docs/output-formats/html-themes-more.html
+      #- style.scss
+    fig-cap-location: top  
+    toc: true
+    toc-depth: 5
+    toc-location: left
+execute:
+  error: true        # Show errors in the output
+  echo: true         # Show R code in the output
+  warning: true      # Show warnings
+  message: true      # Show messages from the code
+  freeze: auto       # Use cache to speed up rendering if there are no changes
+editor: source
+execute-dir: project
+lightbox: auto
+---
+
+```{=html}
+<style type="text/css">
+
+.showopt {
+
+background-color: #004c93; color: #FFFFFF; width: 100px; height: 20px; text-align: center; vertical-align: middle !important; float: right; font-family: sans-serif; border-radius: 8px;
+
+}
+
+.showopt:hover {
+background-color: #dfe4f2;
+color: #004c93;
+
+}
+
+pre.plot {
+background-color: white !important;
+}
+
+.tablelines table, .tablelines td, .tablelines th {
+border: 1px solid black;
+}
+
+.centrado {
+text-align: center;
+}
+
+.table.center {
+margin-left:auto;
+margin-right:auto;
+}
+
+/* https://vivekjaiskumar.medium.com/css-is-and-not-selector-17c942ec83f :is()*/
+
+/* Applies to outputs that are not code other than R*/
+
+pre {
+overflow-x: auto !important;
+}
+
+pre code {
+word-wrap: normal !important;
+white-space: pre !important;
+}
+
+/*
+pre:not(.sourceCode) {
+white-space: nowrap !important;
+}
+*/
+.sourceCode { /* Important gives precedence */
+font-size: 10px !important;
+line-height: 50% !important;
+}
+body{ /* Normal */
+text-align: justify;
+}
+.superbigimage{
+overflow-y:scroll;
+height:350px;
+white-space: nowrap;
+overflow-x: auto;
+width:100%;
+}
+.superbigimage img{
+overflow-y: scroll;
+overflow-x: hidden;
+}
+.message { color:#446C6E; font-family: monospace;font-size: 10px; line-height: 110%; font-weight: bold;}
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 5px; text-align: justify;}
+div.red { background-color:#e6bab1; border-radius: 5px; padding: 5px; text-align: justify;}
+.pandoc-table { /* Should add !important; but it seems no necessary */
+margin-left:auto; /* To center */
+margin-right:auto;
+border-collapse: collapse;
+table-layout: auto;
+font-size: 11px;
+overflow-y: auto;
+max-height:450px !important;
+white-space: nowrap;
+overflow-x: auto;
+width:450px;
+}
+.pandoc-table th {/* header */
+text-align: center !important;
+font-size: 10px;
+padding: 0px;
+}
+.pandoc-table td {
+text-align: left !important;
+font-size: 9px;
+padding: 0px;
+}
+.pandoc-table caption {
+text-align: left !important;
+font-size: 11px !important;
+}
+
+.center-table {
+text-align: left !important;
+font-size: 9px;
+overflow-y:scroll;
+height:450px;
+overflow-x: scroll;
+}
+
+.controlly{
+overflow-y:scroll;
+height:350px;
+overflow-x: scroll;
+
+}
+/*2025-03-07*/
+.callout-warning,
+.callout-error,
+.callout-message {
+  font-size: 0.7rem !important;  /* Adjust this value as needed */
+}
+
+.alert, .message {
+    font-size: 0.7em !important;
+}
+
+.alert.alert-warning,
+.alert.alert-danger,
+.message {
+    font-size: 0.7em !important;
+}
+</style>
+```
+```{css, echo=F}
+h1 {
+    color: var(--heading-color);
+    font-size: 2rem;
+    margin-bottom: 1vh;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  font-weight: bold;
+  &:hover, &:focus {
+      border-bottom: 3px solid currentColor;
+  }
+}
+
+section {
+  margin: 0 auto;
+}
+
+.post-meta {
+  font-size: 1rem;
+  font-style: italic;
+  display: block;
+  margin-bottom: 4vh;
+  color: var(--secondary-color);
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+}
+
+/*slider switch css */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  
+  em {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+}
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display:none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+```
+
+```{=html}
+
+<script>
+function myFunction1() {
+var x = document.getElementById("myDIV");
+if (x.style.display === "none") {
+x.style.display = "block";
+} else {
+x.style.display = "none";
+}
+}
+</script>
+
+<script>
+function myFunction2() {
+var x = document.getElementById("myDIV2");
+if (x.style.display === "none") {
+x.style.display = "block";
+} else {
+x.style.display = "none";
+}
+}
+</script>
+```
+
+<style>
+.scrollable-content {
+  max-height: 350px;
+  overflow-y: auto;
+}
+pre.scrollable-code {
+  max-height: 350px;
+  overflow-y: auto;
+}
+.superbigimage {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.superbigimage img, 
+.superbigimage svg {
+  max-width: none;
+  height: auto;
+}
+</style>
+
+<br>
+
+# Cargar datos y exploración
+
+## Cargar paquetes estadísticos y gestión de BBDD
+
+<div class="scrollable-content">
+```{r load}
+#| message: false
+#| include: true
+#| warning: false
+#| results: "hold"
+
+# invisible("Only run from Ubuntu")
+# if (!(Sys.getenv("RSTUDIO_SESSION_TYPE") == "server" || file.exists("/.dockerenv"))) {
+#   if(Sys.info()["sysname"]!="Windows"){
+#     Sys.setenv(RETICULATE_PYTHON = "/home/fondecytacc/.pyenv/versions/3.11.5/bin/python")
+#   }
+# }
+
+#clean enviroment
+rm(list = ls()); gc()
+
+time_before_dedup2<-Sys.time()
+
+if(!require(reticulate)){install.packages("reticulate")}
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+
+# Busca .mamba_root/envs/py311/python.exe desde getwd() hacia padres
+find_python_rel <- function(start = getwd(),
+                            rel = file.path(".mamba_root","envs","py311","python.exe")) {
+  cur <- normalizePath(start, winslash = "/", mustWork = FALSE)
+  repeat {
+    cand <- normalizePath(file.path(cur, rel), winslash = "/", mustWork = FALSE)
+    if (file.exists(cand)) return(cand)
+    parent <- dirname(cur)
+    if (identical(parent, cur)) return(NA_character_)  # llegó a la raíz
+    cur <- parent
+  }
+}
+# --- Bootstrap reticulate con ruta relativa a getwd() ---
+if(Sys.info()["sysname"]!="Windows"){
+  #Sys.setenv(RETICULATE_PYTHON = "usr/bin/python3")
+  reticulate::py_config()
+} else {
+  py <- find_python_rel()
+  if (is.na(py)) {
+    stop("No se encontró Python relativo a getwd() (buscando '.mamba_root/envs/py311/python.exe').\n",
+         "Directorio actual: ", getwd())
+  }
+  # Forzar ese intérprete
+  Sys.unsetenv(c("RETICULATE_CONDAENV","RETICULATE_PYTHON_FALLBACK"))
+  Sys.setenv(RETICULATE_PYTHON = py)
+  reticulate::use_python(py, required=T)
+  reticulate::py_config()  # verificación
+}
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+resolve_doc_dir <- function() {
+  # 1) Interactivo en RStudio (mejor para desarrollo)
+  if (interactive() && requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
+    path <- tryCatch(rstudioapi::documentPath(), error = function(e) NULL)
+    if (!is.null(path) && nzchar(path)) return(normalizePath(dirname(path)))
+  }
+
+  # 2) Render / knitr (Quarto)
+  in_knitr <- tryCatch(knitr::current_input(), error = function(e) NULL)
+  if (!is.null(in_knitr) && nzchar(in_knitr)) return(normalizePath(dirname(in_knitr)))
+
+  # 3) Si nada funciona, devolver error claro (no fallback silencioso)
+  stop("No se pudo determinar la carpeta del documento. Asegura que estás renderizando con Quarto o usando RStudio.")
+}
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+if(grepl("ubuntu",pak::system_r_platform())){
+  if (rstudioapi::isAvailable()) {
+    # Code that needs RStudio
+    wdpath<- dirname(dirname(rstudioapi::documentPath()))
+  } else {
+    # Code for non-RStudio environments (e.g., command line, server)
+    # This part should use a portable method like knitr::current_input() or getwd()
+    wdpath <- dirname(resolve_doc_dir())
+  }
+}
+load(paste0(wdpath,"/congresosp.RData"))
+```
+</div>
+
+<div class="scrollable-content">
+```{r setup}
+#| results: "hold"
+#https://github.com/rstudio/renv/issues/544
+#renv falls back to copying rather than symlinking, which is evidently very slow in this configuration.
+renv::settings$use.cache(FALSE)
+
+#only use explicit dependencies (in DESCRIPTION)
+renv::settings$snapshot.type("implicit")
+
+#check if rstools is installed
+if(Sys.info()["sysname"]=="Windows"){
+try(installr::install.Rtools(check_r_update=F))
+}
+
+check_quarto_version <- function(required = "1.7.29", comparator = c("ge","gt","le","lt","eq")) {
+  comparator <- match.arg(comparator)
+  current <- package_version(paste(unlist(quarto::quarto_version()), collapse = "."))
+  req     <- package_version(required)
+
+  ok <- switch(comparator,
+               ge = current >= req,
+               gt = current >  req,
+               le = current <= req,
+               lt = current <  req,
+               eq = current == req)
+
+  if (!ok) {
+    stop(sprintf("Quarto version check failed: need %s %s (installed: %s).",
+                 comparator, required, current), call. = FALSE)
+  }
+  invisible(TRUE)
+}
+
+check_quarto_version("1.7.29", "ge") 
+
+#change repository to CL
+local({
+  r <- getOption("repos")
+  r["CRAN"] <- "https://cran.dcc.uchile.cl/"
+  options(repos=r)
+})
+
+if(!require(pacman)){install.packages("pacman");require(pacman)}
+if(!require(pak)){install.packages("pak");require(pak)}
+
+pacman::p_unlock(lib.loc = .libPaths()) #para no tener problemas reinstalando paquetes
+
+if(Sys.info()["sysname"]=="Windows"){
+if (getRversion() != "4.4.1") { stop("Requires R version 4.4.1; Actual: ", getRversion()) }
+}
+
+#check docker
+check_docker_running <- function() {
+  # Try running 'docker info' to check if Docker is running
+  system("docker info", intern = TRUE, ignore.stderr = TRUE)
+}
+if(Sys.info()["sysname"]=="Windows"){
+  install_docker <- function() {
+    # Open the Docker Desktop download page in the browser for installation
+    browseURL("https://www.docker.com/products/docker-desktop")
+  }
+  # Main logic
+  if (inherits(try(check_docker_running(), silent = TRUE), "try-error")) {
+    liftr::install_docker()
+  } else {
+    message("Docker is running.")
+  }
+}
+
+# if(Sys.info()["sysname"]!="Windows"){
+#   system("sudo apt-get update && sudo apt-get install -y libudunits2-dev libgdal-dev libgeos-dev libproj-dev")
+#   system("sudo apt-get install -y libudunits2-dev libgdal-dev libgeos-dev libproj-dev")
+# }
+
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#PACKAGES#######################################################################
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+unlink("*_cache", recursive=T)
+
+# Load or install required packages using pacman::p_load
+# This handles installation, loading, and avoids duplicates
+# Note: INLA requires separate installation from its dedicated repository.
+pacman::p_load(
+    # Package Management
+    pacman,       # Streamlines loading and installing packages simultaneously
+    
+    # Core Data & Visualization (Part of tidyverse)
+    tidyverse,    # Collection of packages for data manipulation, visualization, and more
+    dplyr,        # Grammar of data manipulation (e.g., filter, mutate, group_by)
+    tidyr,        # Tools for tidying data, reshaping (e.g., pivot_wider, pivot_longer)
+    ggplot2,      # Grammar of graphics for powerful data plotting
+    stringr,      # Consistent wrappers for common string manipulation tasks
+    purrr,        # Tools for working with functions and vectors/lists (e.g., mapping)
+    viridisLite,  # Provides the perceptually uniform 'viridis' color palettes
+    scales,       # Graphical scales for ggplot2 (e.g., custom breaks, formatting labels for axes)
+    
+    # Survival & Epidemiology
+    mexhaz,       # Flexible parametric hazard regression models for survival analysis
+    relsurv,      # Core package for **Relative Survival Analysis** in population-based studies
+    survminer,    # Extends 'survival' for high-quality Kaplan-Meier plots and survival tables
+    popEpi,       # Tools for standardized mortality ratios (SMRs) and population-level survival measures
+    epitools,     # Epidemiological tools for data analysis (e.g., rate ratios, exact confidence intervals)
+    
+    # Spatial Analysis
+    sf,           # Simple Features: for handling and analyzing **vector-based spatial data** (points, lines, polygons)
+    spdep,        # Spatial dependence: for analyzing spatial autocorrelation and spatial regression models
+    geodata,      # Access to global spatial data (e.g., administrative boundaries, climate data)
+    INLA,         # Integrated Nested Laplace Approximations (Bayesian spatial modeling) - install separately
+    
+    # Data Cleaning & Reporting
+    janitor,      # Simple tools for examining and cleaning dirty data (e.g., cleaning column names)
+    tableone,     # Creates "Table 1" summaries for descriptive statistics (baseline characteristics)
+    kableExtra,   # Enhances 'knitr::kable()' for complex and professional R Markdown tables
+    pander,       # A tool for rendering R objects into Pandoc markdown formats
+    DT,           # Creates interactive HTML data tables (useful for detailed tables in R Markdown/Quarto)
+    rio,          # Simplifies data import/export with a consistent interface ('import()')
+    quarto,       # For rendering the R Markdown/Quarto poster documents (.qmd files)
+    
+    # Statistical & Computing Tools
+    biostat3,     # Functions and datasets for biostatistics teaching and research
+    coin,         # Conditional inference procedures for robust hypothesis testing (e.g., permutation tests)
+    metafor,      # For heterogeneity testing and general **meta-analysis** methods
+    parallel,     # Base R package for **parallel computing** (useful for speeding up bootstrap and resampling)
+    cowplot,      # Streamlined plot theme and functions for arranging multiple ggplot2 plots
+    grid,         # Base R package for low-level graphics (used indirectly for plot arrangement)
+    ellmer,       # Commonly used for likelihood estimation or generalized mixed-effects models (LMM/GLMM)
+    
+    # Development & Reproducibility Tools
+    devtools,     # Tools to make package development easier (often used to install from GitHub)
+    installr,     # Functions for self-updating R and R packages
+    liftr,        # A framework for creating and managing reproducible research projects
+    pak,          # A fast, dependency-aware package installer (alternative to install.packages)
+    
+    install = TRUE
+)
+
+# ----------------------------------------------------------------------
+# 4. BPMN from GitHub (not on CRAN, so install via devtools if missing)
+# ----------------------------------------------------------------------
+if (!requireNamespace("bpmn", quietly = TRUE)) {
+  devtools::install_github("bergant/bpmn")
+}
+
+
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#FUNCTIONS######################################################################
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#
+# NO MORE DEBUGS
+options(error = NULL)        # si antes tenías options(error = recover) o browser)
+options(browserNLdisabled = FALSE)
+
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#
+#NAs are replaced with "" in knitr kable
+options(knitr.kable.NA = '')
+
+pander::panderOptions('big.mark', ',')
+pander::panderOptions('decimal.mark', '.')
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#
+
+#to format rows in bold
+format_cells <- function(df, rows ,cols, value = c("italics", "bold", "strikethrough")){
+  # select the correct markup
+  # one * for italics, two ** for bold
+  map <- setNames(c("*", "**", "~~"), c("italics", "bold", "strikethrough"))
+  markup <- map[value]  
+  for (r in rows){
+    for(c in cols){
+      # Make sure values are not factors
+      df[[c]] <- as.character( df[[c]])
+
+      # Update formatting
+      df[r, c] <- ifelse(nchar(df[r, c])==0,"",paste0(markup, gsub(" ", "", df[r, c]), markup))
+    }
+  }
+  return(df)
+}
+#To produce line breaks in messages and warnings
+knitr::knit_hooks$set(
+   error = function(x, options) {
+     paste('\n\n<div class="alert alert-danger" style="font-size: small !important;">',
+           gsub('##', '\n', gsub('^##\ Error', '**Error**', x)),
+           '</div>', sep = '\n')
+   },
+   warning = function(x, options) {
+     paste('\n\n<div class="alert alert-warning" style="font-size: small !important;">',
+           gsub('##', '\n', gsub('^##\ Warning:', '**Warning**', x)),
+           '</div>', sep = '\n')
+   },
+   message = function(x, options) {
+     paste('<div class="message" style="font-size: small !important;">',
+           gsub('##', '\n', x),
+           '</div>', sep = '\n')
+   }
+)
+
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+#CONFIG #######################################################################
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+options(scipen=2) #display numbers rather scientific number
+
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_
+
+# Define the function first
+#joins these values with semicolons and optionally truncates the result if it exceeds a specified width.
+toString2 <- function(x, width = NULL, ...) {
+    string <- paste(x, collapse = "; ")
+    if (missing(width) || is.null(width) || width == 0) 
+        return(string)
+    if (width < 0) 
+        stop("'width' must be positive")
+    if (nchar(string, type = "w") > width) {
+        width <- max(6, width)
+        string <- paste0(substr(string, 1, width - 3), "...")
+    }
+    string
+}
+normalize_txt <- function(x) {
+  x|>
+    stringi::stri_trans_general("Latin-ASCII")|>
+    tolower()|>
+    trimws()
+}
+
+# Custom function for sampling with a seed
+sample_n_with_seed <- function(data, size, seed) {
+  set.seed(seed)
+  dplyr::sample_n(data, size)
+}
+
+# Function to get the most frequent value 
+most_frequent <- function(x) { 
+  uniq_vals <- unique(x)
+  freq_vals <- sapply(uniq_vals, function(val) sum(x == val))
+  most_freq <- uniq_vals[which(freq_vals == max(freq_vals))]
+  
+  if (length(most_freq) == 1) {
+    return(most_freq)
+  } else {
+    return(NA)
+  }
+}
+
+sum_dates <- function(x){
+  cbind.data.frame(
+    min= as.Date(min(unclass(as.Date(x)), na.rm=T), origin = "1970-01-01"),
+    p001= as.Date(quantile(unclass(as.Date(x)), .001, na.rm=T), origin = "1970-01-01"),
+    p005= as.Date(quantile(unclass(as.Date(x)), .005, na.rm=T), origin = "1970-01-01"),
+    p025= as.Date(quantile(unclass(as.Date(x)), .025, na.rm=T), origin = "1970-01-01"),
+    p25= as.Date(quantile(unclass(as.Date(x)), .25, na.rm=T), origin = "1970-01-01"),
+    p50= as.Date(quantile(unclass(as.Date(x)), .5, na.rm=T), origin = "1970-01-01"),
+    p75= as.Date(quantile(unclass(as.Date(x)), .75, na.rm=T), origin = "1970-01-01"),
+    p975= as.Date(quantile(unclass(as.Date(x)), .975, na.rm=T), origin = "1970-01-01"),
+    p995= as.Date(quantile(unclass(as.Date(x)), .995, na.rm=T), origin = "1970-01-01"),
+    p999= as.Date(quantile(unclass(as.Date(x)), .999, na.rm=T), origin = "1970-01-01"),
+    max= as.Date(max(unclass(as.Date(x)), na.rm=T), origin = "1970-01-01")
+  )
+}
+
+is_stata_ok <- function(x) {
+  nchar(x) <= 32 & grepl("^[A-Za-z][A-Za-z0-9_]*$", x)
+}
+
+to_ascii_lower <- function(x) stringi::stri_trans_general(x, "Latin-ASCII")
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+# ── Tidy RMS ────────────────────────────────────────────────────────
+
+tidy_cph <- function(model) {
+  if (!inherits(model, "cph")) stop("Model must be an rms::cph object")
+  # run summary
+  s <- summary(model)
+  df_s <- as.data.frame(unclass(s))
+  df_s$rown <- rownames(s)
+  # find rows that are "Hazard Ratio"
+  hr_rows <- trimws(df_s$rown) == "Hazard Ratio"
+  # build tidy tibble
+  tibble::tibble(
+    term     = trimws(rownames(s)[which(hr_rows) - 1L]), # previous row = variable name
+    estimate = df_s$Effect[hr_rows],                     # Hazard Ratio
+    conf.low = df_s$`Lower 0.95`[hr_rows],
+    conf.high= df_s$`Upper 0.95`[hr_rows],
+    p.value  = df_s$P[hr_rows]
+  )
+}
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+# ── SMR Phi ────────────────────────────────────────────────────────
+
+
+sir_ci_phi_improved <- function(sir_obj, phi, conf.level = 0.95) {
+  #Método log-normal, the best, dont overestimate, or subestimate variance
+  # extract totals
+  total_obs <- sir_obj$observed
+  total_exp <- sir_obj$expected
+  
+  # Calculate SEs
+  theta <- total_obs / total_exp
+    # Normal approximation, n>20  
+  # Corrected SEs (McCullagh & Nelder, 1989)
+  # “For ratios of Poisson means (such as SIR or CMR), the appropriate approach is to use multinomial or binomial models conditioned on the total observed.”
+  # Breslow NE, Day NE. Statistical Methods in Cancer Research, Vol. II (IARC, 1987), §2.2. – Derives the same SE formula and recommends inflating by φ in the presence of heterogeneity.
+  z <- qnorm(1 - (1 - conf.level)/2)
+
+  se_log <- sqrt(phi / total_obs)  # Valid formula
+  
+  # ICs
+  lci <- theta * exp(-z * se_log)
+  uci <- theta * exp(z * se_log)
+  
+  data.frame(
+    SIR = theta,
+    CI_low = lci,
+    CI_high = uci,
+    phi_used = phi
+  )
+}
+
+smr_print <- function(sir_out, name = NULL) {
+    # Validate input
+    if (!is.list(sir_out)) stop("sir_out must be a list or list-like object.")
+    required <- c("observed", "pyrs", "expected", "sir")
+    missing_req <- setdiff(required, names(sir_out))
+    if (length(missing_req)) stop("sir_out is missing required elements: ", paste(missing_req, collapse = ", "))
+    
+    # Pull components (allow vectors)
+    obs <- as.numeric(sir_out$observed)
+    pyrs <- as.numeric(sir_out$pyrs)
+    expc <- as.numeric(sir_out$expected)
+    sir   <- as.numeric(sir_out$sir)
+    sir_lo <- if ("sir.lo" %in% names(sir_out)) as.numeric(sir_out$sir.lo) else rep(NA_real_, length(sir))
+    sir_hi <- if ("sir.hi" %in% names(sir_out)) as.numeric(sir_out$sir.hi) else rep(NA_real_, length(sir))
+    ear    <- if ("EAR" %in% names(sir_out)) as.numeric(sir_out$EAR) else rep(NA_real_, length(sir))
+    
+    n <- max(length(obs), length(pyrs), length(expc), length(sir), length(sir_lo), length(sir_hi), length(ear))
+    rep_len <- function(x) if (length(x) == n) x else rep(x, length.out = n)
+    
+    obs   <- rep_len(obs)
+    pyrs  <- rep_len(pyrs)
+    expc  <- rep_len(expc)
+    sir   <- rep_len(sir)
+    sir_lo <- rep_len(sir_lo)
+    sir_hi <- rep_len(sir_hi)
+    ear   <- rep_len(ear)
+    name  <- if (is.null(name)) rep(NA_character_, n) else rep_len(as.character(name))
+    
+    # Format SMR: "x.xx (y.yy–z.zz)" or "x.xx" if bounds missing
+    smr_fmt <- vapply(seq_len(n), function(i) {
+        if (!is.na(sir_lo[i]) && !is.na(sir_hi[i])) {
+            sprintf("%.2f (%.2f–%.2f)", sir[i], sir_lo[i], sir_hi[i])
+        } else {
+            sprintf("%.2f", sir[i])
+        }
+    }, FUN.VALUE = character(1), USE.NAMES = FALSE)
+    
+    # Format EAR
+    ear_fmt <- ifelse(is.na(ear), NA_character_, sprintf("%.2f", ear))
+    
+    # Build result
+    out <- data.frame(
+        total    = name,
+        observed = round(obs, 0),
+        pyrs     = round(pyrs, 0),
+        expected = round(expc, 0),
+        SMR      = smr_fmt,
+        EAR      = ear_fmt,
+        stringsAsFactors = FALSE,
+        row.names = NULL
+    )
+    
+    out
+}
+
+
+# ── Plots ────────────────────────────────────────────────────────
+
+theme_sjPlot_manual <- function() {
+  theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12),
+    panel.background = element_rect(fill = "white"),
+    panel.grid.major = element_line(color = "gray80"),
+    panel.grid.minor = element_line(color = "gray90")
+  )
+}
+
+
+# --- Paleta base continua (tu cont_palette) ---
+andal_pal <- function(reverse = FALSE) {
+  cols <- c(
+    "#052709", # dark teal
+    "#5FA9B3", # teal accent
+    "#A17C6C", # warm mid
+    "#D2A899", # warm light
+    "#906F00", # earth gold
+    "#527700"  # olive
+  )
+  if (reverse) cols <- rev(cols)
+  grDevices::colorRampPalette(cols, interpolate = "spline")
+}
+
+# Continua (equivalente a scale_fill_viridis_c)
+scale_fill_andal_c <- function(..., reverse = FALSE, na.value = "grey85",
+                               guide = "colourbar") {
+  pal <- andal_pal(reverse)
+  ggplot2::scale_fill_gradientn(colours = pal(256), na.value = na.value,
+                                guide = guide, ...)
+}
+
+scale_color_andal_c <- function(..., reverse = FALSE, na.value = "grey85",
+                                guide = "colourbar") {
+  pal <- andal_pal(reverse)
+  ggplot2::scale_colour_gradientn(colours = pal(256), na.value = na.value,
+                                  guide = guide, ...)
+}
+
+# Binned / escalonada (tipo scale_fill_viridis_b)
+scale_fill_andal_b <- function(..., reverse = FALSE, na.value = "grey85",
+                               n.breaks = 6) {
+  cols <- c(
+    "#052709", "#5FA9B3", "#A17C6C",
+    "#D2A899", "#906F00", "#527700"
+  )
+  if (reverse) cols <- rev(cols)
+  ggplot2::scale_fill_stepsn(colors = cols, n.breaks = n.breaks,
+                             na.value = na.value, ...)
+}
+
+scale_color_andal_b <- function(..., reverse = FALSE, na.value = "grey85",
+                                n.breaks = 6) {
+  cols <- c(
+    "#052709", "#5FA9B3", "#A17C6C",
+    "#D2A899", "#906F00", "#527700"
+  )
+  if (reverse) cols <- rev(cols)
+  ggplot2::scale_colour_stepsn(colors = cols, n.breaks = n.breaks,
+                               na.value = na.value, ...)
+}
+
+# Discreta (por si necesitas categorías)
+scale_fill_andal_d <- function(..., reverse = FALSE) {
+  cols <- c(
+    "#052709", "#5FA9B3", "#A17C6C",
+    "#D2A899", "#906F00", "#527700"
+  )
+  if (reverse) cols <- rev(cols)
+  ggplot2::scale_fill_manual(values = cols, ...)
+}
+
+scale_color_andal_d <- function(..., reverse = FALSE) {
+  cols <- c(
+    "#052709", "#5FA9B3", "#A17C6C",
+    "#D2A899", "#906F00", "#527700"
+  )
+  if (reverse) cols <- rev(cols)
+  ggplot2::scale_colour_manual(values = cols, ...)
+}
+
+```
+</div>
+
+<br>
+
+## Estructurar los datos
+
+```{r define-main-data}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+# Function to clean and prepare region names for matching
+# Load the fuzzy matching library
+library(stringdist)
+
+# --- The Flexible Matching Function ---
+# Takes a vector of messy names and the master reference table
+match_regions <- function(messy_names, reference_df) {
+  
+  # A. Create a function to pre-process/clean ANY string
+  clean_string <- function(s) {
+    # 1. Convert to lowercase
+    s <- tolower(s)
+    # 2. Remove accents (transliterate to basic ASCII)
+    s <- iconv(s, from = "UTF-8", to = "ASCII//TRANSLIT")
+    # 3. Remove punctuation and numbers
+    s <- gsub("[[:punct:]]|[[:digit:]]", "", s)
+    # 4. Remove common "stop words" that add no value
+    s <- gsub("\\b(de|la|los|las|y|del|general|libertador|bernardo)\\b", "", s)
+    # 5. Collapse multiple spaces into a single space
+    s <- gsub("\\s+", " ", s)
+    # 6. Trim whitespace from start and end
+    s <- trimws(s)
+    return(s)
+  }
+  
+  # B. Apply the cleaning function to your messy input
+  cleaned_messy_names <- sapply(messy_names, clean_string, USE.NAMES = FALSE)
+  
+  # C. Find the best match for EACH cleaned messy name
+  matched_codes <- sapply(cleaned_messy_names, function(messy) {
+    # Calculate the "distance" between the messy name and every clean name in our reference table
+    # Method 'jw' (Jaro-Winkler) is great for short strings and typos
+    distances <- stringdist::stringdist(messy, reference_df$clean_name, method = "jw")
+    
+    # Find which one is the closest (has the minimum distance)
+    best_match_index <- which.min(distances)
+    
+    # Return the corresponding CUT code for the best match
+    return(reference_df$roman_code[best_match_index])
+  })
+  
+  return(matched_codes)
+}
+
+# This is your sample data from the query
+
+
+# Use the function to get the codes!
+matched_cut_codes <- match_regions(CONS_C3_mod_c_a2$region_del_centro, master_regions)
+
+# Add the new codes back to your original data frame
+CONS_C3_mod_c_a2$CC1 <- matched_cut_codes
+
+
+
+# Now you can proceed with your lexpand call, including 'reg_res' in the aggre list
+SISTRAT_c3_reg <- popEpi::lexpand(
+  CONS_C3_mod_c_a2,
+  status = status,
+  birth = birth_date_rec_joined,
+  exit = def_date_na,
+  entry = fecha_ingreso_a_tratamiento,
+  # 'reg_res' has been REMOVED from the breaks list
+  breaks = list(
+    per = seq(2010, 2020, by = 1),
+    age = c(18, 30, 45, 60, Inf)
+  ),
+  # 'reg_res' has been ADDED to the aggre list
+  aggre = list(
+    agegroup = age,
+    sex = sex,
+    CC1 = CC1
+  )
+)
+
+
+
+# --- 1) Prepare SISTRAT cohort by CC_1 × sex × age ---
+# from0to1 is deaths; pyrs are person-years
+SISTRAT_agg <- SISTRAT_c3_reg %>%
+  mutate(
+    sex_rec = recode(tolower(sex), male = "hombre", female = "mujer"),
+    adm_age_cat = case_when(
+      agegroup == 18 ~ "18-29",
+      agegroup == 30 ~ "30-44",
+      agegroup == 45 ~ "45-59",
+      agegroup == 60 ~ "60-78",
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  filter(!is.na(adm_age_cat), !is.na(CC1)) %>%
+  group_by(CC1, sex_rec, adm_age_cat) %>%
+  summarise(
+    Y  = sum(from0to1, na.rm = TRUE),
+    PY = sum(pyrs,      na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Cohort totals by CC_1 (for modeling)
+SISTRAT_by_CC1 <- SISTRAT_agg %>%
+  group_by(CC1) %>%
+  summarise(Y = sum(Y), PY = sum(PY), .groups = "drop")
+```
+
+### Definir la población de referencia y su mortalidad
+
+```{r correct-subs-onset-age}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+# Load the reference mortality rates
+proy_ine_reg_group_25_oct_reg_al2015_dput<- 
+structure(list(reg_res = c("01", "01", "01", "01", "01", "01", 
+"01", "01", "02", "02", "02", "02", "02", "02", "02", "02", "03", 
+"03", "03", "03", "03", "03", "03", "03", "04", "04", "04", "04", 
+"04", "04", "04", "04", "05", "05", "05", "05", "05", "05", "05", 
+"05", "06", "06", "06", "06", "06", "06", "06", "06", "07", "07", 
+"07", "07", "07", "07", "07", "07", "08", "08", "08", "08", "08", 
+"08", "08", "08", "09", "09", "09", "09", "09", "09", "09", "09", 
+"10", "10", "10", "10", "10", "10", "10", "10", "11", "11", "11", 
+"11", "11", "11", "11", "11", "12", "12", "12", "12", "12", "12", 
+"12", "12", "13", "13", "13", "13", "13", "13", "13", "13", "14", 
+"14", "14", "14", "14", "14", "14", "14", "15", "15", "15", "15", 
+"15", "15", "15", "15", "16", "16", "16", "16", "16", "16", "16", 
+"16"), year = c(2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 
+2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 
+2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 
+2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 
+2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 
+2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 
+2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 
+2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 
+2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 
+2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 
+2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 
+2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015), 
+    sex = c("Male", "Male", "Male", "Male", "Female", "Female", 
+    "Female", "Female", "Male", "Male", "Male", "Male", "Female", 
+    "Female", "Female", "Female", "Male", "Male", "Male", "Male", 
+    "Female", "Female", "Female", "Female", "Male", "Male", "Male", 
+    "Male", "Female", "Female", "Female", "Female", "Male", "Male", 
+    "Male", "Male", "Female", "Female", "Female", "Female", "Male", 
+    "Male", "Male", "Male", "Female", "Female", "Female", "Female", 
+    "Male", "Male", "Male", "Male", "Female", "Female", "Female", 
+    "Female", "Male", "Male", "Male", "Male", "Female", "Female", 
+    "Female", "Female", "Male", "Male", "Male", "Male", "Female", 
+    "Female", "Female", "Female", "Male", "Male", "Male", "Male", 
+    "Female", "Female", "Female", "Female", "Male", "Male", "Male", 
+    "Male", "Female", "Female", "Female", "Female", "Male", "Male", 
+    "Male", "Male", "Female", "Female", "Female", "Female", "Male", 
+    "Male", "Male", "Male", "Female", "Female", "Female", "Female", 
+    "Male", "Male", "Male", "Male", "Female", "Female", "Female", 
+    "Female", "Male", "Male", "Male", "Male", "Female", "Female", 
+    "Female", "Female", "Male", "Male", "Male", "Male", "Female", 
+    "Female", "Female", "Female"), agegroup = c(18, 30, 45, 60, 
+    18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 
+    60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 
+    45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 
+    30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 
+    18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 
+    60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 
+    45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 
+    30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 18, 30, 45, 60, 
+    18, 30, 45, 60), poblacion = c(34002L, 38653L, 28302L, 15091L, 
+    32200L, 36648L, 27375L, 16273L, 64007L, 72673L, 53668L, 27557L, 
+    60944L, 67667L, 51267L, 30511L, 28880L, 32559L, 28056L, 16330L, 
+    27350L, 30400L, 27570L, 17325L, 71827L, 78583L, 69004L, 45243L, 
+    71480L, 81367L, 72797L, 51981L, 180134L, 186088L, 167910L, 
+    118195L, 172861L, 186938L, 182401L, 142333L, 79763L, 101327L, 
+    93062L, 58682L, 76880L, 99496L, 92575L, 63692L, 93197L, 110899L, 
+    103897L, 68655L, 96053L, 113384L, 106240L, 75650L, 155816L, 
+    164863L, 152554L, 94068L, 155474L, 171681L, 161491L, 111956L, 
+    88721L, 99564L, 90612L, 59966L, 91078L, 103766L, 92400L, 
+    68850L, 77395L, 96278L, 82763L, 48381L, 75995L, 95497L, 80050L, 
+    54458L, 9138L, 12044L, 10142L, 5664L, 8611L, 11949L, 9318L, 
+    5554L, 15950L, 19178L, 16790L, 10861L, 14332L, 18242L, 16390L, 
+    10938L, 760210L, 819336L, 644988L, 385795L, 727290L, 802028L, 
+    699815L, 487007L, 37117L, 38145L, 39261L, 24363L, 37110L, 
+    39544L, 38848L, 28148L, 23852L, 24685L, 19338L, 12961L, 21661L, 
+    24452L, 20876L, 15206L, 41936L, 47039L, 49239L, 33580L, 43939L, 
+    50966L, 51433L, 37434L)), class = c("tbl_df", "tbl", "data.frame"
+), row.names = c(NA, -128L))
+#mort_2015_reg
+mort_2015_reg_dput<- 
+structure(list(reg_res = c("01", "01", "01", "01", "01", "01", 
+"01", "01", "01", "01", "02", "02", "02", "02", "02", "02", "02", 
+"02", "02", "02", "03", "03", "03", "03", "03", "03", "03", "03", 
+"03", "03", "04", "04", "04", "04", "04", "04", "04", "04", "04", 
+"04", "05", "05", "05", "05", "05", "05", "05", "05", "05", "05", 
+"06", "06", "06", "06", "06", "06", "06", "06", "06", "06", "07", 
+"07", "07", "07", "07", "07", "07", "07", "07", "07", "07", "08", 
+"08", "08", "08", "08", "08", "08", "08", "08", "08", "08", "09", 
+"09", "09", "09", "09", "09", "09", "09", "09", "09", "09", "10", 
+"10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "11", 
+"11", "11", "11", "11", "11", "11", "11", "11", "11", "12", "12", 
+"12", "12", "12", "12", "12", "12", "12", "12", "13", "13", "13", 
+"13", "13", "13", "13", "13", "13", "13", "13", "14", "14", "14", 
+"14", "14", "14", "14", "14", "14", "14", "14", "15", "15", "15", 
+"15", "15", "15", "15", "15", "15", "15", "15"), sexo = c(1, 
+1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 
+1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 
+1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 
+1, 2, 2, 2, 2, 2, 9, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 9, 1, 1, 1, 
+1, 1, 2, 2, 2, 2, 2, 9, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 9, 1, 1, 
+1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 
+1, 1, 2, 2, 2, 2, 2, 9, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 9, 1, 1, 
+1, 1, 1, 2, 2, 2, 2, 2, 9), adm_age_cat = c("18-29", "30-44", 
+"45-59", "60-78", NA, "18-29", "30-44", "45-59", "60-78", NA, 
+"18-29", "30-44", "45-59", "60-78", NA, "18-29", "30-44", "45-59", 
+"60-78", NA, "18-29", "30-44", "45-59", "60-78", NA, "18-29", 
+"30-44", "45-59", "60-78", NA, "18-29", "30-44", "45-59", "60-78", 
+NA, "18-29", "30-44", "45-59", "60-78", NA, "18-29", "30-44", 
+"45-59", "60-78", NA, "18-29", "30-44", "45-59", "60-78", NA, 
+"18-29", "30-44", "45-59", "60-78", NA, "18-29", "30-44", "45-59", 
+"60-78", NA, "18-29", "30-44", "45-59", "60-78", NA, "18-29", 
+"30-44", "45-59", "60-78", NA, NA, "18-29", "30-44", "45-59", 
+"60-78", NA, "18-29", "30-44", "45-59", "60-78", NA, NA, "18-29", 
+"30-44", "45-59", "60-78", NA, "18-29", "30-44", "45-59", "60-78", 
+NA, NA, "18-29", "30-44", "45-59", "60-78", NA, "18-29", "30-44", 
+"45-59", "60-78", NA, NA, "18-29", "30-44", "45-59", "60-78", 
+NA, "18-29", "30-44", "45-59", "60-78", NA, "18-29", "30-44", 
+"45-59", "60-78", NA, "18-29", "30-44", "45-59", "60-78", NA, 
+"18-29", "30-44", "45-59", "60-78", NA, "18-29", "30-44", "45-59", 
+"60-78", NA, NA, "18-29", "30-44", "45-59", "60-78", NA, "18-29", 
+"30-44", "45-59", "60-78", NA, NA, "18-29", "30-44", "45-59", 
+"60-78", NA, "18-29", "30-44", "45-59", "60-78", NA, NA), n = c(40L, 
+73L, 134L, 316L, 228L, 11L, 31L, 57L, 196L, 325L, 71L, 99L, 338L, 
+729L, 483L, 28L, 47L, 144L, 477L, 617L, 23L, 69L, 137L, 321L, 
+326L, 17L, 20L, 73L, 202L, 366L, 83L, 98L, 355L, 895L, 878L, 
+21L, 61L, 203L, 561L, 1001L, 179L, 271L, 811L, 2531L, 2516L, 
+45L, 148L, 536L, 1824L, 3413L, 97L, 172L, 449L, 1167L, 1072L, 
+33L, 95L, 264L, 795L, 1287L, 120L, 184L, 494L, 1475L, 1326L, 
+43L, 92L, 292L, 978L, 1485L, 2L, 188L, 384L, 1127L, 2850L, 2462L, 
+71L, 153L, 667L, 1953L, 3057L, 1L, 98L, 206L, 506L, 1359L, 1331L, 
+33L, 93L, 303L, 938L, 1631L, 4L, 101L, 202L, 507L, 1026L, 952L, 
+31L, 82L, 229L, 748L, 1228L, 2L, 15L, 22L, 64L, 119L, 99L, 1L, 
+7L, 21L, 61L, 89L, 18L, 28L, 89L, 247L, 176L, 6L, 16L, 45L, 164L, 
+244L, 700L, 1169L, 3089L, 7822L, 6991L, 238L, 565L, 1873L, 5714L, 
+10914L, 8L, 42L, 96L, 215L, 583L, 549L, 14L, 35L, 106L, 383L, 
+566L, 1L, 33L, 42L, 99L, 290L, 233L, 8L, 23L, 52L, 182L, 282L, 
+1L), sex_rec = c("hombre", "hombre", "hombre", "hombre", "hombre", 
+"mujer", "mujer", "mujer", "mujer", "mujer", "hombre", "hombre", 
+"hombre", "hombre", "hombre", "mujer", "mujer", "mujer", "mujer", 
+"mujer", "hombre", "hombre", "hombre", "hombre", "hombre", "mujer", 
+"mujer", "mujer", "mujer", "mujer", "hombre", "hombre", "hombre", 
+"hombre", "hombre", "mujer", "mujer", "mujer", "mujer", "mujer", 
+"hombre", "hombre", "hombre", "hombre", "hombre", "mujer", "mujer", 
+"mujer", "mujer", "mujer", "hombre", "hombre", "hombre", "hombre", 
+"hombre", "mujer", "mujer", "mujer", "mujer", "mujer", "hombre", 
+"hombre", "hombre", "hombre", "hombre", "mujer", "mujer", "mujer", 
+"mujer", "mujer", "mujer", "hombre", "hombre", "hombre", "hombre", 
+"hombre", "mujer", "mujer", "mujer", "mujer", "mujer", "mujer", 
+"hombre", "hombre", "hombre", "hombre", "hombre", "mujer", "mujer", 
+"mujer", "mujer", "mujer", "mujer", "hombre", "hombre", "hombre", 
+"hombre", "hombre", "mujer", "mujer", "mujer", "mujer", "mujer", 
+"mujer", "hombre", "hombre", "hombre", "hombre", "hombre", "mujer", 
+"mujer", "mujer", "mujer", "mujer", "hombre", "hombre", "hombre", 
+"hombre", "hombre", "mujer", "mujer", "mujer", "mujer", "mujer", 
+"hombre", "hombre", "hombre", "hombre", "hombre", "mujer", "mujer", 
+"mujer", "mujer", "mujer", "mujer", "hombre", "hombre", "hombre", 
+"hombre", "hombre", "mujer", "mujer", "mujer", "mujer", "mujer", 
+"mujer", "hombre", "hombre", "hombre", "hombre", "hombre", "mujer", 
+"mujer", "mujer", "mujer", "mujer", "mujer")), row.names = c(NA, 
+-157L), class = c("tbl_df", "tbl", "data.frame")) 
+
+mort_2015_reg_dput<- 
+dplyr::filter(data.frame(mort_2015_reg_dput),!is.na(adm_age_cat))
+
+# Mapeo de número romano (CC_1) -> código CUT (reg_res)
+roman_to_cut <- tibble::tibble(
+  CC_1 = c("I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","RM","XIV","XV","XVI"),
+  reg_res = c("01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16")
+)
+
+
+# --- 2) Build background reference rates by CC_1 × sex × age (2015) ---
+# Population
+pop <- proy_ine_reg_group_25_oct_reg_al2015_dput|>
+  filter(year == 2015, sex %in% c("Male","Female"))|>
+  dplyr::mutate(
+    sex_rec = recode(sex, Male = "hombre", Female = "mujer"),
+    adm_age_cat = case_when(
+      agegroup == 18 ~ "18-29",
+      agegroup == 30 ~ "30-44",
+      agegroup == 45 ~ "45-59",
+      agegroup == 60 ~ "60-78",
+      TRUE ~ NA_character_
+    ),
+    reg_res = stringr::str_pad(reg_res, width = 2, pad = "0")
+  )|>
+  dplyr::filter(!is.na(adm_age_cat))|>
+  dplyr::select(reg_res, sex_rec, adm_age_cat, poblacion)|>
+  dplyr::left_join(roman_to_cut, by = "reg_res")|> 
+  dplyr::rename("CC1" = "CC_1")
+
+# Deaths
+deaths <- mort_2015_reg_dput|>
+  dplyr::filter(!is.na(adm_age_cat), sexo %in% c(1,2))|>
+  dplyr::mutate(
+    sex_rec = if_else(sexo == 1, "hombre", "mujer"),
+    reg_res = stringr::str_pad(reg_res, width = 2, pad = "0"))|>
+  dplyr::select(reg_res, sex_rec, adm_age_cat, n)|>
+  dplyr::left_join(roman_to_cut, by = "reg_res")|> 
+  dplyr::rename("CC1" = "CC_1")
+
+# Make complete shells to avoid missing strata
+shell_cc1 <- expand.grid(
+  CC1       = unique(roman_to_cut$CC_1),
+  sex_rec    = c("hombre","mujer"),
+  adm_age_cat= c("18-29","30-44","45-59","60-78"),
+  stringsAsFactors = FALSE
+) |> tibble::as_tibble()
+
+pop_ref <- shell_cc1|>
+  left_join(pop,    by = c("CC1","sex_rec","adm_age_cat"))|>
+  mutate(poblacion = replace_na(poblacion, 0L))
+
+deaths_ref <- shell_cc1|>
+  left_join(deaths, by = c("CC1","sex_rec","adm_age_cat"))|>
+  mutate(n = replace_na(n, 0L))
+
+# Reference rates r_{CC_1,a,s} = D / P
+P_df <- pop_ref  |> group_by(CC1, sex_rec, adm_age_cat)|> summarise(P = sum(poblacion), .groups = "drop")
+D_df <- deaths_ref%>% group_by(CC1, sex_rec, adm_age_cat)|> summarise(D = sum(n),         .groups = "drop")
+rates_ref <- full_join(D_df, P_df, by = c("CC1","sex_rec","adm_age_cat"))|>
+  mutate(
+    D = coalesce(D, 0L),
+    P = coalesce(P, 0L),
+    rate = if_else(P > 0, D / P, 0)
+  )
+
+# --- 3) Expected deaths for the cohort by CC_1: E = Σ PY × rate_ref ---
+E_by_CC1 <- SISTRAT_agg|>
+  left_join(rates_ref, by = c("CC1","sex_rec","adm_age_cat"))|>
+  mutate(rate = replace_na(rate, 0))|>
+  group_by(CC1)|>
+  summarise(
+    E  = sum(PY * rate),
+    PY = sum(PY),
+    Y  = sum(Y),
+    .groups = "drop"
+  )|>
+  mutate(E = if_else(E == 0, 1e-8, E))   # guard against exact zeros
+
+```
+
+### Formatear el mapa y matriz de adyacencia
+
+Armonizamos el mapa con los datos y construimos la matriz de adyacencia para el modelo BYM, fijando **a priori** conservadores: asumimos una probabilidad baja (≈1%) de que la **desviación estándar** del efecto aleatorio supere 1 (con esto, asumimos poca variabilidad interregional) no y predefinimos un equilibrio entre el componente espacial estructurado (por vecindad) y el no estructurado (ruido, o particularidad de la región).
+
+```{r format-geometry}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+# --- 4) Geometry (join by CC_1) and adjacency for BYM ---
+chile_sf <- geodata::gadm(country = "CHL", level = 1, path = tempdir()) |>
+  sf::st_as_sf() |>
+  dplyr::mutate(CC_1 = as.character(CC_1))|>
+  # keep only regions we can map (GADM may or may not have XVI; most recent does)
+  (\(df) {
+    if (filter(df, !CC_1 %in% roman_to_cut$CC_1) |> nrow()>0) {
+      message("Note: data does not include X10=Región de Los Lagos; XI11=Región de Aysén del General Carlos Ibáñez del Campo; XVI16=Región de Ñuble")
+      print(filter(df, !CC_1 %in% roman_to_cut$CC_1) |>pull(CC1))
+    }
+    df
+  })()|>
+  dplyr::filter(CC_1 %in% roman_to_cut$CC_1)|>
+  dplyr::arrange(CC_1)|>
+  dplyr::mutate(region_id = dplyr::row_number())
+
+# Align modeling data to shapes (right_join keeps all regions in the map)
+bym_df <- E_by_CC1|>
+  dplyr::right_join(sf::st_drop_geometry(chile_sf)|> dplyr::select(CC_1, region_id), by = c("CC1"="CC_1"))|>
+  dplyr::arrange(region_id)|>
+  dplyr::mutate(
+    Y  = replace_na(Y, 0),
+    PY = replace_na(PY, 0),
+    E  = replace_na(E,  1e-8)  # tiny to allow model to run if truly no expected deaths
+  )
+
+# Adjacency
+nb <- spdep::poly2nb(chile_sf, queen = TRUE)
+adj_file <- file.path(tempdir(), "chile_cc1_adj.graph")
+spdep::nb2INLA(file = adj_file, nb)
+
+# Priors
+hyper <- list(
+  prec = list(prior = "pc.prec", param = c(1, 0.01)),
+  phi  = list(prior = "pc", param = c(0.5, 2/3))
+)
+```
+
+### Modelo Bayesiano BYM2 por tasas suavizadas, riesgo relativo y muertes en exceso
+
+Obtenemos las tasas por 100 años-persona, riesgo relativo y muertes en exceso suavizadas por vecindad espacial, además de la probabilidad de que el riesgo relativo sea mayor que 1.
+
+```{r bym-model-rate}
+#| echo: true
+#| error: false
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+# --- 5A) BYM for smoothed death rates (cohort) ---
+# Y ~ Poisson(PY × rate_i); fitted values are on scale of rate (per person-year)
+fit_rate <- INLA::inla(
+  Y ~ 1 + f(region_id, model = "bym2", graph = adj_file, scale.model = TRUE, hyper = hyper),
+  data = bym_df,
+  family = "poisson",
+  E = PY,  # exposure = person-years
+  control.predictor = list(compute = TRUE),
+  control.compute   = list(dic = TRUE, waic = TRUE, cpo = TRUE, config = TRUE)
+)
+
+# Smoothed rates (per person-year)
+rate_mean <- fit_rate$summary.fitted.values$mean      # rate
+rate_lcl  <- fit_rate$summary.fitted.values$`0.025quant`
+rate_ucl  <- fit_rate$summary.fitted.values$`0.975quant`
+
+# If you prefer per 1,000 PY:
+per   <- 100
+rate_mean_100 <- rate_mean * per
+rate_lcl_100  <- rate_lcl  * per
+rate_ucl_100  <- rate_ucl  * per
+
+# --- 5B) BYM for excess risk and excess deaths ---
+# Y ~ Poisson(E × RR_i); fitted values are RR
+fit_rr <- INLA::inla(
+  Y ~ 1 + f(region_id, model = "bym2", graph = adj_file, scale.model = TRUE, hyper = hyper),
+  data = bym_df,
+  family = "poisson",
+  E = E,   # expected deaths from reference
+  control.predictor = list(compute = TRUE),
+  control.compute   = list(dic = TRUE, waic = TRUE, cpo = TRUE, config = TRUE)
+)
+
+RR_mean <- fit_rr$summary.fitted.values$mean
+RR_lcl  <- fit_rr$summary.fitted.values$`0.025quant`
+RR_ucl  <- fit_rr$summary.fitted.values$`0.975quant`
+
+# Smoothed excess deaths = (RR - 1) * E
+Excess_mean <- (RR_mean - 1) * bym_df$E
+Excess_lcl  <- (RR_lcl  - 1) * bym_df$E
+Excess_ucl  <- (RR_ucl  - 1) * bym_df$E
+
+# Exceedance probability: P(RR > 1) = P(eta > 0)
+if (!is.null(fit_rr$marginals.linear.predictor) &&
+    length(fit_rr$marginals.linear.predictor) == nrow(bym_df)) {
+  p_exceed_1 <- sapply(fit_rr$marginals.linear.predictor, function(m) 1 - INLA::inla.pmarginal(0, m))
+} else {
+  # Monte Carlo backup
+  smp <- INLA::inla.posterior.sample(4000, fit_rr)
+  pred_names <- grep("^Predictor", rownames(smp[[1]]$latent), value = TRUE)
+  lp_mat <- sapply(smp, function(s) as.numeric(s$latent[pred_names]))
+  p_exceed_1 <- rowMeans(lp_mat > 0, na.rm = TRUE)
+}
+
+
+ps_pois <- inla.posterior.sample(2000, fit_rr, selection = list(Predictor = 1:nrow(fit_rr$summary.linear.predictor)))
+eta_mat_pois <- sapply(ps_pois, function(s) s$latent[grep("^Predictor", rownames(s$latent)), , drop = TRUE])
+p_exceed_1_mc <- rowMeans(eta_mat_pois > 0)
+
+# --- 6) Bind results and map ---
+res_cc1 <- bym_df|>
+  mutate(
+    rate_mean      = rate_mean,
+    rate_lcl       = rate_lcl,
+    rate_ucl       = rate_ucl,
+    rate_mean_100 = rate_mean_100,
+    rate_lcl_100  = rate_lcl_100,
+    rate_ucl_100  = rate_ucl_100,
+    RR_mean        = RR_mean,
+    RR_lcl         = RR_lcl,
+    RR_ucl         = RR_ucl,
+    Excess_mean    = Excess_mean,
+    Excess_lcl     = Excess_lcl,
+    Excess_ucl     = Excess_ucl,
+    p_exceed_1     = p_exceed_1_mc
+  )
+
+result_sf <- chile_sf|>
+  left_join(res_cc1, by = c("CC_1"="CC1"))
+
+res_cc1 |> 
+  dplyr::select(-dplyr::any_of(c("rate_mean","rate_lcl","rate_ucl", "p_exceed_1")))|>
+  knitr::kable("markdown", digits=1, caption= "Resultados del modelo BYM2 por Región")
+```
+
+### Visualización de resultados
+
+```{r plot}
+
+
+# Print plots
+cowplot::plot_grid(
+    p_tratados +
+        coord_sf(expand = FALSE) +
+        theme(
+            plot.margin = margin(0, 0, 0, 0),
+            legend.spacing = unit(0.1, "lines"),
+            legend.key.size = unit(0.6, "lines")
+        ), p_deaths +
+        coord_sf(expand = FALSE) +
+        theme(
+            plot.margin = margin(0, 0, 0, 0),
+            legend.spacing = unit(0.1, "lines"),
+            legend.key.size = unit(0.6, "lines")
+        ),
+    ggplot(result_sf) +
+        geom_sf(aes(fill = RR_mean), color = "grey60", size = 0.2) +
+        scale_fill_gradientn(colors = rev(c(g052709, dark_teal, c5fa9b3, d_edee4, blanco)), na.value = "#DEDEE4", name = "RME Suavizado") +
+        #scale_fill_viridis_c(option = "C", name = "Smoothed RR") +
+        labs(title = NULL,#"BYM2-smoothed excess risk (SISTRAT vs reference)",
+             subtitle = NULL)+#"RR = observed / expected (age×sex region-specific rates)") +
+        theme_void(base_size = 14) +
+        #xlim(c(80,66.4))+
+        xlim(c(-75, -66.4))+
+        theme(legend.position = "left",
+              legend.title = element_text(size=12.9),
+              legend.text = element_text(size=11.9))+
+        ggrepel::geom_label_repel(
+            data =  dplyr::mutate(result_sf, 
+                                  # 1. Calculates a point guaranteed to be within the polygon boundaries.
+                                  point_on_surface = sf::st_point_on_surface(geometry),
+                                  
+                                  # 2. Extracts the X (Longitude) and Y (Latitude) coordinates from that point.
+                                  lon = sf::st_coordinates(point_on_surface)[, "X"],
+                                  lat = sf::st_coordinates(point_on_surface)[, "Y"]), # Usamos los datos con las coordenadas calculadas
+            aes(x = lon, y = lat, label = CC_1), # Coordenadas y texto de la etiqueta
+            size = 5,                              # Tamaño del texto
+            min.segment.length = 0.5,                # Longitud mínima de la línea de conexión
+            box.padding = 0.3,                       # Espacio alrededor del texto dentro de la caja
+            point.padding = 0.5,                     # Distancia de la caja a la geometría
+            # Fondo de la etiqueta
+            fill = alpha("white", 0.7),              # Color de fondo semi-transparente
+            color = "black"                          # Color del texto
+        ),
+    nrow = 1,                # o nrow = 1 según tu disposición
+    align = "v",             # o "h" para horizontal
+    rel_heights = c(1, 1),# ajusta proporciones si necesario
+    axis = "tblr",           # alinea ejes si aplica
+    labels = NULL,           # evita espacio extra por etiquetas
+    label_size = 0,          # si usas labels, reduce tamaño
+    label_x = 0, label_y = 1,# controla posición de etiquetas
+    vjust = .5, hjust = 0,    # controla alineación vertical/horizontal
+    scale = c(0.99, .99, 1.02) # reduce tamaño relativo de cada plot
+)
+
+
+if(grepl("ubuntu",system_r_platform())){
+  ggsave(paste0("map_con_RR.png"), dpi = 600, scale=1)
+} else{
+  ggsave(paste0("map_con_RR.png"), dpi = 600, scale=1)
+}
+
+```
+
+
+
+# Session info
+
+```{r session-info}
+#|echo: true
+#|error: true
+#|message: true
+#|paged.print: true
+message(paste0("R library: ", Sys.getenv("R_LIBS_USER")))
+message(paste0("Date: ",withr::with_locale(new = c('LC_TIME' = 'C'), code =Sys.time())))
+message(paste0("Editor context: ", path))
+
+cat("quarto version: "); quarto::quarto_version()
+
+sesion_info <- devtools::session_info()
+dplyr::select(
+  tibble::as_tibble(sesion_info$packages),
+  c(package, loadedversion, source)
+)|> 
+  DT::datatable(filter = 'top', colnames = c('Row number' =1,'Package' = 2, 'Version'= 3),
+              caption = htmltools::tags$caption(
+        style = 'caption-side: top; text-align: left;',
+        '', htmltools::em('R packages')),
+      options=list(
+initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        "$(this.api().tables().body()).css({
+            'font-family': 'Helvetica Neue',
+            'font-size': '70%', 
+            'code-inline-font-size': '15%', 
+            'white-space': 'nowrap',
+            'line-height': '0.75em',
+            'min-height': '0.5em'
+            });",
+        "}")))
+```
+
+
+```{r session-info-python}
+#|echo: true
+#|error: true
+#|message: true
+#|paged.print: true
+#|class-output: center-table
+
+reticulate::py_list_packages()|> 
+  DT::datatable(filter = 'top', colnames = c('Row number' =1,'Package' = 2, 'Version'= 3),
+              caption = htmltools::tags$caption(
+        style = 'caption-side: top; text-align: left;',
+        '', htmltools::em('Python packages')),
+      options=list(
+initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        "$(this.api().tables().body()).css({
+            'font-family': 'Helvetica Neue',
+            'font-size': '70%', 
+            'code-inline-font-size': '15%', 
+            'white-space': 'nowrap',
+            'line-height': '0.75em',
+            'min-height': '0.5em'
+            });",
+        "}"))) 
+```
+
+Save
+
+
+```{r save}
+#| echo: true
+#| error: true
+#| warning: true
+#| message: true
+#| paged.print: true
+#| results: "hold"
+#| eval: true
+
+if(grepl("ubuntu",pak::system_r_platform())){
+  if (rstudioapi::isAvailable()) {
+    # Code that needs RStudio
+    wdpath<- dirname(dirname(rstudioapi::documentPath()))
+  } else {
+    # Code for non-RStudio environments (e.g., command line, server)
+    # This part should use a portable method like knitr::current_input() or getwd()
+    wdpath <- dirname(resolve_doc_dir())
+  }
+}
+save.image(paste0(wdpath,"/congresosp2.RData"))
+cat(paste0("Espacio de trabajo guardado en ",wdpath,"/congresosp2.RData\n"))
+
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+cat("Copy renv lock into cons folder\n")
+
+if (Sys.getenv("RSTUDIO_SESSION_TYPE") == "server" || file.exists("/.dockerenv")) {
+  message("Running on RStudio Server or inside Docker. Folder copy skipped.")
+} else {
+  source_folder <- 
+  destination_folder <- paste0(wdpath,"cons/renv")
+  # Copy the folder recursively
+    file.copy(paste0(wdpath,"renv.lock"), paste0(wdpath,"cons/renv.lock"), overwrite = TRUE)
+  message("Renv lock copy performed.")
+}
+#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:#:
+time_after_dedup2<-Sys.time()
+
+paste0("Time in markdown: ");time_after_dedup2-time_before_dedup2
+```

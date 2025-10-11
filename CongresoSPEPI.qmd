@@ -1132,7 +1132,7 @@ We clean the environment with the absolutely necessary objects
 #| results: "hold"
 #| eval: true
 # Nombres de los objetos que deseas conservar
-objetos_a_conservar <- c("CONS_C3_25_df_mod0", "SISTRAT23_c1_2010_2024_df_prev1y", "toString2", "normalize_txt", "pair_str", "sample_n_with_seed", "most_frequent", "sum_dates", "tidy_cph", "mortality_first", "wdpath", "theme_sjPlot_manual", "load_ndp", "find_ndp_locations", "format_cells", "is_stata_ok", "sir_ci_phi_improved", "smr_print", "to_ascii_lower", "resolve_doc_dir", "‘time_before_dedup2")
+objetos_a_conservar <- c("CONS_C3_25_df_mod0", "SISTRAT23_c1_2010_2024_df_prev1y", "toString2", "normalize_txt", "pair_str", "sample_n_with_seed", "most_frequent", "sum_dates", "tidy_cph", "mortality_first", "wdpath", "theme_sjPlot_manual", "load_ndp", "find_ndp_locations", "format_cells", "is_stata_ok", "sir_ci_phi_improved", "smr_print", "to_ascii_lower", "resolve_doc_dir", "time_before_dedup2")
  
 # Eliminar todos los objetos excepto los especificados
 rm(list = setdiff(ls(), objetos_a_conservar))

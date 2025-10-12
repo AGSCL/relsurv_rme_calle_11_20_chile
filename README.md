@@ -1,4 +1,4 @@
-# relsurv_rme_calle_11_20_chile: SUPERVIVENCIA RELATIVA DE PERSONAS EN PROGRAMA DE POBLACIÓN EN SITUACIÓN DE CALLE, SENDA, 2011-2020, CHILE
+# SUPERVIVENCIA RELATIVA DE PERSONAS EN PROGRAMA DE POBLACIÓN EN SITUACIÓN DE CALLE, SENDA, 2011-2020, CHILE
 
 This repository contains all the **R** and **Quarto** files used for the epidemiological analysis and poster presentation on the Relative Survival & $\text{RME}$ (*Relative Mortality Excess*) of individuals participating in the Program between 2011 and 2020.
 

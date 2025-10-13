@@ -2725,7 +2725,7 @@ cowplot::plot_grid(
 )
 
 
-if(grepl("ubuntu",system_r_platform())){
+if(grepl("ubuntu",pak::system_r_platform())){
   ggsave(paste0("map.png"), dpi = 600, scale=1)
 } else{
   ggsave(paste0("map.png"), dpi = 600, scale=1)

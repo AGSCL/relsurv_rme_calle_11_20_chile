@@ -1008,7 +1008,7 @@ SISTRAT_c3_reg <- popEpi::lexpand(
   entry = fecha_ingreso_a_tratamiento,
   # 'reg_res' has been REMOVED from the breaks list
   breaks = list(
-    per = seq(2010, 2020, by = 1),
+    per = seq(2011, 2021, by = 1), #En popEpi::lexpand, los breaks son cortes y generan intervalos [a, b) (cerrado a la izquierda, abierto a la derecha). Cambio en 13-octubre 2025 2025-10-13
     age = c(18, 30, 45, 60, Inf)
   ),
   # 'reg_res' has been ADDED to the aggre list
@@ -1018,8 +1018,6 @@ SISTRAT_c3_reg <- popEpi::lexpand(
     CC1 = CC1
   )
 )
-
-
 
 # --- 1) Prepare SISTRAT cohort by CC_1 × sex × age ---
 # from0to1 is deaths; pyrs are person-years
@@ -1439,15 +1437,39 @@ res_cc1 <- bym_df|>
 result_sf <- chile_sf|>
   left_join(res_cc1, by = c("CC_1"="CC1"))
 
+orden_geografico_romano <- c(
+  "XV",   # Arica y Parinacota
+  "I",    # Tarapacá
+  "II",   # Antofagasta
+  "III",  # Atacama
+  "IV",   # Coquimbo
+  "V",    # Valparaíso
+  "RM",   # Metropolitana
+  "VI",   # O'Higgins
+  "VII",  # Maule
+  "XVI",  # Ñuble
+  "VIII", # Biobío
+  "IX",   # La Araucanía
+  "XIV",  # Los Ríos
+  "X",    # Los Lagos
+  "XI",   # Aysén (lo incluyo por si aparece en tus datos)
+  "XII"   # Magallanes
+)
+
+
 res_cc1 |> 
   dplyr::select(-dplyr::any_of(c("rate_mean","rate_lcl","rate_ucl", "p_exceed_1")))|>
+   dplyr::mutate(CC1 = factor(CC1, levels = orden_geografico_romano),  )|>
+  dplyr::arrange(CC1)|>
   knitr::kable("markdown", digits=1, caption= "Resultados del modelo BYM2 por Región")
 ```
 
 ### Visualización de resultados
 
 ```{r plot}
-
+#| fig-width: 5.86
+#| fig-height: 7.38
+#| dpi: 300
 
 # Print plots
 cowplot::plot_grid(
@@ -1485,7 +1507,7 @@ cowplot::plot_grid(
                                   lon = sf::st_coordinates(point_on_surface)[, "X"],
                                   lat = sf::st_coordinates(point_on_surface)[, "Y"]), # Usamos los datos con las coordenadas calculadas
             aes(x = lon, y = lat, label = CC_1), # Coordenadas y texto de la etiqueta
-            size = 4.7,                              # Tamaño del texto
+            size = 4.6,                              # Tamaño del texto
             min.segment.length = 0.5,                # Longitud mínima de la línea de conexión
             box.padding = 0.3,                       # Espacio alrededor del texto dentro de la caja
             point.padding = 0.5,                     # Distancia de la caja a la geometría
@@ -1507,10 +1529,10 @@ cowplot::plot_grid(
 )
 
 
-if(grepl("ubuntu",system_r_platform())){
-  ggsave(paste0("map_con_RR.png"), dpi = 600, scale=1)
+if(grepl("ubuntu",pak::system_r_platform())){
+  ggsave(paste0("map_con_RR.png"), dpi = 600, scale=1,   width = 12, height = 7.38)
 } else{
-  ggsave(paste0("map_con_RR.png"), dpi = 600, scale=1)
+  ggsave(paste0("map_con_RR.png"), dpi = 600, scale=1,   width = 12, height = 7.38)
 }
 
 ```

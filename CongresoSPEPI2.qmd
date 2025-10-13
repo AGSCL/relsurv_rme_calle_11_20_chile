@@ -888,55 +888,115 @@ scale_color_andal_d <- function(..., reverse = FALSE) {
 # Load the fuzzy matching library
 library(stringdist)
 
-# --- The Flexible Matching Function ---
-# Takes a vector of messy names and the master reference table
-match_regions <- function(messy_names, reference_df) {
-  
-  # A. Create a function to pre-process/clean ANY string
-  clean_string <- function(s) {
-    # 1. Convert to lowercase
-    s <- tolower(s)
-    # 2. Remove accents (transliterate to basic ASCII)
-    s <- iconv(s, from = "UTF-8", to = "ASCII//TRANSLIT")
-    # 3. Remove punctuation and numbers
-    s <- gsub("[[:punct:]]|[[:digit:]]", "", s)
-    # 4. Remove common "stop words" that add no value
-    s <- gsub("\\b(de|la|los|las|y|del|general|libertador|bernardo)\\b", "", s)
-    # 5. Collapse multiple spaces into a single space
-    s <- gsub("\\s+", " ", s)
-    # 6. Trim whitespace from start and end
-    s <- trimws(s)
-    return(s)
-  }
-  
-  # B. Apply the cleaning function to your messy input
-  cleaned_messy_names <- sapply(messy_names, clean_string, USE.NAMES = FALSE)
-  
-  # C. Find the best match for EACH cleaned messy name
-  matched_codes <- sapply(cleaned_messy_names, function(messy) {
-    # Calculate the "distance" between the messy name and every clean name in our reference table
-    # Method 'jw' (Jaro-Winkler) is great for short strings and typos
-    distances <- stringdist::stringdist(messy, reference_df$clean_name, method = "jw")
-    
-    # Find which one is the closest (has the minimum distance)
-    best_match_index <- which.min(distances)
-    
-    # Return the corresponding CUT code for the best match
-    return(reference_df$roman_code[best_match_index])
+ref_regions <- tibble::tribble(
+  ~roman_code, ~canon_name, ~aliases,
+  "XV",  "arica y parinacota",                    c("arica y parinacota","arica","parinacota"),
+  "I",   "tarapaca",                               c("tarapaca"),
+  "II",  "antofagasta",                            c("antofagasta"),
+  "III", "atacama",                                c("atacama"),
+  "IV",  "coquimbo",                               c("coquimbo"),
+  "V",   "valparaiso",                             c("valparaíso","valparaiso"),
+  "RM",  "metropolitana",                          c("rm","metropolitana","metropolitana de santiago","santiago"),
+  "VI",  "ohiggins",                               c("o'higgins","ohiggins","libertador general bernardo ohiggins","bernardo ohiggins","libertador ohiggins"),
+  "VII", "maule",                                  c("maule"),
+  "VIII","biobio",                                 c("biobio","bio bio","bio-bio","bío-bío"),
+  "IX",  "araucania",                              c("la araucania","araucania","araucanía"),
+  "X",   "los lagos",                              c("los lagos"),
+  "XI",  "aysen",                                  c("aysen","aysén"),
+  "XII", "magallanes y la antartica chilena",      c("magallanes","antartica","antártica","magallanes y antartica","magallanes y la antartica chilena"),
+  "XIV", "los rios",                               c("los rios","los ríos")
+)
+
+# --- Limpieza homogénea (preserva 'los/las') ---
+clean_string <- function(s){
+  s <- tolower(s)
+  s <- iconv(s, from = "UTF-8", to = "ASCII//TRANSLIT")  # quita tildes
+  s <- gsub("[[:punct:]]", " ", s)                        # deja espacios
+  s <- gsub("[[:digit:]]", "", s)
+  # quitamos conectores pero NO 'los/las' (desambiguación)
+  s <- gsub("\\b(de|del|y|la|el|region|región)\\b", " ", s)
+  s <- gsub("\\s+", " ", s)
+  trimws(s)
+}
+
+# expandimos alias y limpiaremos todos con la misma función
+ref_alias <- ref_regions |>
+  tidyr::unnest_longer(aliases) |>
+  dplyr::mutate(clean_alias = clean_string(aliases),
+                clean_canon = clean_string(canon_name)) |>
+  dplyr::distinct(roman_code, canon_name, clean_alias, clean_canon)
+
+# --- Reglas exactas/regex muy específicas (antes de fuzzy) ---
+rule_match_code <- function(x_clean){
+  # pares conflictivos: exigir frase completa
+  if(grepl("\\blos\\s+lagos\\b", x_clean)) return("X")
+  if(grepl("\\blos\\s+rios\\b",  x_clean)) return("XIV")
+
+  # otros casos robustos
+  if(grepl("\\bbiobio\\b|\\bbio\\s*bio\\b", x_clean)) return("VIII")
+  if(grepl("\\bo\\s*higgins\\b|\\blibertador\\b|\\bbernardo\\b", x_clean)) return("VI")
+  if(grepl("\\bmetropolitana\\b|\\brm\\b|\\bsantiago\\b", x_clean)) return("RM")
+  if(grepl("\\bmagallanes\\b|\\bantartic", x_clean)) return("XII")
+  if(grepl("\\baraucan", x_clean)) return("IX")
+  if(grepl("\\bvalparais", x_clean)) return("V")
+  if(grepl("\\btarapac", x_clean)) return("I")
+  if(grepl("\\barica\\b|\\bparinacota\\b", x_clean)) return("XV")
+  if(grepl("\\bantofagasta\\b", x_clean)) return("II")
+  if(grepl("\\batacama\\b", x_clean)) return("III")
+  if(grepl("\\bcoquimbo\\b", x_clean)) return("IV")
+  if(grepl("\\bmaule\\b", x_clean)) return("VII")
+  if(grepl("\\baysen\\b", x_clean)) return("XI")
+  return(NA_character_)
+}
+
+# --- Matcher seguro ---
+match_regions_safe <- function(messy_names, ref_alias,
+                               jw_thresh = 0.12, tie_margin = 0.02){
+
+  sapply(messy_names, function(x){
+    x_clean <- clean_string(x)
+
+    # 1) Reglas
+    code <- rule_match_code(x_clean)
+    if(!is.na(code)) return(code)
+
+    # 2) Igualdad exacta con alias limpios o canónicos
+    eq_hit <- ref_alias |>
+      dplyr::filter(x_clean == clean_alias | x_clean == clean_canon)
+    if(nrow(eq_hit) == 1) return(eq_hit$roman_code[[1]])
+    if(nrow(eq_hit) > 1)  return(NA_character_)  # ambigüedad improbable: revisar
+
+    # 3) Fuzzy con umbral y desempate
+    cand <- unique(c(ref_alias$clean_alias, ref_alias$clean_canon))
+    d <- stringdist::stringdist(x_clean, cand, method = "jw")
+    i_min <- which.min(d); d_min <- d[i_min]
+
+    # si la mejor distancia es mala, no arriesgar
+    if(is.infinite(d_min) || is.na(d_min) || d_min > jw_thresh) return(NA_character_)
+
+    # empate cercano: si la diferencia entre 1º y 2º es pequeña, exigir frase completa o marcar NA
+    ord <- order(d); if(length(ord) >= 2){
+      if((d[ord[2]] - d[ord[1]]) < tie_margin) return(NA_character_)
+    }
+
+    cand_str <- cand[i_min]
+    hit <- ref_alias |>
+      dplyr::filter(clean_alias == cand_str | clean_canon == cand_str) |>
+      dplyr::slice(1)
+    hit$roman_code[[1]]
   })
-  
-  return(matched_codes)
 }
 
 # This is your sample data from the query
 
 
-# Use the function to get the codes!
-matched_cut_codes <- match_regions(CONS_C3_mod_c_a2$region_del_centro, master_regions)
+matched <- match_regions_safe(CONS_C3_mod_c_a2$region_del_centro, ref_alias)
 
 # Add the new codes back to your original data frame
-CONS_C3_mod_c_a2$CC1 <- matched_cut_codes
+CONS_C3_mod_c_a2$CC1 <- matched
 
+table(CONS_C3_mod_c_a2$region_del_centro, CONS_C3_mod_c_a2$CC1) |> 
+  knitr::kable("markdown", caption="Tabla de contingencia entre nombres originales y códigos asignados")
 
 
 # Now you can proceed with your lexpand call, including 'reg_res' in the aggre list
@@ -1425,12 +1485,14 @@ cowplot::plot_grid(
                                   lon = sf::st_coordinates(point_on_surface)[, "X"],
                                   lat = sf::st_coordinates(point_on_surface)[, "Y"]), # Usamos los datos con las coordenadas calculadas
             aes(x = lon, y = lat, label = CC_1), # Coordenadas y texto de la etiqueta
-            size = 5,                              # Tamaño del texto
+            size = 4.7,                              # Tamaño del texto
             min.segment.length = 0.5,                # Longitud mínima de la línea de conexión
             box.padding = 0.3,                       # Espacio alrededor del texto dentro de la caja
             point.padding = 0.5,                     # Distancia de la caja a la geometría
             # Fondo de la etiqueta
             fill = alpha("white", 0.7),              # Color de fondo semi-transparente
+            max.overlaps = Inf,    # Increase repulsion effort to avoid all overlaps
+            seed = 2125,             # For reproducible results
             color = "black"                          # Color del texto
         ),
     nrow = 1,                # o nrow = 1 según tu disposición
@@ -1441,7 +1503,7 @@ cowplot::plot_grid(
     label_size = 0,          # si usas labels, reduce tamaño
     label_x = 0, label_y = 1,# controla posición de etiquetas
     vjust = .5, hjust = 0,    # controla alineación vertical/horizontal
-    scale = c(0.99, .99, 1.02) # reduce tamaño relativo de cada plot
+    scale = c(0.99, .99, 1.03) # reduce tamaño relativo de cada plot
 )
 
 

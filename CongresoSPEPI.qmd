@@ -1910,10 +1910,27 @@ population_pyramid2 <- basic_plot2 +
   )
 
 
-plot_grid(population_pyramid+ theme(legend.position="none"), population_pyramid2+ labs(x=NULL)+ theme(axis.text.y = element_blank())+ scale_y_continuous(
-  labels = function(x) {
-    scales::number_format(scale = 1e-6, suffix = "M")(abs(x))
-  }), ncol = 2)
+base_theme <- theme_minimal(base_size = 18)
+
+# 2. Apply the base theme and modify specific elements
+plot_grid(
+    population_pyramid + 
+        base_theme +
+        labs(y=NULL)+
+        theme(legend.position = "none"),
+    
+    population_pyramid2 + 
+        labs(x = NULL) + 
+        base_theme +
+        theme(axis.text.y = element_blank()) +
+        labs(y=NULL)+
+        scale_y_continuous(
+            labels = function(x) {
+                scales::number_format(scale = 1e-6, suffix = "M")(abs(x))
+            }
+        ), 
+    ncol = 2
+)
 
 if(grepl("ubuntu",system_r_platform())){
   ggsave(paste0(wdpath,"/_figs/pyramid_congresosp.png"), dpi = 600, width = 9*.9, height=4)

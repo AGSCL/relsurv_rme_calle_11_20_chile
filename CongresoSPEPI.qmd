@@ -1834,8 +1834,8 @@ population_pyramid <- basic_plot +
   scale_fill_manual(
     name = "Sexo", # Change "Group" to "Sex" to match your labs()
     values = c(
-      "mujer" = "#DEDEE4",
-      "hombre" = "#A17C6C"
+      "mujer" = "#696271",
+      "hombre" = "#F3D7C1"
     ),
     na.translate = FALSE # Prevents NA from showing in legend if applicable
   ) +
@@ -1895,8 +1895,8 @@ population_pyramid2 <- basic_plot2 +
   scale_fill_manual(
     name = "Sexo", # Change "Group" to "Sex" to match your labs()
     values = c(
-      "mujer" = "#DEDEE4",
-      "hombre" = "#A17C6C"
+      "mujer" = "#696271",
+      "hombre" = "#F3D7C1"
       # "female" = "#A6CEE3",
       # "male" = "#1F78B4"
     ),
@@ -1910,7 +1910,7 @@ population_pyramid2 <- basic_plot2 +
   )
 
 
-base_theme <- theme_minimal(base_size = 18)
+base_theme <- theme_minimal(base_size = 22)
 
 # 2. Apply the base theme and modify specific elements
 plot_grid(
@@ -1931,11 +1931,11 @@ plot_grid(
         ), 
     ncol = 2
 )
-
+##
 if(grepl("ubuntu",system_r_platform())){
-  ggsave(paste0(wdpath,"/_figs/pyramid_congresosp.png"), dpi = 600, width = 9*.9, height=4)
+  ggsave(paste0(wdpath,"/_figs/pyramid_congresosp.png"), dpi = 600, width = 9*1.6, height=4)
 } else {
-  ggsave(paste0(wdpath,"/cons/_figs/pyramid_congresosp.png"), dpi = 600, width = 9*.9, height=4)
+  ggsave(paste0(wdpath,"/cons/_figs/pyramid_congresosp.png"), dpi = 600, width = 9*1.6, height=4)
 }
 ```
 
@@ -2698,7 +2698,7 @@ p_tratados <- ggplot(reg_sf) +
   ) +
   theme_void(base_size = 15) +
   xlim(c(-74,-66.4))+
-  theme(legend.position = "left")
+  theme(legend.position = "right")
 
 p_deaths <- ggplot(reg_sf) +
   geom_sf(aes(fill = deaths_defdate), color = "gray40",  size = 0.1) +
